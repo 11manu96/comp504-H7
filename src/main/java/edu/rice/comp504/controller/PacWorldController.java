@@ -23,9 +23,8 @@ public class PacWorldController {
         /**
          * load the object
          */
-        post("/loadObject", (request, response) -> {
-            dis.loadObject(request.body());
-            return gson.toJson(dis);
+        get("/loadFruit", (request, response) -> {
+            return dis.loadFruit();
         });
 
         /**
