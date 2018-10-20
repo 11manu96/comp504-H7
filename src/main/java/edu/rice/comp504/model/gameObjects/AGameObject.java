@@ -4,11 +4,10 @@ import java.util.Observable;
 import java.util.Observer;
 
 public abstract class AGameObject implements Observer {
-   Point location;
-   String type;
-   protected static final int SIZE=10;
-   protected static final int BIGDOTRADIUS=5;
-   protected static final int SMALLDOTRADIUS=2;
+   private Point location;
+   private String type;
+
+   protected int size;
    public AGameObject(Point location,String type){
        this.location=location;
        this.type=type;
@@ -25,6 +24,7 @@ public abstract class AGameObject implements Observer {
         this.location = location;
     }
 
+    public int getSize(){return this.size;}
 
     public void update(Observable obs, Object o){}
 }

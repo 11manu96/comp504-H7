@@ -8,28 +8,20 @@ import java.awt.*;
 import java.util.Observable;
 
 public abstract class ACharacter extends AGameObject {
-    Point vel;
-    IUpdateStrategy updateStrategy;
-    IInteractStrategy interactStrategy;
-    Point location;
-    String type;
-    public ACharacter(Point loc,String type, Point vel,IUpdateStrategy updateStrategy){
-        super(loc,type);
-        this.vel=vel;
+    private Point vel;
+    private IUpdateStrategy updateStrategy;
+    private IInteractStrategy interactStrategy;
+
+
+    public ACharacter(Point loc,String type, Point vel, IUpdateStrategy updateStrategy, IInteractStrategy interactStrategy) {
+        super(loc, type);
+        this.vel = vel;
         this.updateStrategy=updateStrategy;
         this.interactStrategy=interactStrategy;
     }
-    public Point getLocation(){
-        return this.location;
-    }
 
-    public String getType() {
-        return this.type;
-    }
 
-    public void setLocation(Point location) {
-        this.location = location;
-    }
+
 
     public IInteractStrategy getInteractStrategy() {
         return this.interactStrategy;
@@ -54,6 +46,9 @@ public abstract class ACharacter extends AGameObject {
     public void setVel(Point vel) {
         this.vel = vel;
     }
+
+
+
 
     public void update(Observable obs, Object o){}
 }
