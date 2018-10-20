@@ -6,10 +6,11 @@ import java.util.Observable;
 public class SmallDot extends AFood {
     String type;
     Point location;
-    public SmallDot(Point loc,String type){
-        super(loc,type);
+    int radius;
+    public SmallDot(Point loc){
+        super(loc,"small_dot");
         this.location=loc;
-        this.type="SmallDot";
+        this.radius=SMALLDOTRADIUS;
     }
     public Point getLocation(){
         return this.location;
@@ -23,6 +24,9 @@ public class SmallDot extends AFood {
         this.location = location;
     }
 
+    public int getRadius() {
+        return radius;
+    }
 
     public void update(Observable obs, Object o){}
 }

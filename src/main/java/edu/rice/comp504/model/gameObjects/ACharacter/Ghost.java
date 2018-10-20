@@ -13,13 +13,19 @@ public class Ghost extends ACharacter {
     IInteractStrategy interactStrategy;
     Point location;
     String type;
-    public Ghost(Point loc,String type, Point vel,IUpdateStrategy updateStrategy,IInteractStrategy interactStrategy){
-        super(loc,type,vel,updateStrategy,interactStrategy);
-        this.location=loc;
-        this.vel=new Point(0,0);
-        this.type="Ghost";
+    int size;
+    int jail;
+    boolean flash;
+    String color;
+
+    public Ghost(Point loc,IUpdateStrategy updateStrategy,String color){
+        super(loc,"ghost",new Point(0,0),updateStrategy);
         this.updateStrategy=updateStrategy;
-        this.interactStrategy=interactStrategy;
+        this.interactStrategy=null;
+        this.size=SIZE;
+        this.flash=false;
+        this.jail=3;
+        this.color=color;
     }
 
     public Point getLocation(){
@@ -34,6 +40,9 @@ public class Ghost extends ACharacter {
         this.location = location;
     }
 
+    public String getColor() {
+        return color;
+    }
 
     public IInteractStrategy getInteractStrategy() {
         return interactStrategy;
@@ -57,6 +66,10 @@ public class Ghost extends ACharacter {
 
     public void setVel(Point vel) {
         this.vel = vel;
+    }
+
+    public int getSize() {
+        return size;
     }
 
     public void update(Observable obs, Object o){}

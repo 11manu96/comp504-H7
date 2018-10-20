@@ -7,10 +7,11 @@ public class Exit extends AGameObject {
 
     Point location;
     String type;
-    public Exit(Point loc,String type){
-        super(loc,type);
+    int length;
+    public Exit(Point loc){
+        super(loc,"exit");
         this.location=loc;
-        this.type="Exit";
+        this.length=SIZE;
     }
     public Point getLocation(){
         return this.location;
@@ -24,6 +25,9 @@ public class Exit extends AGameObject {
         this.location = location;
     }
 
+    public int getLength() {
+        return length;
+    }
 
     public void update(Observable obs, Object o){}
 }

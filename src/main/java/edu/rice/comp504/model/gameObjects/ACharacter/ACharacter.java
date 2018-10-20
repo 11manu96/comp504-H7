@@ -13,11 +13,9 @@ public abstract class ACharacter extends AGameObject {
     IInteractStrategy interactStrategy;
     Point location;
     String type;
-    public ACharacter(Point loc,String type, Point vel,IUpdateStrategy updateStrategy,IInteractStrategy interactStrategy){
+    public ACharacter(Point loc,String type, Point vel,IUpdateStrategy updateStrategy){
         super(loc,type);
         this.vel=vel;
-        this.location=loc;
-        this.type=type;
         this.updateStrategy=updateStrategy;
         this.interactStrategy=interactStrategy;
     }
@@ -26,7 +24,7 @@ public abstract class ACharacter extends AGameObject {
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
     public void setLocation(Point location) {
@@ -34,11 +32,11 @@ public abstract class ACharacter extends AGameObject {
     }
 
     public IInteractStrategy getInteractStrategy() {
-        return interactStrategy;
+        return this.interactStrategy;
     }
 
     public IUpdateStrategy getUpdateStrategy() {
-        return updateStrategy;
+        return this.updateStrategy;
     }
 
     public void setInteractStrategy(IInteractStrategy interactStrategy) {
@@ -50,7 +48,7 @@ public abstract class ACharacter extends AGameObject {
     }
 
     public Point getVel() {
-        return vel;
+        return this.vel;
     }
 
     public void setVel(Point vel) {

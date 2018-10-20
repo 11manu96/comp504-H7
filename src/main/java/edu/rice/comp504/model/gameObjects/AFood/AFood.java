@@ -10,8 +10,6 @@ public abstract class AFood extends AGameObject {
     Point location;
     public AFood(Point loc,String type){
         super(loc,type);
-        this.location=loc;
-        this.type=type;
     }
     public Point getLocation(){
         return this.location;

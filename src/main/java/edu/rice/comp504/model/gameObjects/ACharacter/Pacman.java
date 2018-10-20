@@ -13,13 +13,13 @@ public class Pacman extends ACharacter {
     IInteractStrategy interactStrategy;
     Point location;
     String type;
-    public Pacman(Point loc,String type, Point vel,IUpdateStrategy updateStrategy,IInteractStrategy interactStrategy){
-        super(loc,type,vel,updateStrategy,interactStrategy);
+    int radius;
+    public Pacman(Point loc,IUpdateStrategy updateStrategy){
+        super(loc,"pacman",new Point(0,0),updateStrategy);
         this.location=loc;
-        this.vel=new Point(0,0);
-        this.type="Pacman";
         this.updateStrategy=updateStrategy;
-        this.interactStrategy=interactStrategy;
+        this.interactStrategy=null;
+        this.radius=BIGDOTRADIUS;
     }
 
     public Point getLocation(){
@@ -56,6 +56,10 @@ public class Pacman extends ACharacter {
 
     public void setVel(Point vel) {
         this.vel = vel;
+    }
+
+    public int getRadius() {
+        return radius;
     }
 
     public void update(Observable obs, Object o){}
