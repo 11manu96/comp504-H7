@@ -7,8 +7,8 @@ import java.util.Observable;
 
 public abstract class AFood extends AGameObject {
 
-    public AFood(Point loc,String type){
-        super(loc,type);
+    public AFood(Point loc,String type, int size){
+        super(loc,type,size);
     }
 
 

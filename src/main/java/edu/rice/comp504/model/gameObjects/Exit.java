@@ -6,8 +6,7 @@ import java.util.Observable;
 public class Exit extends AGameObject {
 
     public Exit(Point loc){
-        super(loc,"exit");
-        this.size=10;
+        super(loc,"exit",10);
     }
 
     public void update(Observable obs, Object o){}

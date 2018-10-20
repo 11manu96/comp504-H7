@@ -6,8 +6,8 @@ import java.util.Observable;
 public class BigDot extends AFood {
 
     public BigDot(Point loc){
-        super(loc,"big_dot");
-        this.size=18;
+        super(loc,"big_dot",18);
+
     }
 
 

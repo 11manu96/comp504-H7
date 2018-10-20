@@ -14,8 +14,7 @@ public class Ghost extends ACharacter {
     private String color;
 
     public Ghost(Point loc,IUpdateStrategy updateStrategy,String color){
-        super(loc,"ghost",new Point(0,0),updateStrategy,null);
-        this.size=20;
+        super(loc,"ghost",new Point(0,0),updateStrategy,null,20);
         this.flash=false;
         this.jail=3;
         this.color=color;

@@ -13,8 +13,8 @@ public abstract class ACharacter extends AGameObject {
     private IInteractStrategy interactStrategy;
 
 
-    public ACharacter(Point loc,String type, Point vel, IUpdateStrategy updateStrategy, IInteractStrategy interactStrategy) {
-        super(loc, type);
+    public ACharacter(Point loc,String type, Point vel, IUpdateStrategy updateStrategy, IInteractStrategy interactStrategy, int size) {
+        super(loc, type,size);
         this.vel = vel;
         this.updateStrategy=updateStrategy;
         this.interactStrategy=interactStrategy;

@@ -7,10 +7,11 @@ public abstract class AGameObject implements Observer {
    private Point location;
    private String type;
 
-   protected int size;
-   public AGameObject(Point location,String type){
+   private int size;
+   public AGameObject(Point location,String type,int size){
        this.location=location;
        this.type=type;
+       this.size=size;
    }
    public Point getLocation(){
        return this.location;

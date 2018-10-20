@@ -7,8 +7,8 @@ public class Wall extends AGameObject {
 
 
     public Wall(Point loc){
-        super(loc,"wall");
-        this.size=20;
+        super(loc,"wall",20);
+
     }
 
     public void update(Observable obs, Object o){}

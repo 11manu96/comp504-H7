@@ -6,8 +6,7 @@ import java.util.Observable;
 public class Pacman extends ACharacter {
 
     public Pacman(Point loc){
-        super(loc,"pacman",new Point(0,0),null,null);
-        this.size=20;
+        super(loc,"pacman",new Point(0,0),null,null,20);
     }
 
 
