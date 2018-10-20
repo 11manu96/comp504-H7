@@ -20,17 +20,18 @@ public class PacWorldController {
         Gson gson = new Gson();
         DispatchAdapter dis = new DispatchAdapter();
 
-/**
- * load the object
- */
+        /**
+         * load the object
+         */
         post("/loadObject", (request, response) -> {
-            return dis.loadObject(request.body());
+            dis.loadObject(request.body());
+            return gson.toJson(dis);
         });
 
         /**
          * clears observers and adds all observers for a new game
          */
-        post("/resetGame", (request, response) -> {
+        get("/resetGame", (request, response) -> {
             dis.initializeGame();
             return gson.toJson(dis);
         });
@@ -39,14 +40,14 @@ public class PacWorldController {
          * update positions at each time step
          */
         get("/updateGame", (request, response) -> {
-            dis.updateGame();
+            dis.updatePacWorld();
             return gson.toJson(dis);
         });
 
         /**
          * switch Pacman direction
          */
-        get("/switchDirection", (request, response) -> {
+        post("/switchDirection", (request, response) -> {
             dis.switchDirection(request.body());
             return gson.toJson(dis);
         });

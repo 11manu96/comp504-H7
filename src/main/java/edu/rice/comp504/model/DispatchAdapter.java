@@ -59,25 +59,33 @@ public class DispatchAdapter extends Observable {
 
                 switch (map[x][y]) {
                     case 1://wall
-                        object = new Wall(new Point(x, y), "Wall");
+                        object = new Wall(new Point(x, y));
                         break;
                     case 2://exit
-                        object = new Exit(new Point(x, y), "Exit");
+                        object = new Exit(new Point(x, y));
                         break;
                     case 3://pacman
-                        object = new Pacman(new Point(x, y), "Pacman", null, null, null);//don't need 'vel'
+                        object = new Pacman(new Point(x, y));
                         break;
-                    case 4://ghost
-                        object = new Ghost(new Point(x, y), "Ghost", null, null, null);//don't need 'vel'
+
+                    case 4://ghost1
+                        object = new Ghost(new Point(x, y), null);
                         break;
-                    case 5://smallDot
-                        object = new SmallDot(new Point(x, y), "SmallDot");
+                    case 5://ghost2
+                        object = new Ghost(new Point(x, y), null);
                         break;
-                    case 6://bigDot
-                        object = new BigDot(new Point(x, y), "BigDot");
+                    case 6://ghost3
+                        object = new Ghost(new Point(x, y), null);
                         break;
-                    case 7://Fruit
-                        object = new Fruit(new Point(x, y), "Fruit");
+                    case 7://ghost4
+                        object = new Ghost(new Point(x, y), null);
+                        break;
+
+                    case 8://smallDot
+                        object = new SmallDot(new Point(x, y));
+                        break;
+                    case 9://bigDot
+                        object = new BigDot(new Point(x, y));
                         break;
                 }
 
@@ -94,20 +102,12 @@ public class DispatchAdapter extends Observable {
     }
 
     /**
-     * calls all update strategies and checks collisions
-     */
-    public void updateGame() {
-
-    }
-
-    /**
      * Load a paint into the paint world
      * @param body  The REST request body has the strategy names.
      * @return A new ball
      */
-    public AGameObject loadObject(String body) {
+    public void loadObject(String body) {
 
-        return null;
     }
 
     /**
@@ -209,36 +209,36 @@ public class DispatchAdapter extends Observable {
         map[47][49] = 3;
 
         //ghost
-        map[15][15] = map[15][16] = map[15][17] = map[15][18] = 4;
+        map[15][15] = 4;
+        map[15][16] = 5;
+        map[15][17] = 6;
+        map[15][18] = 7;
 
         //smallDot
         //-
         for (int y = 5; y < 73; y++)
-            map[6][y] = 5;
+            map[6][y] = 8;
         for (int y = 87; y < 95; y++)
-            map[6][y] = 5;
+            map[6][y] = 8;
         //|
         for (int x = 7; x < 25; x++)
-            map[x][5] = 5;
+            map[x][5] = 8;
         for (int x = 39; x < 47; x++)
-            map[x][5] = 5;
+            map[x][5] = 8;
         //-
         for (int y = 5; y < 95; y++)
-            map[46][y] = 5;
+            map[46][y] = 8;
         //|
         for (int x = 10; x < 44; x++)
-            map[x][35] = 5;
+            map[x][35] = 8;
         //|
         for (int x = 10; x < 30; x++)
-            map[x][64] = 5;
+            map[x][64] = 8;
         for (int x = 7; x < 46; x++)
-            map[x][94] = 5;
+            map[x][94] = 8;
 
         //bigDot
-        map[6][5] = map[46][5] = map[6][94] = map[46][94] = 6;
-
-        //fruit
-        map[32][82] = 7;
+        map[6][5] = map[46][5] = map[6][94] = map[46][94] = 9;
 
     }
 
