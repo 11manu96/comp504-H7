@@ -16,17 +16,14 @@ public class DispatchAdapter extends Observable {
     private Point dims;
     private static int score;
     private static int lives;
-    private static int timer;
+    private static int fruitTimer;
+    private static int afraidTimer;
     private static int[][] map;
 
     /**
      * Constructor
      */
     public DispatchAdapter() {
-        score = 0;
-        lives = 3;
-        timer = 0;
-
         initializeMap();
     }
 
@@ -51,6 +48,11 @@ public class DispatchAdapter extends Observable {
      * 1000*500 10
      */
     public void initializeGame() {
+        score = 0;
+        lives = 3;
+        fruitTimer = 30;
+        afraidTimer = 0;
+
         int height = map.length;
         int width = map[0].length;
         for (int x = 0; x < height; x++) {
@@ -69,16 +71,16 @@ public class DispatchAdapter extends Observable {
                         break;
 
                     case 4://ghost1
-                        object = new Ghost(new Point(x, y), null);
+                        object = new Ghost(new Point(x, y), null, "red");
                         break;
                     case 5://ghost2
-                        object = new Ghost(new Point(x, y), null);
+                        object = new Ghost(new Point(x, y), null, "pink");
                         break;
                     case 6://ghost3
-                        object = new Ghost(new Point(x, y), null);
+                        object = new Ghost(new Point(x, y), null, "orange");
                         break;
                     case 7://ghost4
-                        object = new Ghost(new Point(x, y), null);
+                        object = new Ghost(new Point(x, y), null, "blue");
                         break;
 
                     case 8://smallDot
@@ -103,11 +105,10 @@ public class DispatchAdapter extends Observable {
 
     /**
      * Load a paint into the paint world
-     * @param body  The REST request body has the strategy names.
      * @return A new ball
      */
-    public void loadObject(String body) {
-
+    public Fruit loadFruit() {
+        return null;
     }
 
     /**
