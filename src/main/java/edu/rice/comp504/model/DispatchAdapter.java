@@ -24,11 +24,6 @@ public class DispatchAdapter extends Observable {
      * Constructor
      */
     public DispatchAdapter() {
-        score = 0;
-        lives = 3;
-        fruitTimer = 30;
-        afraidTimer = 0;
-
         initializeMap();
     }
 
@@ -53,6 +48,11 @@ public class DispatchAdapter extends Observable {
      * 1000*500 10
      */
     public void initializeGame() {
+        score = 0;
+        lives = 3;
+        fruitTimer = 30;
+        afraidTimer = 0;
+
         int height = map.length;
         int width = map[0].length;
         for (int x = 0; x < height; x++) {
