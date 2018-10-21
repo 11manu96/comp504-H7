@@ -105,7 +105,7 @@ public class DispatchAdapter extends Observable {
         int width = dims.y / 20;
         map = new int[height][width];
 
-        //outer wall and exit
+        //outer wall
         for (int y = 0; y < width; y++) {
             map[0][y] = 1;
             map[9][y] = 1;
@@ -114,6 +114,32 @@ public class DispatchAdapter extends Observable {
             map[x][0] = 1;
             map[x][19] = 1;
         }
+
+        //exit
+        map[4][0] = map[5][0] = map[4][19] = map[5][19] = 2;
+
+        //pacman
+        map[4][4] = 3;
+
+        //ghosts
+        map[4][6] = 4;
+        map[4][7] = 5;
+        map[4][8] = 6;
+        map[4][9] = 7;
+
+        //smallDot
+        for (int y = 2; y < 18; y++) {
+            map[2][y] = 8;
+            map[7][y] = 8;
+        }
+
+        for (int x = 2; x < 8; x++) {
+            map[x][2] = 8;
+            map[x][17] = 8;
+        }
+
+        //bigDot
+        map[4][11] = map[4][12] = map[4][13] = map[4][14] = map[4][15] = 9;
     }
 
     /**
