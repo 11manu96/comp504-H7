@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Observable;
 
 /**
- * DispatchAdapter communicates with the controller and the view.
- * Objects are only accessed through using the observable-observer design pattern.
+ * Note: Balls are only accessed through using the observable-observer design pattern.  You should NOT create
+ * a separate list of balls.
  */
 public class DispatchAdapter extends Observable {
     private Point dims;
@@ -21,7 +21,7 @@ public class DispatchAdapter extends Observable {
     private static int[][] map;
 
     /**
-     * Constructor for the DispatchAdapter.
+     * Constructor
      */
     public DispatchAdapter() {
         initializeMap();
@@ -97,15 +97,15 @@ public class DispatchAdapter extends Observable {
     }
 
     /**
-     * Call the update method on all the object observers to update their position in the Pac world
+     * Call the update method on all the paint observers to update their position in the paint world
      */
     public void updatePacWorld() {
 
     }
 
     /**
-     * Load a fruit into the pac world
-     * @return A new fruit
+     * Load a paint into the paint world
+     * @return A new ball
      */
     public Fruit loadFruit() {
         return null;
@@ -113,7 +113,6 @@ public class DispatchAdapter extends Observable {
 
     /**
      * switch Pacman direction
-     * @param body A string parsed from the view.
      */
     public void switchDirection(String body) {
 
