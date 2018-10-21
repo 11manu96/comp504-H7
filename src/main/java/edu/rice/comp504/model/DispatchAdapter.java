@@ -48,6 +48,7 @@ public class DispatchAdapter extends Observable {
      * 1000*500 10
      */
     public void initializeGame() {
+        deleteObservers();
         score = 0;
         lives = 3;
         fruitTimer = 30;
