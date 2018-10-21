@@ -122,16 +122,16 @@ function initGame() {
             }
             else if(element.type==="ghost"){
                 if(element.color="red"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"reaGhostPath")
+                    app.drawImage(element.location.x,element.location.y,element.size,"redGhost.jpg")
                 }
                 else if (element.color="pink"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"pinkGhostPath")
+                    app.drawImage(element.location.x,element.location.y,element.size,"pinkGhost.png")
                 }
                 else if (element.color="orange"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"orangeGhostPath")
+                    app.drawImage(element.location.x,element.location.y,element.size,"orangeGhost.jpg")
                 }
                 else if (element.color="blue"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"blueGhostPath")
+                    app.drawImage(element.location.x,element.location.y,element.size,"blueGhost.png")
                 }
             }
             else if(element.type==="small_dot"){
@@ -164,16 +164,16 @@ function updateGameWorld() {
             }
             else if(element.type==="ghost"){
                 if(element.color="red"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"reaGhostPath")
+                    app.drawImage(element.location.x,element.location.y,element.size,"reaGhost.jpg")
                 }
                 else if (element.color="pink"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"pinkGhostPath")
+                    app.drawImage(element.location.x,element.location.y,element.size,"pinkGhost.png")
                 }
                 else if (element.color="orange"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"orangeGhostPath")
+                    app.drawImage(element.location.x,element.location.y,element.size,"orangeGhost.jpg")
                 }
                 else if (element.color="blue"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"blueGhostPath")
+                    app.drawImage(element.location.x,element.location.y,element.size,"blueGhost.png")
                 }
             }
             else if(element.type==="small_dot"){
@@ -183,7 +183,7 @@ function updateGameWorld() {
                 app.drawDot(element.location.x,element.location.y,element.size)
             }
             else if(element.type==="fruit"){
-                app.drawImage(element.location.x,element.location.y,element.size,"fruitPath")
+                app.drawImage(element.location.x,element.location.y,element.size,"fruit.jpg")
             }
         });
     }, "json");
