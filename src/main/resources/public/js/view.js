@@ -4,6 +4,10 @@ var app;
 
 var frameCount=0;
 
+/**
+ * Get the direction from the keyboard
+ * @param event
+ */
 document.onkeydown=function (event) {
     var e = event || window.event;
     if(e && e.keyCode===37){ // Left
@@ -20,6 +24,11 @@ document.onkeydown=function (event) {
     }
 };
 
+/**
+ * Draw on the canvas.
+ * @param canvas
+ * @returns {{drawExit: drawExit, drawDot: drawDot, drawWall: drawWall, drawPacMan: drawPacMan, drawImage: drawImage, clear: clear, dims: {height: *, width: *}}}
+ */
 function createApp(canvas) {
     var c = canvas.getContext("2d");
 
@@ -31,6 +40,7 @@ function createApp(canvas) {
         c.closePath();
         c.fill();
     };
+
     //draw a wall
     var drawWall = function(startX, startY,size) {
         c.fillStyle="black";
@@ -43,6 +53,7 @@ function createApp(canvas) {
         c.fill();
         c.stroke();
     };
+
     //draw a exit
     var drawExit=function (startX,startY,size) {
         c.fillStyle="white";
@@ -51,6 +62,7 @@ function createApp(canvas) {
         c.lineTo(startX, startY + size);
         c.stroke();
     };
+
     //draw a image
     var drawImage=function (x,y,size,path) {
         var image=new Image();
@@ -62,6 +74,7 @@ function createApp(canvas) {
         c.drawImage(image,-size/2,-size/2,size,size);
         c.restore();
     };
+
     //draw a pacman
     var drawPacMan = function(x, y, size) {
         var mouth=Math.abs(frameCount%90-45);
@@ -77,11 +90,12 @@ function createApp(canvas) {
         // c.fillStyle = "rgb(0, 0, 0)";
         // c.fill();
     };
+
     //clear
     var clear = function() {
         c.clearRect(0,0, canvas.width, canvas.height);
     };
-    
+
     return {
         drawExit:drawExit,
         drawDot: drawDot,
@@ -104,7 +118,7 @@ window.onload = function() {
 }
 
 /**
- * initialize the game
+ * Initialize the game
  */
 
 function initGame() {
@@ -145,7 +159,7 @@ function initGame() {
 }
 
 /**
- *   update the ball and inner walls
+ *   Update all the observers.
  */
 function updateGameWorld() {
     $.get("/updateGame", function(data, status) {
@@ -198,7 +212,7 @@ function canvasDims() {
 }
 
 /**
- * reset the game
+ * Reset the game
  */
 function reset() {
     frameCount=0;
@@ -207,7 +221,7 @@ function reset() {
 }
 
 /**
- * switch the direction
+ * Switch the moving direction for the Pacman
  */
 function switchDirection(keycode) {
     $.post("/switchDirection", {keycode:keycode}, function (data, status) {

@@ -13,7 +13,12 @@ import static spark.Spark.*;
  */
 public class PacWorldController {
 
+    /**
+     * Main function
+     * @param args args
+     */
     public static void main(String[] args) {
+        //set the port for Heroku
         port(getHerokuAssignedPort());
         staticFiles.location("/public");
 
@@ -21,7 +26,7 @@ public class PacWorldController {
         DispatchAdapter dis = new DispatchAdapter();
 
         /**
-         * load the object
+         * Load the object
          */
         get("/loadFruit", (request, response) -> {
             dis.loadFruit();
@@ -29,7 +34,7 @@ public class PacWorldController {
         });
 
         /**
-         * clears observers and adds all observers for a new game
+         * Clear observers and adds all observers for a new game
          */
         get("/resetGame", (request, response) -> {
             dis.initializeGame();
@@ -37,7 +42,7 @@ public class PacWorldController {
         });
 
         /**
-         * update positions at each time step
+         * Update positions at each time step.
          */
         get("/updateGame", (request, response) -> {
             dis.updatePacWorld();
@@ -53,7 +58,7 @@ public class PacWorldController {
         });
 
         /**
-         * get canvas dimensions
+         * Get canvas dimensions
          */
         get("/canvasDims", (request, response) -> {
             int height = Integer.parseInt(request.queryParams("height"));
@@ -64,6 +69,10 @@ public class PacWorldController {
         });
     }
 
+    /**
+     * Get the Heroku assigned port
+     * @return the port
+     */
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (processBuilder.environment().get("PORT") != null) {

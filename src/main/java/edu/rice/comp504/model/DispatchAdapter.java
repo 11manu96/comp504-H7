@@ -48,7 +48,6 @@ public class DispatchAdapter extends Observable {
      * 1000*500 10
      */
     public void initializeGame() {
-        deleteObservers();
         score = 0;
         lives = 3;
         fruitTimer = 30;
@@ -98,51 +97,6 @@ public class DispatchAdapter extends Observable {
     }
 
     /**
-     * Initialize the map
-     */
-    private void initializeMap() {
-        int height = dims.x / 20;
-        int width = dims.y / 20;
-        map = new int[height][width];
-
-        //outer wall
-        for (int y = 0; y < width; y++) {
-            map[0][y] = 1;
-            map[9][y] = 1;
-        }
-        for (int x = 0; x < height; x++) {
-            map[x][0] = 1;
-            map[x][19] = 1;
-        }
-
-        //exit
-        map[4][0] = map[5][0] = map[4][19] = map[5][19] = 2;
-
-        //pacman
-        map[4][4] = 3;
-
-        //ghosts
-        map[4][6] = 4;
-        map[4][7] = 5;
-        map[4][8] = 6;
-        map[4][9] = 7;
-
-        //smallDot
-        for (int y = 2; y < 18; y++) {
-            map[2][y] = 8;
-            map[7][y] = 8;
-        }
-
-        for (int x = 2; x < 8; x++) {
-            map[x][2] = 8;
-            map[x][17] = 8;
-        }
-
-        //bigDot
-        map[4][11] = map[4][12] = map[4][13] = map[4][14] = map[4][15] = 9;
-    }
-
-    /**
      * Call the update method on all the paint observers to update their position in the paint world
      */
     public void updatePacWorld() {
@@ -161,6 +115,131 @@ public class DispatchAdapter extends Observable {
      * switch Pacman direction
      */
     public void switchDirection(String body) {
+
+    }
+
+    /**
+     * Initialize the map
+     */
+    private void initializeMap() {
+        map = new int[50][100];
+        //outer wall and exit
+        for (int y = 0; y < 100; y++) {
+            map[0][y] = 1;
+            map[49][y] = 1;
+        }
+        for (int x = 0; x < 50; x++) {
+            if (x < 20 || x >= 30) {
+                map[x][0] = 1;
+                map[x][99] = 1;
+            } else {
+                map[x][0] = 2;
+                map[x][99] = 2;
+            }
+        }
+
+        //5
+        //-
+        for (int x = 10; x < 15; x++)
+            for (int y = 10; y < 30; y++)
+                map[x][y] = 1;
+        //|
+        for (int x = 15; x < 20; x++)
+            for (int y = 10; y < 15; y++)
+                map[x][y] = 1;
+        //-
+        for (int x = 20; x < 25; x++)
+            for (int y = 10; y < 30; y++)
+                map[x][y] = 1;
+        //|
+        for (int x = 25; x < 40; x++)
+            for (int y = 25; y < 30; y++)
+                map[x][y] = 1;
+        //-
+        for (int x = 40; x < 45; x++)
+            for (int y = 10; y < 30; y++)
+                map[x][y] = 1;
+
+        //0
+        //-
+        for (int x = 10; x < 15; x++)
+            for (int y = 40; y < 60; y++)
+                map[x][y] = 1;
+        //|
+        for (int x = 15; x < 40; x++)
+            for (int y = 40; y < 45; y++)
+                map[x][y] = 1;
+        //-
+        for (int x = 40; x < 45; x++)
+            for (int y = 40; y < 60; y++)
+                map[x][y] = 1;
+        //|
+        for (int x = 20; x < 40; x++)
+            for (int y = 55; y < 60; y++)
+                map[x][y] = 1;
+
+        //4
+        //|
+        for (int x = 10; x < 30; x++)
+            for (int y = 70; y < 75; y++)
+                map[x][y] = 1;
+        //-
+        for (int x = 25; x < 30; x++)
+            for (int y = 70; y < 85; y++)
+                map[x][y] = 1;
+        //|
+        for (int x = 10; x < 45; x++)
+            for (int y = 85; y < 90; y++)
+                map[x][y] = 1;
+
+        //small blocks
+        for (int x = 30; x < 34; x++)
+            for (int y = 6; y < 20; y++)
+                map[x][y] = 1;
+        for (int x = 20; x < 34; x++)
+            for (int y = 48; y < 52; y++)
+                map[x][y] = 1;
+        for (int x = 35; x < 40; x++)
+            for (int y = 65; y < 80; y++)
+                map[x][y] = 1;
+        for (int x = 5; x < 22; x++)
+            for (int y = 78; y < 82; y++)
+                map[x][y] = 1;
+
+        //pacman
+        map[47][49] = 3;
+
+        //ghost
+        map[15][15] = 4;
+        map[15][16] = 5;
+        map[15][17] = 6;
+        map[15][18] = 7;
+
+        //smallDot
+        //-
+        for (int y = 5; y < 73; y++)
+            map[6][y] = 8;
+        for (int y = 87; y < 95; y++)
+            map[6][y] = 8;
+        //|
+        for (int x = 7; x < 25; x++)
+            map[x][5] = 8;
+        for (int x = 39; x < 47; x++)
+            map[x][5] = 8;
+        //-
+        for (int y = 5; y < 95; y++)
+            map[46][y] = 8;
+        //|
+        for (int x = 10; x < 44; x++)
+            map[x][35] = 8;
+        //|
+        for (int x = 10; x < 30; x++)
+            map[x][64] = 8;
+        for (int x = 7; x < 46; x++)
+            map[x][94] = 8;
+
+        //bigDot
+        map[6][5] = map[46][5] = map[6][94] = map[46][94] = 9;
 
     }
 
