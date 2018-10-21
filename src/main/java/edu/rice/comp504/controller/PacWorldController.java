@@ -14,11 +14,61 @@ import static spark.Spark.*;
 public class PacWorldController {
 
     public static void main(String[] args) {
+        port(getHerokuAssignedPort());
         staticFiles.location("/public");
 
         Gson gson = new Gson();
         DispatchAdapter dis = new DispatchAdapter();
 
+        /**
+         * load the object
+         */
+        get("/loadFruit", (request, response) -> {
+            dis.loadFruit();
+            return gson.toJson(dis);
+        });
 
+        /**
+         * clears observers and adds all observers for a new game
+         */
+        get("/resetGame", (request, response) -> {
+            dis.initializeGame();
+            return gson.toJson(dis);
+        });
+
+        /**
+         * update positions at each time step
+         */
+        get("/updateGame", (request, response) -> {
+            dis.updatePacWorld();
+            return gson.toJson(dis);
+        });
+
+        /**
+         * switch Pacman direction
+         */
+        post("/switchDirection", (request, response) -> {
+            dis.switchDirection(request.body());
+            return gson.toJson(dis);
+        });
+
+        /**
+         * get canvas dimensions
+         */
+        get("/canvasDims", (request, response) -> {
+            int height = Integer.parseInt(request.queryParams("height"));
+            int width = Integer.parseInt(request.queryParams("width"));
+            Point dims = new Point(height, width);
+            dis.setCanvasDims(dims);
+            return gson.toJson(dis);
+        });
+    }
+
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
 }
