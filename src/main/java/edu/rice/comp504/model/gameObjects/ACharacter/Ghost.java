@@ -1,6 +1,6 @@
 package edu.rice.comp504.model.gameObjects.ACharacter;
 
-import edu.rice.comp504.model.strategy.Interact.IInteractStrategy;
+
 import edu.rice.comp504.model.strategy.Update.IUpdateStrategy;
 
 import java.awt.*;
@@ -8,55 +8,41 @@ import java.util.Observable;
 
 public class Ghost extends ACharacter {
 
-    Point vel;
-    IUpdateStrategy updateStrategy;
-    IInteractStrategy interactStrategy;
-    Point location;
-    String type;
-    public Ghost(Point loc,String type, Point vel,IUpdateStrategy updateStrategy,IInteractStrategy interactStrategy){
-        super(loc,type,vel,updateStrategy,interactStrategy);
-        this.location=loc;
-        this.vel=new Point(0,0);
-        this.type="Ghost";
-        this.updateStrategy=updateStrategy;
-        this.interactStrategy=interactStrategy;
-    }
 
-    public Point getLocation(){
-        return this.location;
-    }
+    private int jail;
+    private boolean flash;
+    private String color;
 
-    public String getType() {
-        return type;
-    }
-
-    public void setLocation(Point location) {
-        this.location = location;
+    public Ghost(Point loc,IUpdateStrategy updateStrategy,String color){
+        super(loc,"ghost",new Point(0,0),updateStrategy,null,20);
+        this.flash=false;
+        this.jail=3;
+        this.color=color;
     }
 
 
-    public IInteractStrategy getInteractStrategy() {
-        return interactStrategy;
+
+    public String getColor() {
+        return color;
+    }
+    public void setColor(String color){
+        this.color=color;
     }
 
-    public IUpdateStrategy getUpdateStrategy() {
-        return updateStrategy;
+    public boolean isFlash() {
+        return flash;
     }
 
-    public void setInteractStrategy(IInteractStrategy interactStrategy) {
-        this.interactStrategy = interactStrategy;
+    public void setFlash(boolean flash) {
+        this.flash = flash;
     }
 
-    public void setUpdateStrategy(IUpdateStrategy updateStrategy) {
-        this.updateStrategy = updateStrategy;
+    public int getJail() {
+        return jail;
     }
 
-    public Point getVel() {
-        return vel;
-    }
-
-    public void setVel(Point vel) {
-        this.vel = vel;
+    public void setJail(int jail) {
+        this.jail = jail;
     }
 
     public void update(Observable obs, Object o){}

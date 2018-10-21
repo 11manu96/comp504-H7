@@ -1,17 +1,17 @@
 package edu.rice.comp504.model.gameObjects;
-
-import com.sun.corba.se.spi.ior.ObjectKey;
-
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 
 public abstract class AGameObject implements Observer {
-   Point location;
-   String type;
-   public AGameObject(Point location,String type){
+   private Point location;
+   private String type;
+
+   private int size;
+   public AGameObject(Point location,String type,int size){
        this.location=location;
        this.type=type;
+       this.size=size;
    }
    public Point getLocation(){
        return this.location;
@@ -25,6 +25,7 @@ public abstract class AGameObject implements Observer {
         this.location = location;
     }
 
+    public int getSize(){return this.size;}
 
     public void update(Observable obs, Object o){}
 }

@@ -4,23 +4,10 @@ import java.awt.*;
 import java.util.Observable;
 
 public class BigDot extends AFood {
-    String type;
-    Point location;
-    public BigDot(Point loc,String type){
-        super(loc,type);
-        this.location=loc;
-        this.type="BigDot";
-    }
-    public Point getLocation(){
-        return this.location;
-    }
 
-    public String getType() {
-        return type;
-    }
+    public BigDot(Point loc){
+        super(loc,"big_dot",18);
 
-    public void setLocation(Point location) {
-        this.location = location;
     }
 
 
