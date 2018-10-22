@@ -4,15 +4,16 @@ import edu.rice.comp504.model.DispatchAdapter;
 
 import com.google.gson.Gson;
 import java.awt.*;
+
 import static spark.Spark.*;
 
 /**
- * The controller that creates the dispatch adapter and defines the REST endpoints
+ * The controller creates the dispatch adapter and defines the REST endpoints.
  */
 public class PacWorldController {
 
     /**
-     * Main function
+     * Main function that runs the Pacman game.
      * @param args args
      */
     public static void main(String[] args) {
@@ -48,7 +49,7 @@ public class PacWorldController {
     }
 
     /**
-     * Get the Heroku assigned port
+     * Get the Heroku assigned port.
      * @return the port
      */
     static int getHerokuAssignedPort() {

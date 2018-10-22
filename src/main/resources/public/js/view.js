@@ -4,6 +4,17 @@ var app;
 
 var frameCount = 0;
 
+var redGhostImg = new Image();
+redGhostImg.src = location.href + "redGhost.jpg";
+var blueGhostImg = new Image();
+blueGhostImg.src = location.href + "blueGhost.png";
+var pinkGhostImg = new Image();
+pinkGhostImg.src = location.href + "pinkGhost.png";
+var orangeGhostImg = new Image();
+orangeGhostImg.src = location.href + "orangeGhost.jpg";
+var fruitImg = new Image();
+
+
 /**
  * Get input from the keyboard and switch Pacman direction
  * @param event
@@ -54,9 +65,7 @@ function createApp(canvas) {
     };
 
     // draw an image
-    var drawImage = function (x, y, size, path) {
-        var image = new Image();
-        image.src = location.href + path;
+    var drawImage = function (x, y, size, image) {
         c.save();
         c.translate(x + size/2, y + size/2);
         c.drawImage(image, -size/2, -size/2, size, size);
@@ -129,16 +138,16 @@ function updateGameWorld() {
             }
             else if(element.type === "ghost") {
                 if (element.color === "red") {
-                    app.drawImage(element.location.x, element.location.y, element.size, "redGhost.jpg");
+                    app.drawImage(element.location.x, element.location.y, element.size, redGhostImg);
                 }
                 else if (element.color === "pink") {
-                    app.drawImage(element.location.x, element.location.y, element.size, "pinkGhost.png");
+                    app.drawImage(element.location.x, element.location.y, element.size, pinkGhostImg);
                 }
                 else if (element.color === "orange") {
-                    app.drawImage(element.location.x, element.location.y, element.size, "orangeGhost.jpg");
+                    app.drawImage(element.location.x, element.location.y, element.size, orangeGhostImg);
                 }
                 else if (element.color === "blue") {
-                    app.drawImage(element.location.x, element.location.y, element.size, "blueGhost.png");
+                    app.drawImage(element.location.x, element.location.y, element.size, blueGhostImg);
                 }
             }
             else if (element.type === "small_dot") {

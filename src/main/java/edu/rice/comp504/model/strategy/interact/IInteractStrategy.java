@@ -1,19 +1,19 @@
 package edu.rice.comp504.model.strategy.interact;
 
-import edu.rice.comp504.model.gameObjects.AGameObject;
+import edu.rice.comp504.model.gameobjects.AGameObject;
 
 /**
- * The interface used to determine the interaction strategy when objects collide
+ * This interface is used to determine the interaction strategy when objects collide.
  */
 public interface IInteractStrategy {
     /**
-     * Get the interaction strategy name
+     * Get the interaction strategy name.
      * @return The interaction strategy name
      */
     public String getName();
 
     /**
-     * The interaction strategy when two objects meet
+     * Handle the interaction when two objects meet.
      * @param src The src object will impose the interaction strategy on the dest object
      * @param dest The dest object behavior will be affected by the src object interaction strategy
      */

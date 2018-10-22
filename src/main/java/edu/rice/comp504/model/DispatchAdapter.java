@@ -1,15 +1,15 @@
 package edu.rice.comp504.model;
 
-import edu.rice.comp504.model.gameObjects.*;
-import edu.rice.comp504.model.gameObjects.character.*;
-import edu.rice.comp504.model.gameObjects.food.*;
+import edu.rice.comp504.model.gameobjects.*;
+import edu.rice.comp504.model.gameobjects.character.*;
+import edu.rice.comp504.model.gameobjects.food.*;
 
 import java.awt.*;
 import java.util.Observable;
 
 /**
- * DispatchAdapter class acts as the game host
- * It handles requests from the views and updates all game objects
+ * DispatchAdapter class acts as the game host.
+ * It handles requests from the views and updates all game objects.
  */
 public class DispatchAdapter extends Observable {
     private Point dims;
@@ -20,14 +20,14 @@ public class DispatchAdapter extends Observable {
     private static int afraidTimer;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public DispatchAdapter() {
         this.gridSize = 20;
     }
 
      /**
-     * Set the canvas dimensions
+     * Set the canvas dimensions.
      * @param dims The canvas width (x) and height (y)
      */
     public void setCanvasDims(Point dims) {
@@ -35,7 +35,7 @@ public class DispatchAdapter extends Observable {
     }
 
     /**
-     * Get the canvas dimensions
+     * Get the canvas dimensions.
      * @return The canvas dimensions
      */
     public Point getCanvasDims() {
@@ -43,7 +43,7 @@ public class DispatchAdapter extends Observable {
     }
 
     /**
-     * Read initialization from a 2D array and add all necessary objects as observers
+     * Read initialization from a 2D array and add all necessary objects as observers.
      */
     public void initializeGame() {
         int[][] map = initializeMap();
@@ -107,7 +107,8 @@ public class DispatchAdapter extends Observable {
     }
 
     /**
-     * Initialize the map layout
+     * Initialize the map layout.
+     * @return 2D array of map layout
      */
     private int[][] initializeMap() {
         // 216 small dots
@@ -135,14 +136,14 @@ public class DispatchAdapter extends Observable {
     }
 
     /**
-     * Call the update method on all observers to update their position in the game
+     * Call the update method on all observers to update their position in the game.
      */
     public void updatePacWorld() {
 
     }
 
     /**
-     * Load a fruit into the game
+     * Load a fruit into the game.
      * @return A fruit object
      */
     public Fruit loadFruit() {
@@ -150,7 +151,7 @@ public class DispatchAdapter extends Observable {
     }
 
     /**
-     * switch Pacman direction
+     * Switch Pacman direction.
      * @param body The request body
      */
     public void switchDirection(String body) {

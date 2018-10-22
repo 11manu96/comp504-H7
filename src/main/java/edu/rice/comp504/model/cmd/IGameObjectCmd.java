@@ -1,9 +1,9 @@
 package edu.rice.comp504.model.cmd;
 
-import edu.rice.comp504.model.gameObjects.AGameObject;
+import edu.rice.comp504.model.gameobjects.AGameObject;
 
 /**
- * A command that needs to be excuted by a game object
+ * This interface is used for commands that are excuted by game objects.
  */
 public interface IGameObjectCmd {
 

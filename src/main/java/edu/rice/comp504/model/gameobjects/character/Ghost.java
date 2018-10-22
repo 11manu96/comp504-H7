@@ -1,30 +1,30 @@
-package edu.rice.comp504.model.gameObjects.character;
+package edu.rice.comp504.model.gameobjects.character;
 
 import edu.rice.comp504.model.strategy.update.IUpdateStrategy;
 
 import java.awt.*;
 
 /**
- * A concrete class extends character for the ghost
+ * This concrete class extends ACharacter and represents ghost game objects.
  */
 public class Ghost extends ACharacter {
     private int jailTimer;
     private String color;
 
     /**
-     * Constructor for Ghost
-     * @param loc location
+     * Constructor for Ghost.
+     * @param loc ghost location
      * @param updateStrategy update strategy
-     * @param color color
+     * @param color ghost color
      */
-    public Ghost(Point loc, IUpdateStrategy updateStrategy, String color){
+    public Ghost(Point loc, IUpdateStrategy updateStrategy, String color) {
         super(loc, "ghost", new Point(0,0), updateStrategy,null,20);
         this.jailTimer = 3;
         this.color = color;
     }
 
     /**
-     * Get the color of the ghost
+     * Get the color of the ghost.
      * @return color
      */
     public String getColor() {
@@ -32,15 +32,15 @@ public class Ghost extends ACharacter {
     }
 
     /**
-     * Set the color of the ghost
-     * @param color
+     * Set the color of the ghost.
+     * @param color ghost color
      */
-    public void setColor(String color){
+    public void setColor(String color) {
         this.color = color;
     }
 
     /**
-     * Get the jail timer
+     * Get the jail timer.
      * @return time ghost will stay in jail
      */
     public int getJailTimer() {
@@ -48,7 +48,7 @@ public class Ghost extends ACharacter {
     }
 
     /**
-     * Set the jail timer
+     * Set the jail timer.
      * @param jailTimer time ghost will stay in jail
      */
     public void setJailTimer(int jailTimer) {
