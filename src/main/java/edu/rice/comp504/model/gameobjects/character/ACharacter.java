@@ -77,4 +77,13 @@ public abstract class ACharacter extends AGameObject {
     public void setVel(Point vel) {
         this.vel = vel;
     }
+
+
+    /**
+     * Check for collison to AGameObject.
+     * @param gameObject detect collision to
+     * @return If collision occcured with the object
+     */
+    public abstract boolean collision(AGameObject gameObject);
+
 }
