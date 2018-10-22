@@ -1,5 +1,7 @@
 package edu.rice.comp504.model.gameobjects;
 
+import edu.rice.comp504.model.DispatchAdapter;
+
 import java.awt.*;
 
 /**
@@ -12,6 +14,6 @@ public class Wall extends AGameObject {
      * @param loc wall location
      */
     public Wall(Point loc) {
-        super(loc,"wall",20);
+        super(loc, "wall", DispatchAdapter.getGridSize());
     }
 }

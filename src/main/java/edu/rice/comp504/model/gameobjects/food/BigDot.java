@@ -1,5 +1,7 @@
 package edu.rice.comp504.model.gameobjects.food;
 
+import edu.rice.comp504.model.DispatchAdapter;
+
 import java.awt.*;
 
 /**
@@ -12,6 +14,6 @@ public class BigDot extends AFood {
      * @param loc big dot location
      */
     public BigDot(Point loc) {
-        super(loc, "big_dot", 10);
+        super(loc, "big_dot", DispatchAdapter.getGridSize() / 2);
     }
 }

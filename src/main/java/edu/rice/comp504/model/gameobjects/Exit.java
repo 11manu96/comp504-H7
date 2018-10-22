@@ -1,5 +1,7 @@
 package edu.rice.comp504.model.gameobjects;
 
+import edu.rice.comp504.model.DispatchAdapter;
+
 import java.awt.*;
 
 /**
@@ -12,6 +14,6 @@ public class Exit extends AGameObject {
      * @param loc exit location
      */
     public Exit(Point loc) {
-        super(loc,"exit",10);
+        super(loc,"exit", DispatchAdapter.getGridSize());
     }
 }

@@ -1,5 +1,6 @@
 package edu.rice.comp504.model.gameobjects.character;
 
+import edu.rice.comp504.model.DispatchAdapter;
 import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.strategy.update.IUpdateStrategy;
 
@@ -19,7 +20,7 @@ public class Ghost extends ACharacter {
      * @param color ghost color
      */
     public Ghost(Point loc, IUpdateStrategy updateStrategy, String color) {
-        super(loc, "ghost", new Point(0,0), updateStrategy,null,20);
+        super(loc, "ghost", new Point(0,0), updateStrategy, null, DispatchAdapter.getGridSize());
         this.jailTimer = 3;
         this.color = color;
     }

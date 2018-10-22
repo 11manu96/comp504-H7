@@ -1,5 +1,6 @@
 package edu.rice.comp504.model.gameobjects.character;
 
+import edu.rice.comp504.model.DispatchAdapter;
 import edu.rice.comp504.model.gameobjects.AGameObject;
 
 import java.awt.*;
@@ -14,7 +15,7 @@ public class Pacman extends ACharacter {
      * @param loc pacman location
      */
     public Pacman(Point loc) {
-        super(loc, "pacman", new Point(0,0),null,null,20);
+        super(loc, "pacman", new Point(0,0),null, null, DispatchAdapter.getGridSize());
     }
 
 

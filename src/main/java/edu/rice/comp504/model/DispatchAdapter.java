@@ -13,7 +13,7 @@ import java.util.Observable;
  */
 public class DispatchAdapter extends Observable {
     private Point dims;
-    private int gridSize;
+    private static int gridSize;
     private int score;
     private int lives;
     private static int fruitTimer;
@@ -23,7 +23,7 @@ public class DispatchAdapter extends Observable {
      * Constructor.
      */
     public DispatchAdapter() {
-        this.gridSize = 20;
+        DispatchAdapter.gridSize = 20;
     }
 
      /**
@@ -41,6 +41,12 @@ public class DispatchAdapter extends Observable {
     public Point getCanvasDims() {
         return this.dims;
     }
+
+    /**
+     *
+     * @return
+     */
+    public static int getGridSize() { return DispatchAdapter.gridSize; }
 
     /**
      * Read initialization from a 2D array and add all necessary objects as observers.
@@ -64,36 +70,36 @@ public class DispatchAdapter extends Observable {
             for (int y = 0; y < height; y++) {
                 AGameObject object = null;
 
+                Point objLoc = new Point(x * DispatchAdapter.gridSize, y * DispatchAdapter.gridSize);
                 switch (map[y][x]) {
-
                     case 1: // wall
-                        object = new Wall(new Point(x * this.gridSize, y * this.gridSize));
+                        object = new Wall(objLoc);
                         break;
                     case 2: // exit
-                        object = new Exit(new Point(x * this.gridSize, y * this.gridSize));
+                        object = new Exit(objLoc);
                         break;
                     case 3: // pacman
-                        object = new Pacman(new Point(x * this.gridSize, y * this.gridSize));
+                        object = new Pacman(objLoc);
                         break;
 
                     case 4: // ghost1
-                        object = new Ghost(new Point(x * this.gridSize, y * this.gridSize), null, "red");
+                        object = new Ghost(objLoc, null, "red");
                         break;
                     case 5: // ghost2
-                        object = new Ghost(new Point(x * this.gridSize, y * this.gridSize), null, "pink");
+                        object = new Ghost(objLoc, null, "pink");
                         break;
                     case 6: // ghost3
-                        object = new Ghost(new Point(x * this.gridSize, y * this.gridSize), null, "orange");
+                        object = new Ghost(objLoc, null, "orange");
                         break;
                     case 7: // ghost4
-                        object = new Ghost(new Point(x * this.gridSize, y * this.gridSize), null, "blue");
+                        object = new Ghost(objLoc, null, "blue");
                         break;
 
                     case 8: // smallDot
-                        object = new SmallDot(new Point(x * this.gridSize, y * this.gridSize));
+                        object = new SmallDot(objLoc);
                         break;
                     case 9: // bigDot
-                        object = new BigDot(new Point(x * this.gridSize, y * this.gridSize));
+                        object = new BigDot(objLoc);
                         break;
                     default:
                         break;

@@ -1,5 +1,7 @@
 package edu.rice.comp504.model.gameobjects.food;
 
+import edu.rice.comp504.model.DispatchAdapter;
+
 import java.awt.*;
 
 /**
@@ -12,6 +14,6 @@ public class Fruit extends AFood {
      * @param loc fruit location
      */
     public Fruit(Point loc) {
-        super(loc, "fruit", 20);
+        super(loc, "fruit", DispatchAdapter.getGridSize());
     }
 }
