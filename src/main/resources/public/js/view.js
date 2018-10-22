@@ -89,21 +89,16 @@ function createApp(canvas) {
         c.clearRect(0, 0, canvas.width, canvas.height);
     };
 
-    /**
-     * Function to update score and lives
-     */
-
+    // draw score and lives
     var drawScore = function(score, lives) {
-
         c.font = "20px Arial";
         c.fillText(score, 10, 360 );
-
         c.fillText(lives, 450, 360);
 
-    }
+    };
 
     return {
-        drawScore : drawScore,
+        drawScore: drawScore,
         drawExit: drawExit,
         drawDot: drawDot,
         drawWall: drawWall,
@@ -139,8 +134,9 @@ function resetGame() {
 function updateGameWorld() {
     $.get("/updateGame", function(data, status) {
         app.clear();
-        app.drawScore("Score : " + data.score, "Lives : " + data.lives);
         frameCount = frameCount + 10;
+
+        app.drawScore("Score : " + data.score, "Lives : " + data.lives);
         var pObs = data.obs;
         pObs.forEach(function(element) {
             if (element.type === "wall") {

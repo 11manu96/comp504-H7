@@ -57,7 +57,11 @@ public class Ghost extends ACharacter {
         this.jailTimer = jailTimer;
     }
 
-
+    /**
+     * Handle collision between ghost and game object.
+     * @param gameObject object to check collision against
+     * @return whether there was collision
+     */
     public boolean collision(AGameObject gameObject) {
         return false;
     }
