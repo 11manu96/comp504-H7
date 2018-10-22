@@ -78,11 +78,10 @@ public abstract class ACharacter extends AGameObject {
         this.vel = vel;
     }
 
-
     /**
-     * Check for collison to AGameObject.
-     * @param gameObject detect collision to
-     * @return If collision occcured with the object
+     * Check for collision against AGameObject.
+     * @param gameObject object the check collision against
+     * @return whether there was a collision
      */
     public abstract boolean collision(AGameObject gameObject);
 

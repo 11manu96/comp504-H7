@@ -16,8 +16,8 @@ public class DispatchAdapter extends Observable {
     private static int gridSize;
     private int score;
     private int lives;
-    private static int fruitTimer;
-    private static int afraidTimer;
+    private int fruitTimer;
+    private int afraidTimer;
 
     /**
      * Constructor.
@@ -43,10 +43,76 @@ public class DispatchAdapter extends Observable {
     }
 
     /**
-     *
-     * @return
+     * Get the game grid size.
+     * @return The grid size
      */
-    public static int getGridSize() { return DispatchAdapter.gridSize; }
+    public static int getGridSize() {
+        return DispatchAdapter.gridSize;
+    }
+
+    /**
+     * Get the game score.
+     * @return The game score
+     */
+    public int getScore() {
+        return this.score;
+    }
+
+    /**
+     * Set the game score.
+     * @param score game score
+     */
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    /**
+     * Get Pacman lives.
+     * @return pacman lives
+     */
+    public int getLives() {
+        return this.lives;
+    }
+
+    /**
+     * Set Pacman lives.
+     * @param lives pacman lives
+     */
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
+
+    /**
+     * Get the fruit timer.
+     * @return fruit timer
+     */
+    public int getFruitTimer() {
+        return this.fruitTimer;
+    }
+
+    /**
+     * Set the fruit timer.
+     * @param fruitTimer fruit timer
+     */
+    public void setFruitTimer(int fruitTimer) {
+        this.fruitTimer = fruitTimer;
+    }
+
+    /**
+     * Get the ghosts afraid timer.
+     * @return ghosts afraid timer
+     */
+    public int getAfraidTimer() {
+        return this.afraidTimer;
+    }
+
+    /**
+     * Set the ghosts afraid timer.
+     * @param afraidTimer ghosts afraid timer
+     */
+    public void setAfraidTimer(int afraidTimer) {
+        this.afraidTimer = afraidTimer;
+    }
 
     /**
      * Read initialization from a 2D array and add all necessary objects as observers.
@@ -60,8 +126,8 @@ public class DispatchAdapter extends Observable {
         // set default game values
         this.score = 0;
         this.lives = 3;
-        DispatchAdapter.fruitTimer = 30;
-        DispatchAdapter.afraidTimer = 0;
+        this.fruitTimer = 30;
+        this.afraidTimer = 0;
 
         // add observers at locations specified in layout
         int height = map.length;
@@ -146,14 +212,6 @@ public class DispatchAdapter extends Observable {
      */
     public void updatePacWorld() {
 
-    }
-
-    /**
-     * Load a fruit into the game.
-     * @return A fruit object
-     */
-    public Fruit loadFruit() {
-        return null;
     }
 
     /**

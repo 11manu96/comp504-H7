@@ -18,7 +18,11 @@ public class Pacman extends ACharacter {
         super(loc, "pacman", new Point(0,0),null, null, DispatchAdapter.getGridSize());
     }
 
-
+    /**
+     * Handle collision between Pacman and game object.
+     * @param gameObject object the check collision against
+     * @return whether there was a collision
+     */
     public boolean collision(AGameObject gameObject) {
         return false;
     }
