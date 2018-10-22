@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>edu.rice.comp504.model</OriginalElement>
+  <nodes>
+    <node x="94.0" y="256.0">edu.rice.comp504.model.gameobjects.character.ACharacter</node>
+    <node x="297.75" y="0.0">edu.rice.comp504.model.gameobjects.AGameObject</node>
+    <node x="0.0" y="741.0">edu.rice.comp504.model.DispatchAdapter</node>
+    <node x="670.75" y="355.5">edu.rice.comp504.model.gameobjects.Exit</node>
+    <node x="562.75" y="355.5">edu.rice.comp504.model.gameobjects.food.AFood</node>
+    <node x="661.0" y="741.0">edu.rice.comp504.model.strategy.update.IUpdateStrategy</node>
+    <node x="126.75" y="600.5">edu.rice.comp504.model.gameobjects.character.Pacman</node>
+    <node x="459.75" y="600.5">edu.rice.comp504.model.gameobjects.food.Fruit</node>
+    <node x="0.0" y="1102.0">edu.rice.comp504.model.cmd.IGameObjectCmd</node>
+    <node x="242.74999999999997" y="534.0">edu.rice.comp504.model.gameobjects.character.Ghost</node>
+    <node x="285.0" y="741.0">edu.rice.comp504.model.strategy.interact.IInteractStrategy</node>
+    <node x="555.75" y="600.5">edu.rice.comp504.model.gameobjects.food.SmallDot</node>
+    <node x="0.0" y="355.5">edu.rice.comp504.model.gameobjects.Wall</node>
+    <node x="677.75" y="600.5">edu.rice.comp504.model.gameobjects.food.BigDot</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="edu.rice.comp504.model.gameobjects.character.ACharacter" target="edu.rice.comp504.model.gameobjects.AGameObject">
+      <point x="0.0" y="-114.0" />
+      <point x="258.0" y="236.0" />
+      <point x="398.25" y="236.0" />
+      <point x="-33.5" y="103.0" />
+    </edge>
+    <edge source="edu.rice.comp504.model.gameobjects.food.AFood" target="edu.rice.comp504.model.gameobjects.AGameObject">
+      <point x="0.0" y="-14.5" />
+      <point x="606.75" y="236.0" />
+      <point x="465.25" y="236.0" />
+      <point x="33.5" y="103.0" />
+    </edge>
+    <edge source="edu.rice.comp504.model.gameobjects.food.SmallDot" target="edu.rice.comp504.model.gameobjects.food.AFood">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="edu.rice.comp504.model.gameobjects.food.Fruit" target="edu.rice.comp504.model.gameobjects.food.AFood">
+      <point x="0.0" y="-14.5" />
+      <point x="497.75" y="509.0" />
+      <point x="577.4166666666666" y="509.0" />
+      <point x="-29.333333333333314" y="14.5" />
+    </edge>
+    <edge source="edu.rice.comp504.model.gameobjects.Exit" target="edu.rice.comp504.model.gameobjects.AGameObject">
+      <point x="0.0" y="-14.5" />
+      <point x="706.25" y="226.0" />
+      <point x="532.25" y="226.0" />
+      <point x="100.5" y="103.0" />
+    </edge>
+    <edge source="edu.rice.comp504.model.gameobjects.character.Pacman" target="edu.rice.comp504.model.gameobjects.character.ACharacter">
+      <point x="0.0" y="-14.5" />
+      <point x="174.75" y="509.0" />
+      <point x="176.0" y="509.0" />
+      <point x="-82.0" y="114.0" />
+    </edge>
+    <edge source="edu.rice.comp504.model.gameobjects.food.BigDot" target="edu.rice.comp504.model.gameobjects.food.AFood">
+      <point x="0.0" y="-14.5" />
+      <point x="722.75" y="509.0" />
+      <point x="636.0833333333334" y="509.0" />
+      <point x="29.33333333333337" y="14.5" />
+    </edge>
+    <edge source="edu.rice.comp504.model.gameobjects.character.Ghost" target="edu.rice.comp504.model.gameobjects.character.ACharacter">
+      <point x="0.0" y="-81.0" />
+      <point x="341.25" y="509.0" />
+      <point x="340.0" y="509.0" />
+      <point x="82.0" y="114.0" />
+    </edge>
+    <edge source="edu.rice.comp504.model.gameobjects.Wall" target="edu.rice.comp504.model.gameobjects.AGameObject">
+      <point x="0.0" y="-14.5" />
+      <point x="37.0" y="226.0" />
+      <point x="331.25" y="226.0" />
+      <point x="-100.5" y="103.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6257459505541347" x="448.0" y="576.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
