@@ -1,21 +1,18 @@
-package edu.rice.comp504.model.gameObjects.ACharacter;
+package edu.rice.comp504.model.gameObjects.character;
 
 import edu.rice.comp504.model.gameObjects.AGameObject;
-import edu.rice.comp504.model.strategy.Interact.IInteractStrategy;
-import edu.rice.comp504.model.strategy.Update.IUpdateStrategy;
+import edu.rice.comp504.model.strategy.interact.IInteractStrategy;
+import edu.rice.comp504.model.strategy.update.IUpdateStrategy;
 
 import java.awt.*;
-import java.util.Observable;
 
 /**
- * An abstract class extends AGameObject for all moving objects in the Pac world.
- * The Object that will be drawn and updated on the canvas.
+ * An abstract class that extends AGameObject for all moving objects in the Pac world.
  */
 public abstract class ACharacter extends AGameObject {
     private Point vel;
     private IUpdateStrategy updateStrategy;
     private IInteractStrategy interactStrategy;
-
 
     /**
      * Constructor for ACharacter
@@ -26,11 +23,11 @@ public abstract class ACharacter extends AGameObject {
      * @param interactStrategy interact strategy
      * @param size size
      */
-    public ACharacter(Point loc,String type, Point vel, IUpdateStrategy updateStrategy, IInteractStrategy interactStrategy, int size) {
-        super(loc, type,size);
+    public ACharacter(Point loc, String type, Point vel, IUpdateStrategy updateStrategy, IInteractStrategy interactStrategy, int size) {
+        super(loc, type, size);
         this.vel = vel;
-        this.updateStrategy=updateStrategy;
-        this.interactStrategy=interactStrategy;
+        this.updateStrategy = updateStrategy;
+        this.interactStrategy = interactStrategy;
     }
 
     /**
@@ -80,11 +77,4 @@ public abstract class ACharacter extends AGameObject {
     public void setVel(Point vel) {
         this.vel = vel;
     }
-
-    /**
-     * Update the state of the object using strategies associated with the object.
-     * @param obs observable
-     * @param o object
-     */
-    public void update(Observable obs, Object o){}
 }

@@ -3,7 +3,7 @@ package edu.rice.comp504.model.cmd;
 import edu.rice.comp504.model.gameObjects.AGameObject;
 
 /**
- * A command that needs to be excuted by an object
+ * A command that needs to be excuted by a game object
  */
 public interface IGameObjectCmd {
 

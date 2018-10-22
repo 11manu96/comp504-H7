@@ -3,13 +3,11 @@ package edu.rice.comp504.controller;
 import edu.rice.comp504.model.DispatchAdapter;
 
 import com.google.gson.Gson;
-
 import java.awt.*;
-
 import static spark.Spark.*;
 
 /**
- * The controller that creates the dispatch adapter and defines the REST end points
+ * The controller that creates the dispatch adapter and defines the REST endpoints
  */
 public class PacWorldController {
 
@@ -25,46 +23,26 @@ public class PacWorldController {
         Gson gson = new Gson();
         DispatchAdapter dis = new DispatchAdapter();
 
-        /**
-         * Load the object
-         */
-        get("/loadFruit", (request, response) -> {
-            dis.loadFruit();
-            return gson.toJson(dis);
-        });
-
-        /**
-         * Clear observers and adds all observers for a new game
-         */
+        // get canvas dimensions and reset game objects
         get("/resetGame", (request, response) -> {
+            int height = Integer.parseInt(request.queryParams("height"));
+            int width = Integer.parseInt(request.queryParams("width"));
+            Point dims = new Point(width, height);
+            dis.setCanvasDims(dims);
+
             dis.initializeGame();
             return gson.toJson(dis);
         });
 
-        /**
-         * Update positions at each time step.
-         */
+        // update game object locations
         get("/updateGame", (request, response) -> {
             dis.updatePacWorld();
             return gson.toJson(dis);
         });
 
-        /**
-         * switch Pacman direction
-         */
+        // switch Pacman direction
         post("/switchDirection", (request, response) -> {
             dis.switchDirection(request.body());
-            return gson.toJson(dis);
-        });
-
-        /**
-         * Get canvas dimensions
-         */
-        get("/canvasDims", (request, response) -> {
-            int height = Integer.parseInt(request.queryParams("height"));
-            int width = Integer.parseInt(request.queryParams("width"));
-            Point dims = new Point(height, width);
-            dis.setCanvasDims(dims);
             return gson.toJson(dis);
         });
     }

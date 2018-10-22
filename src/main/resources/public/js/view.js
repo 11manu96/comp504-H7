@@ -2,108 +2,92 @@
 
 var app;
 
-var frameCount=0;
+var frameCount = 0;
 
 /**
- * Get the direction from the keyboard
+ * Get input from the keyboard and switch Pacman direction
  * @param event
  */
-document.onkeydown=function (event) {
+document.onkeydown = function(event) {
     var e = event || window.event;
-    if(e && e.keyCode===37){ // Left
-        switchDirection(e.keyCode)
+    if (e && e.keyCode === 37) { // Left
+        switchDirection(e.keyCode);
     }
-    else if(e && e.keyCode===38){ // Up
-        switchDirection(e.keyCode)
+    else if (e && e.keyCode === 38) { // Up
+        switchDirection(e.keyCode);
     }
-    else if(e && e.keyCode===39){ // Right
-        switchDirection(e.keyCode)
+    else if (e && e.keyCode === 39) { // Right
+        switchDirection(e.keyCode);
     }
-    else if(e && e.keyCode===40){ // Down
-        switchDirection(e.keyCode)
+    else if (e && e.keyCode === 40) { // Down
+        switchDirection(e.keyCode);
     }
 };
 
 /**
- * Draw on the canvas.
+ * Initialize the canvas
  * @param canvas
- * @returns {{drawExit: drawExit, drawDot: drawDot, drawWall: drawWall, drawPacMan: drawPacMan, drawImage: drawImage, clear: clear, dims: {height: *, width: *}}}
+ * @returns functions to draw game objects
  */
 function createApp(canvas) {
     var c = canvas.getContext("2d");
 
-    //draw a dot
+    // draw a dot
     var drawDot = function(x, y, size) {
-        c.fillStyle = "rgb(0, 0, 0)";
+        c.fillStyle = "black";
         c.beginPath();
-        c.arc(x, y, size/2, 0, 2 * Math.PI, false);
+        c.arc(x + 10, y + 10, size/2, 0, 2 * Math.PI, false);
         c.closePath();
         c.fill();
     };
 
-    //draw a wall
-    var drawWall = function(startX, startY,size) {
-        c.fillStyle="black";
-        c.beginPath();
-        c.moveTo(startX,startY);
-        c.lineTo(startX+size,startY);
-        c.lineTo(startX+size,startY+size);
-        c.lineTo(startX,startY+size);
-        c.closePath();
-        c.fill();
-        c.stroke();
+    // draw a wall
+    var drawWall = function(startX, startY, size) {
+        c.fillStyle = "black";
+        c.fillRect(startX, startY, size, size)
     };
 
-    //draw a exit
-    var drawExit=function (startX,startY,size) {
-        c.fillStyle="white";
-        c.beginPath();
-        c.moveTo(startX, startY);
-        c.lineTo(startX, startY + size);
-        c.stroke();
+    // draw an exit
+    var drawExit = function (startX,startY,size) {
+        c.fillStyle = "white";
+        c.fillRect(startX, startY, size, size)
     };
 
-    //draw a image
-    var drawImage=function (x,y,size,path) {
-        var image=new Image();
-        image.src=location.href + path;
+    // draw an image
+    var drawImage = function (x, y, size, path) {
+        var image = new Image();
+        image.src = location.href + path;
         c.save();
-        c.translate(x+size/2,y+size/2);
-        // c.scale(shape.collisionIndex,1);
-        // c.rotate(shape.angle);
-        c.drawImage(image,-size/2,-size/2,size,size);
+        c.translate(x + size/2, y + size/2);
+        c.drawImage(image, -size/2, -size/2, size, size);
         c.restore();
     };
 
-    //draw a pacman
+    // draw Pacman
     var drawPacMan = function(x, y, size) {
-        var mouth=Math.abs(frameCount%90-45);
+        var mouth = Math.abs(frameCount % 90 - 45);
         c.beginPath();
-        c.arc(x, y, size/2, mouth/180 * Math.PI, (mouth/180+1)* Math.PI, false);
-        c.fillStyle = "rgb(255, 255, 0)";
+        c.arc(x + 10, y + 10, size/2, mouth/180 * Math.PI, (mouth/180+1)* Math.PI, false);
+        c.fillStyle = "yellow";
         c.fill();
         c.beginPath();
-        c.arc(x, y, size/2, -(mouth/180+1) * Math.PI, -(mouth/180) * Math.PI, false);
+        c.arc(x + 10, y + 10, size/2, -(mouth/180+1) * Math.PI, -(mouth/180) * Math.PI, false);
         c.fill();
-        // c.beginPath();
-        // c.arc(x, y-6, 2, 0, 2 * Math.PI, false);
-        // c.fillStyle = "rgb(0, 0, 0)";
-        // c.fill();
     };
 
-    //clear
+    // clear canvas
     var clear = function() {
-        c.clearRect(0,0, canvas.width, canvas.height);
+        c.clearRect(0, 0, canvas.width, canvas.height);
     };
 
     return {
-        drawExit:drawExit,
+        drawExit: drawExit,
         drawDot: drawDot,
         drawWall: drawWall,
-        drawPacMan:drawPacMan,
-        drawImage:drawImage,
-        clear:clear,
-        dims: {height: canvas.height, width: canvas.width}
+        drawPacMan: drawPacMan,
+        drawImage: drawImage,
+        clear: clear,
+        dims: { height: canvas.height, width: canvas.width }
     }
 }
 
@@ -112,118 +96,71 @@ function createApp(canvas) {
  */
 window.onload = function() {
     app = createApp(document.querySelector("canvas"));
-    reset();
-    canvasDims();
+    resetGame();
     setInterval(updateGameWorld, 100);
 }
 
 /**
- * Initialize the game
+ * Initialize the game and pass canvas dimensions
  */
-
-function initGame() {
-    $.get("/resetGame", function (data, status) {
-        var pObs = data.obs;
-        pObs.forEach(function(element) {
-            if (element.type === "wall"){
-                app.drawWall(element.location.x,element.location.y)
-            }
-            else if(element.type === "exit") {
-                app.drawExit(element.location.x, element.location.y);
-            }
-            else if(element.type==="pacman"){
-                app.drawPacMan(element.location.x,element.location.y,element.size)
-            }
-            else if(element.type==="ghost"){
-                if(element.color="red"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"redGhost.jpg")
-                }
-                else if (element.color="pink"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"pinkGhost.png")
-                }
-                else if (element.color="orange"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"orangeGhost.jpg")
-                }
-                else if (element.color="blue"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"blueGhost.png")
-                }
-            }
-            else if(element.type==="small_dot"){
-                app.drawDot(element.location.x,element.location.y,element.size)
-            }
-            else if(element.type==="big_dot"){
-                app.drawDot(element.location.x,element.location.y,element.size)
-            }
-        });
-    }, "json");
+function resetGame() {
+    frameCount = 0;
+    app.clear();
+    $.get("/resetGame", { height: app.dims.height, width: app.dims.width });
 }
 
 /**
- *   Update all the observers.
+ * Update and redraw all game objects
  */
 function updateGameWorld() {
     $.get("/updateGame", function(data, status) {
         app.clear();
-        frameCount=frameCount+10;
+        frameCount = frameCount + 10;
         var pObs = data.obs;
         pObs.forEach(function(element) {
-            if (element.type === "wall"){
-                app.drawWall(element.location.x,element.location.y)
+            if (element.type === "wall") {
+                app.drawWall(element.location.x, element.location.y, element.size);
             }
-            else if(element.type === "exit") {
-                app.drawExit(element.location.x, element.location.y);
+            else if (element.type === "exit") {
+                app.drawExit(element.location.x, element.location.y, element.size);
             }
-            else if(element.type==="pacman"){
-                app.drawPacMan(element.location.x,element.location.y,element.size)
+            else if (element.type === "pacman") {
+                app.drawPacMan(element.location.x, element.location.y, element.size);
             }
-            else if(element.type==="ghost"){
-                if(element.color="red"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"reaGhost.jpg")
+            else if(element.type === "ghost") {
+                if (element.color === "red") {
+                    app.drawImage(element.location.x, element.location.y, element.size, "redGhost.jpg");
                 }
-                else if (element.color="pink"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"pinkGhost.png")
+                else if (element.color === "pink") {
+                    app.drawImage(element.location.x, element.location.y, element.size, "pinkGhost.png");
                 }
-                else if (element.color="orange"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"orangeGhost.jpg")
+                else if (element.color === "orange") {
+                    app.drawImage(element.location.x, element.location.y, element.size, "orangeGhost.jpg");
                 }
-                else if (element.color="blue"){
-                    app.drawImage(element.location.x,element.location.y,element.size,"blueGhost.png")
+                else if (element.color === "blue") {
+                    app.drawImage(element.location.x, element.location.y, element.size, "blueGhost.png");
                 }
             }
-            else if(element.type==="small_dot"){
-                app.drawDot(element.location.x,element.location.y,element.size)
+            else if (element.type === "small_dot") {
+                app.drawDot(element.location.x, element.location.y, element.size);
             }
-            else if(element.type==="big_dot"){
-                app.drawDot(element.location.x,element.location.y,element.size)
+            else if (element.type === "big_dot") {
+                // big dot flashes every other update
+                if (frameCount % 40 != 0) {
+                    app.drawDot(element.location.x, element.location.y, element.size);
+                }
             }
-            else if(element.type==="fruit"){
-                app.drawImage(element.location.x,element.location.y,element.size,"fruit.jpg")
+            else if (element.type === "fruit") {
+                app.drawImage(element.location.x, element.location.y, element.size, "fruit.jpg");
             }
         });
     }, "json");
 }
 
-
 /**
- * Pass along the canvas dimensions
- */
-function canvasDims() {
-    $.get("/canvasDims", {height: app.dims.height, width: app.dims.width});
-}
-
-/**
- * Reset the game
- */
-function reset() {
-    frameCount=0;
-    app.clear();
-    initGame();
-}
-
-/**
- * Switch the moving direction for the Pacman
+ * Switch the moving direction for Pacman
  */
 function switchDirection(keycode) {
-    $.post("/switchDirection", {keycode:keycode}, function (data, status) {
+    $.post("/switchDirection", { keycode: keycode }, function (data, status) {
     }, "json");
 }

@@ -1,25 +1,17 @@
 package edu.rice.comp504.model.gameObjects;
 
 import java.awt.*;
-import java.util.Observable;
 
 /**
- * A concrete class extends AGameObject for the exit
+ * A concrete class that extends AGameObject to represent exits
  */
 public class Exit extends AGameObject {
 
     /**
-     * Constructor for the exit
+     * Constructor for Exit
      * @param loc location
      */
     public Exit(Point loc){
         super(loc,"exit",10);
     }
-
-    /**
-     * Update the exit, the exit keeps still in a game
-     * @param obs observable
-     * @param o object
-     */
-    public void update(Observable obs, Object o){}
 }
