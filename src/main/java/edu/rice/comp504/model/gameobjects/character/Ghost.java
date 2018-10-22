@@ -1,5 +1,6 @@
 package edu.rice.comp504.model.gameobjects.character;
 
+import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.strategy.update.IUpdateStrategy;
 
 import java.awt.*;
@@ -53,5 +54,10 @@ public class Ghost extends ACharacter {
      */
     public void setJailTimer(int jailTimer) {
         this.jailTimer = jailTimer;
+    }
+
+
+    public boolean collision(AGameObject gameObject) {
+        return false;
     }
 }

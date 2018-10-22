@@ -14,8 +14,8 @@ import java.util.Observable;
 public class DispatchAdapter extends Observable {
     private Point dims;
     private int gridSize;
-    private static int score;
-    private static int lives;
+    private int score;
+    private int lives;
     private static int fruitTimer;
     private static int afraidTimer;
 
@@ -52,8 +52,8 @@ public class DispatchAdapter extends Observable {
         deleteObservers();
 
         // set default game values
-        DispatchAdapter.score = 0;
-        DispatchAdapter.lives = 3;
+        this.score = 0;
+        this.lives = 3;
         DispatchAdapter.fruitTimer = 30;
         DispatchAdapter.afraidTimer = 0;
 

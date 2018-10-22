@@ -89,7 +89,21 @@ function createApp(canvas) {
         c.clearRect(0, 0, canvas.width, canvas.height);
     };
 
+    /**
+     * Function to update score and lives
+     */
+
+    var drawScore = function(score, lives) {
+
+        c.font = "20px Arial";
+        c.fillText(score, 10, 360 );
+
+        c.fillText(lives, 450, 360);
+
+    }
+
     return {
+        drawScore : drawScore,
         drawExit: drawExit,
         drawDot: drawDot,
         drawWall: drawWall,
@@ -106,6 +120,7 @@ function createApp(canvas) {
 window.onload = function() {
     app = createApp(document.querySelector("canvas"));
     resetGame();
+
     setInterval(updateGameWorld, 100);
 }
 
@@ -124,6 +139,7 @@ function resetGame() {
 function updateGameWorld() {
     $.get("/updateGame", function(data, status) {
         app.clear();
+        app.drawScore("Score : " + data.score, "Lives : " + data.lives);
         frameCount = frameCount + 10;
         var pObs = data.obs;
         pObs.forEach(function(element) {
@@ -173,3 +189,4 @@ function switchDirection(keycode) {
     $.post("/switchDirection", { keycode: keycode }, function (data, status) {
     }, "json");
 }
+
