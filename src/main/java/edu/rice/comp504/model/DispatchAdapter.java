@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.Observable;
 
 /**
- * DispatchAdapter class acts as the game host
+ * DispatchAdapter class acts as the game host test
  * It handles requests from the views and updates all game objects
  */
 public class DispatchAdapter extends Observable {
