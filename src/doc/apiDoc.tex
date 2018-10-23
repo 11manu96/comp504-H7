@@ -51,13 +51,15 @@ There are three groups of use cases for the Pacman game. We will look at the use
 \end{itemize}
 
 \section{View}
-We have a single canvas in index.html where the game and game values will be displayed. In view.js there are functions to start and run the game and display game objects. The view makes requests to the controller to reset the game as well as update the game state. Based on the returned data, the view draws the game objects onto the canvas. The ghosts and fruit are image files, and the remaining game objects are drawn using canvas functions.
+We have a single canvas in index.html where the game and game values will be displayed. In view.js there are functions to start and run the game and display game objects. The view makes requests to the controller to reset the game as well as update the game state. 
 
 \begin{itemize}
   \item /resetGame - called on page load to setup the game
   \item /updateGame - called every 0.1 sec to receive game state. Game objects are drawn onto the canvas based on received data
   \item /switchDirection - called based on user input to change Pacman direction
 \end{itemize}
+
+Based on the returned data, the view draws the game objects onto the canvas. The ghosts and fruit are image files, and the remaining game objects are drawn using canvas functions. Display-only features that do not affect the game operation, such as flashing ghosts, blinking dots, and the Pacman animation are handled exclusively in the view.
 
 \section{Controller}
 The PacWorldController processes GET and POST requests and returns the JSON representation of the DispatchAdapter, which contains all the game objects in the PacWorld. The controller creates the DispatchAdapter and defines the REST endpoints \\ 
