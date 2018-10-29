@@ -1,5 +1,8 @@
 package edu.rice.comp504.model.gameobjects;
 
+import edu.rice.comp504.model.cmd.IGameObjectCmd;
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
@@ -62,5 +65,8 @@ public abstract class AGameObject implements Observer {
      * @param obs observable
      * @param o object
      */
-    public void update(Observable obs, Object o) {}
+    public void update(Observable obs, Object o) {
+        IGameObjectCmd cmd=(IGameObjectCmd) o;
+        cmd.execute(this);
+    }
 }

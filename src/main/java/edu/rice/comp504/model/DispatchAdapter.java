@@ -101,6 +101,10 @@ public class DispatchAdapter extends Observable {
         this.afraidTimer = afraidTimer;
     }
 
+    public void setChangedPublic(){
+        setChanged();
+    }
+
     /**
      * Read initialization from a 2D array and add all necessary objects as observers.
      */
