@@ -12,6 +12,8 @@ import java.awt.*;
 public class Ghost extends ACharacter {
     private int jailTimer;
     private String color;
+    private int points;
+    private Point initialLocation;
 
     /**
      * Constructor for Ghost.
@@ -23,6 +25,9 @@ public class Ghost extends ACharacter {
         super(loc, "ghost", new Point(0,0), updateStrategy, null, DispatchAdapter.getGridSize());
         this.jailTimer = 3;
         this.color = color;
+        this.points = 200;
+        this.initialLocation = loc;
+
     }
 
     /**

@@ -16,8 +16,11 @@ public class DispatchAdapter extends Observable {
     private static int gridSize;
     private int score;
     private int lives;
-    private int fruitTimer;
+
     private int afraidTimer;
+    private int dotsLeft;
+
+
 
     /**
      * Constructor.
@@ -83,22 +86,6 @@ public class DispatchAdapter extends Observable {
     }
 
     /**
-     * Get the fruit timer.
-     * @return fruit timer
-     */
-    public int getFruitTimer() {
-        return this.fruitTimer;
-    }
-
-    /**
-     * Set the fruit timer.
-     * @param fruitTimer fruit timer
-     */
-    public void setFruitTimer(int fruitTimer) {
-        this.fruitTimer = fruitTimer;
-    }
-
-    /**
      * Get the ghosts afraid timer.
      * @return ghosts afraid timer
      */
@@ -126,8 +113,8 @@ public class DispatchAdapter extends Observable {
         // set default game values
         this.score = 0;
         this.lives = 3;
-        this.fruitTimer = 30;
         this.afraidTimer = 0;
+        this.dotsLeft = 0;
 
         // add observers at locations specified in layout
         int height = map.length;
@@ -142,10 +129,10 @@ public class DispatchAdapter extends Observable {
                         object = new Wall(objLoc);
                         break;
                     case 2: // exit
-                        object = new Exit(objLoc);
+                        object = new Exit(objLoc, new Point(getCanvasDims().x - objLoc.x, objLoc.y));
                         break;
                     case 3: // pacman
-                        object = new Pacman(objLoc);
+                        object = Pacman.getInstance(objLoc);
                         break;
 
                     case 4: // ghost1
@@ -163,9 +150,11 @@ public class DispatchAdapter extends Observable {
 
                     case 8: // smallDot
                         object = new SmallDot(objLoc);
+                        dotsLeft++;
                         break;
                     case 9: // bigDot
                         object = new BigDot(objLoc);
+                        dotsLeft++;
                         break;
                     default:
                         break;
@@ -203,6 +192,7 @@ public class DispatchAdapter extends Observable {
                 {1, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
         };
+
 
         return map;
     }

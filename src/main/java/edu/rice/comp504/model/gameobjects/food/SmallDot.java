@@ -14,6 +14,6 @@ public class SmallDot extends AFood {
      * @param loc small dot location
      */
     public SmallDot(Point loc) {
-        super(loc, "small_dot", DispatchAdapter.getGridSize() / 4);
+        super(loc, "small_dot", DispatchAdapter.getGridSize() / 4, 50);
     }
 }
