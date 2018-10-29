@@ -10,11 +10,12 @@ import java.awt.*;
  */
 public class Pacman extends ACharacter {
 
+    private static Pacman pacman;
     /**
      * Constructor for Pacman.
      * @param loc pacman location
      */
-    public Pacman(Point loc) {
+    private Pacman(Point loc) {
         super(loc, "pacman", new Point(0,0),null, null, DispatchAdapter.getGridSize());
     }
 
@@ -25,5 +26,16 @@ public class Pacman extends ACharacter {
      */
     public boolean collision(AGameObject gameObject) {
         return false;
+    }
+
+
+    public static Pacman getInstance(Point loc){
+
+        if (pacman == null)
+            pacman = new Pacman(loc);
+
+        return pacman;
+
+
     }
 }

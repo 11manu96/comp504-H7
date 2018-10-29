@@ -1,5 +1,6 @@
 package edu.rice.comp504.model;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import edu.rice.comp504.model.gameobjects.*;
 import edu.rice.comp504.model.gameobjects.character.*;
 import edu.rice.comp504.model.gameobjects.food.*;
@@ -16,8 +17,11 @@ public class DispatchAdapter extends Observable {
     private static int gridSize;
     private int score;
     private int lives;
-    private int fruitTimer;
+
     private int afraidTimer;
+    private int smallDotsLeft;
+
+
 
     /**
      * Constructor.
@@ -83,22 +87,6 @@ public class DispatchAdapter extends Observable {
     }
 
     /**
-     * Get the fruit timer.
-     * @return fruit timer
-     */
-    public int getFruitTimer() {
-        return this.fruitTimer;
-    }
-
-    /**
-     * Set the fruit timer.
-     * @param fruitTimer fruit timer
-     */
-    public void setFruitTimer(int fruitTimer) {
-        this.fruitTimer = fruitTimer;
-    }
-
-    /**
      * Get the ghosts afraid timer.
      * @return ghosts afraid timer
      */
@@ -126,8 +114,9 @@ public class DispatchAdapter extends Observable {
         // set default game values
         this.score = 0;
         this.lives = 3;
-        this.fruitTimer = 30;
         this.afraidTimer = 0;
+        //TODO make sure that this number is initialized to the number of small dots we finally decided to have.
+        this.smallDotsLeft = 216;
 
         // add observers at locations specified in layout
         int height = map.length;
@@ -145,20 +134,20 @@ public class DispatchAdapter extends Observable {
                         object = new Exit(objLoc);
                         break;
                     case 3: // pacman
-                        object = new Pacman(objLoc);
+                        object = Pacman.getInstance(objLoc);
                         break;
 
                     case 4: // ghost1
-                        object = new Ghost(objLoc, null, "red");
+                        object = new Ghost(objLoc, null, "red", objLoc);
                         break;
                     case 5: // ghost2
-                        object = new Ghost(objLoc, null, "pink");
+                        object = new Ghost(objLoc, null, "pink", objLoc);
                         break;
                     case 6: // ghost3
-                        object = new Ghost(objLoc, null, "orange");
+                        object = new Ghost(objLoc, null, "orange", objLoc);
                         break;
                     case 7: // ghost4
-                        object = new Ghost(objLoc, null, "blue");
+                        object = new Ghost(objLoc, null, "blue", objLoc);
                         break;
 
                     case 8: // smallDot
@@ -203,6 +192,7 @@ public class DispatchAdapter extends Observable {
                 {1, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
         };
+
 
         return map;
     }

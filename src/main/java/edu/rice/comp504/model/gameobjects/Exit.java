@@ -9,11 +9,14 @@ import java.awt.*;
  */
 public class Exit extends AGameObject {
 
+    //this variable holds the value of the point from where the ghost/pacman appears after entering a a exit
+    private Point exitTo;
     /**
      * Constructor for Exit.
      * @param loc exit location
      */
-    public Exit(Point loc) {
+    public Exit(Point loc, Point exitTo) {
         super(loc,"exit", DispatchAdapter.getGridSize());
+        this.exitTo = exitTo;
     }
 }

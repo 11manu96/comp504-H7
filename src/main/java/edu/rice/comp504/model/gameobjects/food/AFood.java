@@ -9,13 +9,15 @@ import java.awt.*;
  */
 public abstract class AFood extends AGameObject {
 
+    private int points;
     /**
      * Constructor for AFood.
      * @param loc food location
      * @param type type big_dot or fruit or small_dot
      * @param size food size
      */
-    public AFood(Point loc, String type, int size) {
+    public AFood(Point loc, String type, int size, int points) {
         super(loc, type, size);
+        this.points = points;
     }
 }

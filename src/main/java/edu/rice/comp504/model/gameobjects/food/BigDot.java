@@ -14,6 +14,6 @@ public class BigDot extends AFood {
      * @param loc big dot location
      */
     public BigDot(Point loc) {
-        super(loc, "big_dot", DispatchAdapter.getGridSize() / 2);
+        super(loc, "big_dot", DispatchAdapter.getGridSize() / 2, 100);
     }
 }
