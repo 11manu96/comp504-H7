@@ -1,25 +1,26 @@
 package edu.rice.comp504.model.strategy.interact;
 
 import edu.rice.comp504.model.gameobjects.AGameObject;
+import edu.rice.comp504.model.gameobjects.Exit;
 import edu.rice.comp504.model.gameobjects.character.ACharacter;
 
 import java.awt.*;
 
-public class PacmanToWall implements IInteractStrategy {
+public class PacmanInteraction implements IInteractStrategy {
     private static IInteractStrategy singleton;
 
     /**
      * Constructor
      */
-    public PacmanToWall(){}
+    public PacmanInteraction(){}
 
     /**
      * Make a strategy.  There is only one (singleton).
-     * @return An exchange color strategy
+     * @return An strategy
      */
     public static IInteractStrategy makeStrategy() {
         if (singleton == null) {
-            singleton = new PacmanToWall();
+            singleton = new PacmanInteraction();
         }
 
         return singleton;
@@ -31,7 +32,7 @@ public class PacmanToWall implements IInteractStrategy {
      */
     @Override
     public String getName() {
-        return "PacmanToWall";
+        return "PacmanInteraction";
     }
 
     /**
@@ -41,6 +42,10 @@ public class PacmanToWall implements IInteractStrategy {
      */
     public void interact(AGameObject src, AGameObject dest){
         ACharacter pacman=(ACharacter)src;
-        pacman.setVel(new Point(0,0));
+        switch (dest.getType()){
+            case"wall":pacman.setVel(new Point(0,0));break;
+            case"exit"://Maybe we need a getexitTo() method?
+                       pacman.setLocation(null);break;
+        }
     }
 }
