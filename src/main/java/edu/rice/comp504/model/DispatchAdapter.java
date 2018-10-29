@@ -1,6 +1,5 @@
 package edu.rice.comp504.model;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import edu.rice.comp504.model.gameobjects.*;
 import edu.rice.comp504.model.gameobjects.character.*;
 import edu.rice.comp504.model.gameobjects.food.*;
@@ -19,7 +18,7 @@ public class DispatchAdapter extends Observable {
     private int lives;
 
     private int afraidTimer;
-    private int smallDotsLeft;
+    private int dotsLeft;
 
 
 
@@ -115,8 +114,7 @@ public class DispatchAdapter extends Observable {
         this.score = 0;
         this.lives = 3;
         this.afraidTimer = 0;
-        //TODO make sure that this number is initialized to the number of small dots we finally decided to have.
-        this.smallDotsLeft = 216;
+        this.dotsLeft = 0;
 
         // add observers at locations specified in layout
         int height = map.length;
@@ -131,30 +129,32 @@ public class DispatchAdapter extends Observable {
                         object = new Wall(objLoc);
                         break;
                     case 2: // exit
-                        object = new Exit(objLoc);
+                        object = new Exit(objLoc, new Point(getCanvasDims().x - objLoc.x, objLoc.y));
                         break;
                     case 3: // pacman
                         object = Pacman.getInstance(objLoc);
                         break;
 
                     case 4: // ghost1
-                        object = new Ghost(objLoc, null, "red", objLoc);
+                        object = new Ghost(objLoc, null, "red");
                         break;
                     case 5: // ghost2
-                        object = new Ghost(objLoc, null, "pink", objLoc);
+                        object = new Ghost(objLoc, null, "pink");
                         break;
                     case 6: // ghost3
-                        object = new Ghost(objLoc, null, "orange", objLoc);
+                        object = new Ghost(objLoc, null, "orange");
                         break;
                     case 7: // ghost4
-                        object = new Ghost(objLoc, null, "blue", objLoc);
+                        object = new Ghost(objLoc, null, "blue");
                         break;
 
                     case 8: // smallDot
                         object = new SmallDot(objLoc);
+                        dotsLeft++;
                         break;
                     case 9: // bigDot
                         object = new BigDot(objLoc);
+                        dotsLeft++;
                         break;
                     default:
                         break;

@@ -12,7 +12,7 @@ import java.awt.*;
 public class Ghost extends ACharacter {
     private int jailTimer;
     private String color;
-    private int point;
+    private int points;
     private Point initialLocation;
 
     /**
@@ -21,12 +21,12 @@ public class Ghost extends ACharacter {
      * @param updateStrategy update strategy
      * @param color ghost color
      */
-    public Ghost(Point loc, IUpdateStrategy updateStrategy, String color, Point initialLocation) {
+    public Ghost(Point loc, IUpdateStrategy updateStrategy, String color) {
         super(loc, "ghost", new Point(0,0), updateStrategy, null, DispatchAdapter.getGridSize());
         this.jailTimer = 3;
         this.color = color;
-        this.point = 200;
-        this.initialLocation = initialLocation;
+        this.points = 200;
+        this.initialLocation = loc;
 
     }
 
