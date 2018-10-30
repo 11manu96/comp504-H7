@@ -3,6 +3,7 @@ package edu.rice.comp504.model.cmd;
 
 import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.character.ACharacter;
+import edu.rice.comp504.model.gameobjects.character.Ghost;
 
 
 public class CollisionCmd implements IGameObjectCmd {
@@ -17,6 +18,12 @@ public class CollisionCmd implements IGameObjectCmd {
             ACharacter pacman = (ACharacter) object;
             if (pacman.collision(context)) {
                 pacman.getInteractStrategy().interact(pacman, context);
+            }
+        }
+        else if (object.getType().equals("ghost")){
+            Ghost ghost=(Ghost) object;
+            if (ghost.collision(context)){
+                ghost.getInteractStrategy().interact(ghost,context);
             }
         }
     }
