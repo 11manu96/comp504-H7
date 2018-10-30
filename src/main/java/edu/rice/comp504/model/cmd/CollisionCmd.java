@@ -14,10 +14,12 @@ public class CollisionCmd implements IGameObjectCmd {
     }
 
     public void execute(AGameObject context){
-        if(object.getType().equals("pacman")) {
-            ACharacter pacman = (ACharacter) object;
-            if (pacman.collision(context)) {
-                pacman.getInteractStrategy().interact(pacman, context);
+        if (context != object) {
+            if (object.getType().equals("pacman")) {
+                ACharacter pacman = (ACharacter) object;
+                if (pacman.collision(context)) {
+                    pacman.getInteractStrategy().interact(pacman, context);
+                }
             }
         }
         else if (object.getType().equals("ghost")){

@@ -18,7 +18,21 @@ public class Pacman extends ACharacter {
      * @param loc pacman location
      */
     private Pacman(Point loc) {
-        super(loc, "pacman", new Point(0,0), PacmanUpdateStrategy.makeStrategy(), PacmanInteraction.makeStrategy(), DispatchAdapter.getGridSize());
+        super(loc, "pacman", new Point(0,0),
+                PacmanUpdateStrategy.makeStrategy(), PacmanInteraction.makeStrategy(), DispatchAdapter.getGridSize());
+    }
+
+    public static Pacman makePacman(Point loc) {
+        if (pacman == null) {
+            pacman = new Pacman(loc);
+        } else {
+            pacman.setLocation(loc);
+        }
+        return pacman;
+    }
+
+    public static Pacman getInstance() {
+        return pacman;
     }
 
     /**
@@ -29,61 +43,17 @@ public class Pacman extends ACharacter {
     public boolean collision(AGameObject gameObject) {
 
         Point pacmanLoc = this.getLocation();
-        int pacmanSize = this.getSize()/2;
+        int pacmanSize = this.getSize() / 2;
         Point pacmanVel = this.getVel();
 
         Point gameObjLoc = gameObject.getLocation();
-        int gameObjSize = gameObject.getSize();
+        int gameObjSize = gameObject.getSize() / 2;
 
-        //O ---> []
-
-        /**
-         * O ---> [] no 1
-         *
-         * [] <--- O  no 2
-         *
-         * [ ]
-         *  ^
-         *  |        no 4
-         *  O
-         *
-         *   O
-         *   |     no 3
-         *  [ ]
-         */
-
-        if(pacmanLoc.getX() + pacmanSize == gameObjLoc.getX()
-                && pacmanLoc.getY() - pacmanSize == gameObjLoc.getY()
-                && pacmanLoc.getY() + pacmanSize == gameObjLoc.getY() + gameObjSize
-                && pacmanVel.getX() > 0){
-
+        int distX = pacmanLoc.x + pacmanVel.x - (gameObjLoc.x + DispatchAdapter.getGridSize() / 2);
+        int distY = pacmanLoc.y + pacmanVel.y - (gameObjLoc.y + DispatchAdapter.getGridSize() / 2);
+        if ((Math.abs(distX) < pacmanSize + gameObjSize) && (Math.abs(distY) < pacmanSize + gameObjSize)) {
             return true;
-        }else if(pacmanLoc.getX() - pacmanSize == gameObjLoc.getX()+gameObjSize
-                && pacmanLoc.getY() - pacmanSize == gameObjLoc.getY()
-                && pacmanLoc.getY() + pacmanSize == gameObjLoc.getY() + gameObjSize
-                && pacmanVel.getX() < 0){
-
-            return true;
-        }else if(pacmanLoc.getY() + pacmanSize == gameObjLoc.getY()
-                && pacmanLoc.getX() + pacmanSize == gameObjLoc.getX() + gameObjSize
-                &&  pacmanLoc.getX() - pacmanSize == gameObjLoc.getX()
-                && pacmanVel.getY() > 0){
-            return true;
-        }else return pacmanLoc.getY() - pacmanSize == gameObjLoc.getY() + gameObjSize
-                && pacmanLoc.getX() + pacmanSize == gameObjLoc.getX() + gameObjSize
-                && pacmanLoc.getX() - pacmanSize == gameObjLoc.getX()
-                && pacmanVel.getY() < 0;
-
-    }
-
-
-    public static Pacman getInstance(Point loc){
-
-        if (pacman == null)
-            pacman = new Pacman(loc);
-
-        return pacman;
-
-
+        }
+        return false;
     }
 }

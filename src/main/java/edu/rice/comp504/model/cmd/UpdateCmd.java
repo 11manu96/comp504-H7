@@ -19,9 +19,9 @@ public class UpdateCmd implements IGameObjectCmd{
         switch(context.getType()) {
 
             case "pacman":
-
-                ((Pacman) context).getUpdateStrategy().update(context);
                 dispatchAdapter.sendCollisionCmd(context);
+                ((Pacman) context).getUpdateStrategy().update(context);
+
                 break;
             /*case "ghost":
                 ((Ghost) context).getUpdateStrategy().update(context);
