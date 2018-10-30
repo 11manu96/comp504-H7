@@ -12,7 +12,7 @@ public class PacmanInteraction implements IInteractStrategy {
     /**
      * Constructor
      */
-    public PacmanInteraction(){}
+    public PacmanInteraction() {}
 
     /**
      * Make a strategy.  There is only one (singleton).
@@ -30,7 +30,6 @@ public class PacmanInteraction implements IInteractStrategy {
      * Get the interaction strategy name.
      * @return The interaction strategy name
      */
-    @Override
     public String getName() {
         return "PacmanInteraction";
     }
@@ -41,10 +40,14 @@ public class PacmanInteraction implements IInteractStrategy {
      * @param dest The dest object behavior will be affected by the src object interaction strategy
      */
     public void interact(AGameObject src, AGameObject dest){
-        ACharacter pacman=(ACharacter)src;
-        switch (dest.getType()){
-            case"wall":pacman.setVel(new Point(0,0));break;
-            case"exit": pacman.setLocation(((Exit)dest).getExitTo());break;
+        ACharacter pacman = (ACharacter) src;
+        switch (dest.getType()) {
+            case "wall":
+                pacman.setVel(new Point(0,0));
+                break;
+            case "exit":
+                pacman.setLocation(((Exit)dest).getExitTo());
+                break;
         }
     }
 }
