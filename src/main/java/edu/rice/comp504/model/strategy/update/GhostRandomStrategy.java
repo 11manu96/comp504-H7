@@ -8,14 +8,16 @@ import java.util.Random;
 
 
 public class GhostRandomStrategy implements IUpdateStrategy {
-    private static GhostRandomStrategy Singletonghostrandom;
+    private static GhostRandomStrategy singletonghostrandom;
+
     private GhostRandomStrategy(){}
+
     public static IUpdateStrategy makeStrategy(){
-        if (Singletonghostrandom==null){
-            Singletonghostrandom=new GhostRandomStrategy();
+        if (singletonghostrandom == null){
+            singletonghostrandom = new GhostRandomStrategy();
 
         }
-        return Singletonghostrandom;
+        return singletonghostrandom;
     }
 
     @Override
@@ -26,18 +28,26 @@ public class GhostRandomStrategy implements IUpdateStrategy {
     @Override
     public void update(AGameObject ghost) {
         int veldirection=GenerateVelDirection();
-        Point ghostvel=((Ghost) ghost).getVel();
         Point vel=null;
-        switch (veldirection){
-            case 1:vel=new Point(ghostvel.x,0);break;
-            case 2:vel=new Point(-ghostvel.x,0);break;
-            case 3:vel=new Point(0,ghostvel.y);break;
-            case 4:vel=new Point(0,-ghostvel.y);break;
-            default:break;
+        switch (veldirection) {
+            case 1:
+                vel = new Point(20,0);
+                break;
+            case 2:
+                vel = new Point(-20,0);
+                break;
+            case 3:
+                vel = new Point(0,20);
+                break;
+            case 4:
+                vel = new Point(0,-20);
+                break;
+            default:
+                break;
         }
-        Point loc=ghost.getLocation();
-        loc.x=vel.x+loc.x;
-        loc.y=vel.y+loc.y;
+        Point loc = ghost.getLocation();
+        loc.x = vel.x+loc.x;
+        loc.y = vel.y+loc.y;
         ghost.setLocation(loc);
     }
     private int GenerateVelDirection(){
