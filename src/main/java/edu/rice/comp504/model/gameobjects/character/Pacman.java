@@ -2,6 +2,8 @@ package edu.rice.comp504.model.gameobjects.character;
 
 import edu.rice.comp504.model.DispatchAdapter;
 import edu.rice.comp504.model.gameobjects.AGameObject;
+import edu.rice.comp504.model.strategy.interact.PacmanInteraction;
+import edu.rice.comp504.model.strategy.update.PacmanUpdateStrategy;
 
 import java.awt.*;
 
@@ -16,7 +18,7 @@ public class Pacman extends ACharacter {
      * @param loc pacman location
      */
     private Pacman(Point loc) {
-        super(loc, "pacman", new Point(0,0),null, null, DispatchAdapter.getGridSize());
+        super(loc, "pacman", new Point(0,1), PacmanUpdateStrategy.makeStrategy(), PacmanInteraction.makeStrategy(), DispatchAdapter.getGridSize());
     }
 
     /**
@@ -25,6 +27,61 @@ public class Pacman extends ACharacter {
      * @return whether there was a collision
      */
     public boolean collision(AGameObject gameObject) {
+
+        Point pacmanLoc = this.getLocation();
+        int pacmanSize = this.getSize()/2;
+        Point pacmanVel = this.getVel();
+
+        Point gameObjLoc = gameObject.getLocation();
+        int gameObjSize = gameObject.getSize();
+
+        //O ---> []
+
+        /**
+         * O ---> [] no 1
+         *
+         * [] <--- O  no 2
+         *
+         * [ ]
+         *  ^
+         *  |        no 4
+         *  O
+         *
+         *   O
+         *   |     no 3
+         *  [ ]
+         */
+
+        if(gameObjLoc.getX() + gameObjSize > pacmanLoc.getX() + pacmanSize
+                && pacmanLoc.getX() + pacmanSize >  gameObjLoc.getX()
+                && pacmanLoc.getY() - pacmanSize == gameObjLoc.getY()
+                && pacmanLoc.getY() + pacmanSize == gameObjLoc.getY() + gameObjSize
+                && pacmanVel.getX() > 0){
+
+            return true;
+        }else if(gameObjLoc.getX() < pacmanLoc.getX() - pacmanSize
+                && pacmanLoc.getX() - pacmanSize < gameObjLoc.getX()+gameObjSize
+                && pacmanLoc.getY() - pacmanSize == gameObjLoc.getY()
+                && pacmanLoc.getY() + pacmanSize == gameObjLoc.getY() + gameObjSize
+                && pacmanVel.getX() < 0){
+
+            return true;
+        }else if(pacmanLoc.getY() + pacmanSize < gameObjLoc.getY() + gameObjSize
+                && pacmanLoc.getY() + pacmanSize > gameObjLoc.getY()
+                && pacmanLoc.getX() + pacmanSize == gameObjLoc.getX() + gameObjSize
+                &&  pacmanLoc.getX() - pacmanSize == gameObjLoc.getX()
+                && pacmanVel.getY() > 0){
+            //System.out.println(pacmanLoc.getY() +  " " + pacmanSize + "  " + gameObjLoc.getY() +  " " +gameObjSize  + gameObject.getType());
+            return true;
+        }else if(pacmanLoc.getY() - pacmanSize > gameObjLoc.getY()
+                && pacmanLoc.getX() + pacmanSize == gameObjLoc.getX() + gameObjSize
+                &&  pacmanLoc.getX() - pacmanSize == gameObjLoc.getX()
+                && pacmanLoc.getY() - pacmanSize < gameObjLoc.getY() + gameObjSize
+                && pacmanVel.getY() < 0){
+
+            return true;
+        }
+
         return false;
     }
 

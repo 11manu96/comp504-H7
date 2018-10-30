@@ -104,7 +104,7 @@ public class DispatchAdapter extends Observable {
 
     public void sendCollisionCmd(AGameObject context){
         setChanged();
-        notifyObservers(new CollisonCmd(context));
+        notifyObservers(new CollisionCmd(context));
     }
 
     /**
@@ -167,10 +167,14 @@ public class DispatchAdapter extends Observable {
                 }
 
                 if (object != null) {
+
                     addObserver(object);
+
                 }
             }
         }
+
+
     }
 
     /**
@@ -238,5 +242,6 @@ public class DispatchAdapter extends Observable {
         notifyObservers(switchCmd);
         clearChanged();
     }
+
 
 }

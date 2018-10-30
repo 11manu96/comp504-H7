@@ -15,12 +15,20 @@ public class UpdateCmd implements IGameObjectCmd{
 
     }
     public void execute(AGameObject context){
+
         switch (context.getType()){
-            case "pacman":((Pacman) context).getUpdateStrategy().update(context);
-                            dispatchAdapter.sendCollisionCmd(context);break;
-            case "ghost":((Ghost) context).getUpdateStrategy().update(context);
-                            dispatchAdapter.sendCollisionCmd(context);break;
+
+            case "pacman":
+
+                ((Pacman) context).getUpdateStrategy().update(context);
+                dispatchAdapter.sendCollisionCmd(context);
+                break;
+            /*case "ghost":
+                ((Ghost) context).getUpdateStrategy().update(context);
+                dispatchAdapter.sendCollisionCmd(context);
+                break;*/
             default:
+
                 break;
         }
     }

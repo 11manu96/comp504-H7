@@ -67,6 +67,9 @@ public abstract class AGameObject implements Observer {
      */
     public void update(Observable obs, Object o) {
         IGameObjectCmd cmd=(IGameObjectCmd) o;
+
         cmd.execute(this);
     }
+
+
 }
