@@ -2,19 +2,22 @@ package edu.rice.comp504.model.cmd;
 
 import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.character.ACharacter;
+import edu.rice.comp504.model.gameobjects.character.Ghost;
+import edu.rice.comp504.model.gameobjects.character.Pacman;
+import edu.rice.comp504.model.strategy.update.IUpdateStrategy;
 
 import java.awt.*;
 
 public class SwitchCmd implements IGameObjectCmd {
 
-    String direction;
+    Object dirOrStrat;
 
     /**
      * Constructor
-     * @param direction switch to which direction
+     * @param dirOrStrat switch to which direction
      */
-    public SwitchCmd(String direction) {
-        this.direction = direction;
+    public SwitchCmd(Object dirOrStrat) {
+        this.dirOrStrat = dirOrStrat;
     }
 
     /**
@@ -23,25 +26,28 @@ public class SwitchCmd implements IGameObjectCmd {
      */
     public void execute(AGameObject context) {
         String type = context.getType();
-        if (!(type.equals("pacman") || type.equals("ghost")))
-            return;
-
-        ACharacter character = (ACharacter)context;
-        switch (direction) {
-            case "left":
-                character.setVel(new Point(0, -1));
-                break;
-            case "right":
-                character.setVel(new Point(0, 1));
-                break;
-            case "up":
-                character.setVel(new Point(-1, 0));
-                break;
-            case "down":
-                character.setVel(new Point(1, 0));
-                break;
-            default:
-                break;
+        if (type.equals("pacman")) {
+            Pacman pacman = (Pacman) context;
+            switch ((String)dirOrStrat) {
+                case "left":
+                    pacman.setVel(new Point(0, -1));
+                    break;
+                case "right":
+                    pacman.setVel(new Point(0, 1));
+                    break;
+                case "up":
+                    pacman.setVel(new Point(-1, 0));
+                    break;
+                case "down":
+                    pacman.setVel(new Point(1, 0));
+                    break;
+                default:
+                    break;
+            }
+        }
+        else if (type.equals("ghost")) {
+            Ghost ghost = (Ghost) context;
+            ghost.setUpdateStrategy((IUpdateStrategy)dirOrStrat);
 
         }
 
