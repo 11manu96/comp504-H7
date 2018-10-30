@@ -20,11 +20,11 @@ public class Exit extends AGameObject {
         this.exitTo = exitTo;
     }
     
-    public point getExitTo(){
+    public Point getExitTo(){
         return this.exitTo;
     }
     
-    public void setExitTo(point exitTo){
+    public void setExitTo(Point exitTo){
         this.exitTo = exitTo;
     }
 }
