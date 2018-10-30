@@ -41,10 +41,10 @@ public class PacmanInteraction implements IInteractStrategy {
      * @param dest The dest object behavior will be affected by the src object interaction strategy
      */
     public void interact(AGameObject src, AGameObject dest){
-        ACharacter pacman=(ACharacter)src;
+        ACharacter character=(ACharacter)src;
         switch (dest.getType()){
-            case"wall":pacman.setVel(new Point(0,0));break;
-            case"exit": pacman.setLocation(((Exit)dest).getExitTo());break;
+            case"wall":character.setVel(new Point(0,0));break;
+            case"exit":character.setLocation(((Exit)dest).getExitTo());break;
         }
     }
 }
