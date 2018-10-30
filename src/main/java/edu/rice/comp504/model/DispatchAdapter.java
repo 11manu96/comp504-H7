@@ -220,21 +220,20 @@ public class DispatchAdapter extends Observable {
         String keyCode = body.split("=")[1];
         switch(keyCode) {
             case "37":
-                switchCmd = new SwitchCmd("left");
+                switchCmd = new SwitchCmd((Object)"left");
                 break;
             case "38":
-                switchCmd = new SwitchCmd("up");
+                switchCmd = new SwitchCmd((Object)"up");
                 break;
             case "39":
-                switchCmd = new SwitchCmd("right");
+                switchCmd = new SwitchCmd((Object)"right");
                 break;
             case "40":
-                switchCmd = new SwitchCmd("down");
+                switchCmd = new SwitchCmd((Object)"down");
                 break;
             default:
                 break;
         }
-
         setChanged();
         notifyObservers(switchCmd);
         clearChanged();
