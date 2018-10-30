@@ -44,8 +44,7 @@ public class PacmanInteraction implements IInteractStrategy {
         ACharacter pacman=(ACharacter)src;
         switch (dest.getType()){
             case"wall":pacman.setVel(new Point(0,0));break;
-            case"exit"://Maybe we need a getexitTo() method?
-                       pacman.setLocation(null);break;
+            case"exit": pacman.setLocation(((Exit)dest).getExitTo());break;
         }
     }
 }
