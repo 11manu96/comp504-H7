@@ -76,11 +76,11 @@ function createApp(canvas) {
     var drawPacMan = function(x, y, size) {
         var mouth = Math.abs(frameCount % 90 - 45);
         c.beginPath();
-        c.arc(x + 10, y + 10, size/2, mouth/180 * Math.PI, (mouth/180+1)* Math.PI, false);
+        c.arc(x, y, size/2, mouth/180 * Math.PI, (mouth/180+1)* Math.PI, false);
         c.fillStyle = "yellow";
         c.fill();
         c.beginPath();
-        c.arc(x + 10, y + 10, size/2, -(mouth/180+1) * Math.PI, -(mouth/180) * Math.PI, false);
+        c.arc(x, y, size/2, -(mouth/180+1) * Math.PI, -(mouth/180) * Math.PI, false);
         c.fill();
     };
 

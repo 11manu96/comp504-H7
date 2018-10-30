@@ -51,7 +51,6 @@ public class Pacman extends ACharacter {
          *   |     no 3
          *  [ ]
          */
-
         if(gameObjLoc.getX() + gameObjSize > pacmanLoc.getX() + pacmanSize
                 && pacmanLoc.getX() + pacmanSize >  gameObjLoc.getX()
                 && pacmanLoc.getY() - pacmanSize == gameObjLoc.getY()
@@ -71,18 +70,13 @@ public class Pacman extends ACharacter {
                 && pacmanLoc.getX() + pacmanSize == gameObjLoc.getX() + gameObjSize
                 &&  pacmanLoc.getX() - pacmanSize == gameObjLoc.getX()
                 && pacmanVel.getY() > 0){
-            //System.out.println(pacmanLoc.getY() +  " " + pacmanSize + "  " + gameObjLoc.getY() +  " " +gameObjSize  + gameObject.getType());
             return true;
-        }else if(pacmanLoc.getY() - pacmanSize > gameObjLoc.getY()
+        }else return pacmanLoc.getY() - pacmanSize > gameObjLoc.getY()
                 && pacmanLoc.getX() + pacmanSize == gameObjLoc.getX() + gameObjSize
-                &&  pacmanLoc.getX() - pacmanSize == gameObjLoc.getX()
+                && pacmanLoc.getX() - pacmanSize == gameObjLoc.getX()
                 && pacmanLoc.getY() - pacmanSize < gameObjLoc.getY() + gameObjSize
-                && pacmanVel.getY() < 0){
+                && pacmanVel.getY() < 0;
 
-            return true;
-        }
-
-        return false;
     }
 
 

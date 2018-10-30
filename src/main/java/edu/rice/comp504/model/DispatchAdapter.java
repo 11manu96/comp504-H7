@@ -138,7 +138,7 @@ public class DispatchAdapter extends Observable {
                         object = new Exit(objLoc, new Point(getCanvasDims().x - objLoc.x, objLoc.y));
                         break;
                     case 3: // pacman
-                        object = Pacman.getInstance(objLoc);
+                        object = Pacman.getInstance(new Point(x * DispatchAdapter.gridSize + 10, y * DispatchAdapter.gridSize + 10));
                         break;
 
                     case 4: // ghost1
