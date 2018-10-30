@@ -1,5 +1,7 @@
 package edu.rice.comp504.model;
 
+import edu.rice.comp504.model.cmd.CollisonCmd;
+import edu.rice.comp504.model.cmd.UpdateCmd;
 import edu.rice.comp504.model.gameobjects.*;
 import edu.rice.comp504.model.gameobjects.character.*;
 import edu.rice.comp504.model.gameobjects.food.*;
@@ -99,6 +101,11 @@ public class DispatchAdapter extends Observable {
      */
     public void setAfraidTimer(int afraidTimer) {
         this.afraidTimer = afraidTimer;
+    }
+
+    public void sendCollisionCmd(AGameObject context){
+        setChanged();
+        notifyObservers(new CollisonCmd(context));
     }
 
     /**
@@ -201,7 +208,8 @@ public class DispatchAdapter extends Observable {
      * Call the update method on all observers to update their position in the game.
      */
     public void updatePacWorld() {
-
+        setChanged();
+        notifyObservers(new UpdateCmd(this));
     }
 
     /**
