@@ -1,6 +1,6 @@
 package edu.rice.comp504.model;
 
-import edu.rice.comp504.model.cmd.CollisonCmd;
+import edu.rice.comp504.model.cmd.*;
 import edu.rice.comp504.model.cmd.UpdateCmd;
 import edu.rice.comp504.model.gameobjects.*;
 import edu.rice.comp504.model.gameobjects.character.*;
