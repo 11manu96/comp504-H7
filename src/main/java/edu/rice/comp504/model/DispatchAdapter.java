@@ -1,5 +1,6 @@
 package edu.rice.comp504.model;
 
+import edu.rice.comp504.model.cmd.SwitchCmd;
 import edu.rice.comp504.model.gameobjects.*;
 import edu.rice.comp504.model.gameobjects.character.*;
 import edu.rice.comp504.model.gameobjects.food.*;
@@ -209,7 +210,27 @@ public class DispatchAdapter extends Observable {
      * @param body The request body
      */
     public void switchDirection(String body) {
+        SwitchCmd switchCmd = null;
+        switch(body) {
+            case "37":
+                switchCmd = new SwitchCmd("left");
+                break;
+            case "38":
+                switchCmd = new SwitchCmd("up");
+                break;
+            case "39":
+                switchCmd = new SwitchCmd("right");
+                break;
+            case "40":
+                switchCmd = new SwitchCmd("down");
+                break;
+            default:
+                break;
+        }
 
+        setChanged();
+        notifyObservers(switchCmd);
+        clearChanged();
     }
 
 }
