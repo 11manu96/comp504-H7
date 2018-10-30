@@ -102,6 +102,11 @@ public class DispatchAdapter extends Observable {
         this.afraidTimer = afraidTimer;
     }
 
+    public void sendCollisionCmd(AGameObject context){
+        setChanged();
+        notifyObservers(new CollisonCmd(context));
+    }
+
     /**
      * Read initialization from a 2D array and add all necessary objects as observers.
      */
@@ -202,7 +207,8 @@ public class DispatchAdapter extends Observable {
      * Call the update method on all observers to update their position in the game.
      */
     public void updatePacWorld() {
-
+        setChanged();
+        notifyObservers(new UpdateCmd(this));
     }
 
     /**

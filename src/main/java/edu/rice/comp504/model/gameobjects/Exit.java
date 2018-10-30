@@ -19,4 +19,12 @@ public class Exit extends AGameObject {
         super(loc,"exit", DispatchAdapter.getGridSize());
         this.exitTo = exitTo;
     }
+    
+    public Point getExitTo(){
+        return this.exitTo;
+    }
+    
+    public void setExitTo(Point exitTo){
+        this.exitTo = exitTo;
+    }
 }
