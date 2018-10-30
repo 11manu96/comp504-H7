@@ -102,10 +102,6 @@ public class DispatchAdapter extends Observable {
         this.afraidTimer = afraidTimer;
     }
 
-    public void sendCollisionCmd(AGameObject context){
-        setChanged();
-        notifyObservers(new CollisionCmd(context));
-    }
 
     /**
      * Read initialization from a 2D array and add all necessary objects as observers.
@@ -215,6 +211,12 @@ public class DispatchAdapter extends Observable {
         notifyObservers(new UpdateCmd(this));
     }
 
+
+    public void sendCollisionCmd(AGameObject context){
+        setChanged();
+        notifyObservers(new CollisionCmd(context));
+    }
+
     /**
      * Switch Pacman direction.
      * @param body The request body
@@ -224,16 +226,16 @@ public class DispatchAdapter extends Observable {
         String keyCode = body.split("=")[1];
         switch(keyCode) {
             case "37":
-                switchCmd = new SwitchCmd((Object)"left");
+                switchCmd = new SwitchCmd("left");
                 break;
             case "38":
-                switchCmd = new SwitchCmd((Object)"up");
+                switchCmd = new SwitchCmd("up");
                 break;
             case "39":
-                switchCmd = new SwitchCmd((Object)"right");
+                switchCmd = new SwitchCmd("right");
                 break;
             case "40":
-                switchCmd = new SwitchCmd((Object)"down");
+                switchCmd = new SwitchCmd("down");
                 break;
             default:
                 break;

@@ -18,7 +18,7 @@ public class Pacman extends ACharacter {
      * @param loc pacman location
      */
     private Pacman(Point loc) {
-        super(loc, "pacman", new Point(0,1), PacmanUpdateStrategy.makeStrategy(), PacmanInteraction.makeStrategy(), DispatchAdapter.getGridSize());
+        super(loc, "pacman", new Point(0,0), PacmanUpdateStrategy.makeStrategy(), PacmanInteraction.makeStrategy(), DispatchAdapter.getGridSize());
     }
 
     /**
