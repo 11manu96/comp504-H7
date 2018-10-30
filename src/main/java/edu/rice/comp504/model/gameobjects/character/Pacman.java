@@ -51,30 +51,27 @@ public class Pacman extends ACharacter {
          *   |     no 3
          *  [ ]
          */
-        if(gameObjLoc.getX() + gameObjSize > pacmanLoc.getX() + pacmanSize
-                && pacmanLoc.getX() + pacmanSize >  gameObjLoc.getX()
+
+        if(pacmanLoc.getX() + pacmanSize == gameObjLoc.getX()
                 && pacmanLoc.getY() - pacmanSize == gameObjLoc.getY()
                 && pacmanLoc.getY() + pacmanSize == gameObjLoc.getY() + gameObjSize
                 && pacmanVel.getX() > 0){
 
             return true;
-        }else if(gameObjLoc.getX() < pacmanLoc.getX() - pacmanSize
-                && pacmanLoc.getX() - pacmanSize < gameObjLoc.getX()+gameObjSize
+        }else if(pacmanLoc.getX() - pacmanSize == gameObjLoc.getX()+gameObjSize
                 && pacmanLoc.getY() - pacmanSize == gameObjLoc.getY()
                 && pacmanLoc.getY() + pacmanSize == gameObjLoc.getY() + gameObjSize
                 && pacmanVel.getX() < 0){
 
             return true;
-        }else if(pacmanLoc.getY() + pacmanSize < gameObjLoc.getY() + gameObjSize
-                && pacmanLoc.getY() + pacmanSize > gameObjLoc.getY()
+        }else if(pacmanLoc.getY() + pacmanSize == gameObjLoc.getY()
                 && pacmanLoc.getX() + pacmanSize == gameObjLoc.getX() + gameObjSize
                 &&  pacmanLoc.getX() - pacmanSize == gameObjLoc.getX()
                 && pacmanVel.getY() > 0){
             return true;
-        }else return pacmanLoc.getY() - pacmanSize > gameObjLoc.getY()
+        }else return pacmanLoc.getY() - pacmanSize == gameObjLoc.getY() + gameObjSize
                 && pacmanLoc.getX() + pacmanSize == gameObjLoc.getX() + gameObjSize
                 && pacmanLoc.getX() - pacmanSize == gameObjLoc.getX()
-                && pacmanLoc.getY() - pacmanSize < gameObjLoc.getY() + gameObjSize
                 && pacmanVel.getY() < 0;
 
     }

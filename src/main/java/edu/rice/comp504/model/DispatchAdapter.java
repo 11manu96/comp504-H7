@@ -131,7 +131,11 @@ public class DispatchAdapter extends Observable {
                         object = new Wall(objLoc);
                         break;
                     case 2: // exit
-                        object = new Exit(objLoc, new Point(getCanvasDims().x - objLoc.x, objLoc.y));
+                        Exit exit = new Exit(objLoc,
+                                new Point(getCanvasDims().x - (objLoc.x + DispatchAdapter.gridSize/2), objLoc.y + DispatchAdapter.gridSize/2));
+                        System.out.println(objLoc + "   " + exit.getExitTo());
+                        object = exit;
+
                         break;
                     case 3: // pacman
                         object = Pacman.getInstance(new Point(x * DispatchAdapter.gridSize + 10, y * DispatchAdapter.gridSize + 10));
@@ -226,16 +230,16 @@ public class DispatchAdapter extends Observable {
         String keyCode = body.split("=")[1];
         switch(keyCode) {
             case "37":
-                switchCmd = new SwitchCmd("left");
+                switchCmd = new SwitchCmd("left", this);
                 break;
             case "38":
-                switchCmd = new SwitchCmd("up");
+                switchCmd = new SwitchCmd("up", this);
                 break;
             case "39":
-                switchCmd = new SwitchCmd("right");
+                switchCmd = new SwitchCmd("right", this);
                 break;
             case "40":
-                switchCmd = new SwitchCmd("down");
+                switchCmd = new SwitchCmd("down", this);
                 break;
             default:
                 break;
@@ -243,6 +247,8 @@ public class DispatchAdapter extends Observable {
         setChanged();
         notifyObservers(switchCmd);
         clearChanged();
+
+
     }
 
 
