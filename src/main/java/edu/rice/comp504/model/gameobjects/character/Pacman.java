@@ -22,12 +22,16 @@ public class Pacman extends ACharacter {
                 PacmanUpdateStrategy.makeStrategy(), PacmanInteraction.makeStrategy(), DispatchAdapter.getGridSize());
     }
 
-    public static Pacman getInstance(Point loc) {
+    public static Pacman makePacman(Point loc) {
         if (pacman == null) {
             pacman = new Pacman(loc);
         } else {
             pacman.setLocation(loc);
         }
+        return pacman;
+    }
+
+    public static Pacman getInstance() {
         return pacman;
     }
 
@@ -45,8 +49,8 @@ public class Pacman extends ACharacter {
         Point gameObjLoc = gameObject.getLocation();
         int gameObjSize = gameObject.getSize() / 2;
 
-        int distX = (int) (pacmanLoc.getX() + pacmanVel.getX() - (gameObjLoc.getX() + DispatchAdapter.getGridSize() / 2));
-        int distY = (int) (pacmanLoc.getY() + pacmanVel.getY() - (gameObjLoc.getY() + DispatchAdapter.getGridSize() / 2));
+        int distX = pacmanLoc.x + pacmanVel.x - (gameObjLoc.x + DispatchAdapter.getGridSize() / 2);
+        int distY = pacmanLoc.y + pacmanVel.y - (gameObjLoc.y + DispatchAdapter.getGridSize() / 2);
         if ((Math.abs(distX) < pacmanSize + gameObjSize) && (Math.abs(distY) < pacmanSize + gameObjSize)) {
             return true;
         }

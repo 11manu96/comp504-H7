@@ -138,7 +138,7 @@ public class DispatchAdapter extends Observable {
 
                         break;
                     case 3: // pacman
-                        object = Pacman.getInstance(new Point(
+                        object = Pacman.makePacman(new Point(
                                 x * DispatchAdapter.gridSize + DispatchAdapter.gridSize / 2,
                                 y * DispatchAdapter.gridSize + DispatchAdapter.gridSize / 2));
                         break;
@@ -169,14 +169,10 @@ public class DispatchAdapter extends Observable {
                 }
 
                 if (object != null) {
-
                     addObserver(object);
-
                 }
             }
         }
-
-
     }
 
     /**
@@ -249,9 +245,5 @@ public class DispatchAdapter extends Observable {
         setChanged();
         notifyObservers(switchCmd);
         clearChanged();
-
-
     }
-
-
 }
