@@ -9,7 +9,7 @@ public class CollisionCmd implements IGameObjectCmd {
     private  AGameObject object;
 
     public CollisionCmd(AGameObject object){
-        this.object=object;
+        this.object = object;
     }
 
     public void execute(AGameObject context){

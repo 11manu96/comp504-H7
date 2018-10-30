@@ -10,13 +10,13 @@ import java.awt.*;
 public class UpdateCmd implements IGameObjectCmd{
 
     private DispatchAdapter dispatchAdapter;
-    public UpdateCmd(DispatchAdapter dispatchAdapter){
-        this.dispatchAdapter=dispatchAdapter;
+    public UpdateCmd(DispatchAdapter dispatchAdapter) {
+        this.dispatchAdapter = dispatchAdapter;
 
     }
-    public void execute(AGameObject context){
+    public void execute(AGameObject context) {
 
-        switch (context.getType()){
+        switch(context.getType()) {
 
             case "pacman":
 

@@ -1,7 +1,6 @@
 package edu.rice.comp504.model.cmd;
 
 import edu.rice.comp504.model.gameobjects.AGameObject;
-import edu.rice.comp504.model.gameobjects.character.ACharacter;
 import edu.rice.comp504.model.gameobjects.character.Ghost;
 import edu.rice.comp504.model.gameobjects.character.Pacman;
 import edu.rice.comp504.model.strategy.update.IUpdateStrategy;
@@ -10,14 +9,14 @@ import java.awt.*;
 
 public class SwitchCmd implements IGameObjectCmd {
 
-    Object dirOrStrat;
+    String switchInfo;
 
     /**
      * Constructor
-     * @param dirOrStrat switch to which direction
+     * @param switchInfo information on what to switch to
      */
-    public SwitchCmd(Object dirOrStrat) {
-        this.dirOrStrat = dirOrStrat;
+    public SwitchCmd(String switchInfo) {
+        this.switchInfo = switchInfo;
     }
 
     /**
@@ -33,18 +32,18 @@ public class SwitchCmd implements IGameObjectCmd {
             System.out.println("pacman");
             Pacman pacman = (Pacman) context;
 
-            switch ((String)dirOrStrat) {
+            switch (switchInfo) {
                 case "left":
-                    pacman.setVel(new Point(0, -1));
+                    pacman.setVel(new Point(-20, 0));
                     break;
                 case "right":
-                    pacman.setVel(new Point(0, 1));
+                    pacman.setVel(new Point(20, 0));
                     break;
                 case "up":
-                    pacman.setVel(new Point(-1, 0));
+                    pacman.setVel(new Point(0, -20));
                     break;
                 case "down":
-                    pacman.setVel(new Point(1, 0));
+                    pacman.setVel(new Point(0, 20));
                     break;
                 default:
                     break;
@@ -54,7 +53,7 @@ public class SwitchCmd implements IGameObjectCmd {
         }
         else if (type.equals("ghost")) {
             Ghost ghost = (Ghost) context;
-            ghost.setUpdateStrategy((IUpdateStrategy)dirOrStrat);
+
 
         }
 
