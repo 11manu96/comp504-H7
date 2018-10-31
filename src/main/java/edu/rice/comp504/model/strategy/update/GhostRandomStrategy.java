@@ -20,15 +20,13 @@ public class GhostRandomStrategy implements IUpdateStrategy {
         return singletonghostrandom;
     }
 
-    @Override
     public String getName() {
         return "ghost_random";
     }
 
-    @Override
     public void update(AGameObject ghost) {
         int veldirection = generateVelDirection();
-        Point vel=null;
+        Point vel = null;
         switch (veldirection) {
             case 1:
                 vel = new Point(20,0);
@@ -45,9 +43,10 @@ public class GhostRandomStrategy implements IUpdateStrategy {
             default:
                 break;
         }
+        ((Ghost) ghost).setVel(vel);
         Point loc = ghost.getLocation();
-        loc.x = vel.x+loc.x;
-        loc.y = vel.y+loc.y;
+        loc.x = vel.x + loc.x;
+        loc.y = vel.y + loc.y;
         ghost.setLocation(loc);
     }
     private int generateVelDirection(){
