@@ -6,13 +6,13 @@ import edu.rice.comp504.model.gameobjects.character.ACharacter;
 
 import java.awt.*;
 
-public class PacmanInteraction implements IInteractStrategy {
+public class GhostInteraction implements IInteractStrategy {
     private static IInteractStrategy singleton;
 
     /**
      * Constructor
      */
-    public PacmanInteraction(){}
+    public GhostInteraction(){}
 
     /**
      * Make a strategy.  There is only one (singleton).
@@ -20,7 +20,7 @@ public class PacmanInteraction implements IInteractStrategy {
      */
     public static IInteractStrategy makeStrategy() {
         if (singleton == null) {
-            singleton = new PacmanInteraction();
+            singleton = new GhostInteraction();
         }
 
         return singleton;
@@ -32,7 +32,7 @@ public class PacmanInteraction implements IInteractStrategy {
      */
     @Override
     public String getName() {
-        return "PacmanInteraction";
+        return "GhostInteraction";
     }
 
     /**
@@ -41,10 +41,10 @@ public class PacmanInteraction implements IInteractStrategy {
      * @param dest The dest object behavior will be affected by the src object interaction strategy
      */
     public void interact(AGameObject src, AGameObject dest){
-        ACharacter pacman=(ACharacter)src;
+        ACharacter ghost=(ACharacter)src;
         switch (dest.getType()){
-            case"wall":pacman.setVel(new Point(0,0));break;
-            case"exit":pacman.setLocation(((Exit)dest).getExitTo());break;
+            case"wall":ghost.setVel(new Point(0,0));break;
+            case"exit":ghost.setLocation(((Exit)dest).getExitTo());break;
         }
     }
 }

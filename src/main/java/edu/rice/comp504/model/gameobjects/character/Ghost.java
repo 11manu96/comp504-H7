@@ -68,6 +68,30 @@ public class Ghost extends ACharacter {
      * @return whether there was collision
      */
     public boolean collision(AGameObject gameObject) {
+        Point ghostLoc = this.getLocation();
+        int ghostSize = this.getSize()/2;
+        Point ghostVel = this.getVel();
+
+        Point gameObjLoc = gameObject.getLocation();
+        int gameObjSize = gameObject.getSize()/2;
+
+        // left collision
+        if ((ghostVel.x < 0) && ((ghostLoc.x - ghostSize) <= gameObjLoc.x+gameObjSize)) {
+            return true;
+        }
+        // right collision
+        else if ((ghostVel.x > 0) && ((ghostLoc.x + ghostSize) >= gameObjLoc.x-gameObjSize)) {
+            return true;
+        }
+        // top collision
+        if ((ghostVel.y < 0) && ((ghostLoc.y - ghostSize) <= gameObjLoc.y+gameObjSize)) {
+            return true;
+        }
+        // bottom collision
+        else if ((ghostVel.y > 0) && ((ghostLoc.y + ghostSize) >= gameObjLoc.y-gameObjSize)) {
+            return true;
+        }
+
         return false;
     }
 }
