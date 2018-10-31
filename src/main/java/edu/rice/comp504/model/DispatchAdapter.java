@@ -4,6 +4,7 @@ import edu.rice.comp504.model.cmd.*;
 import edu.rice.comp504.model.gameobjects.*;
 import edu.rice.comp504.model.gameobjects.character.*;
 import edu.rice.comp504.model.gameobjects.food.*;
+import edu.rice.comp504.model.strategy.update.GhostRandomStrategy;
 
 import java.awt.*;
 import java.util.Observable;
@@ -131,23 +132,28 @@ public class DispatchAdapter extends Observable {
                         object = new Wall(objLoc);
                         break;
                     case 2: // exit
-                        object = new Exit(objLoc, new Point(getCanvasDims().x - objLoc.x, objLoc.y));
+                        Exit exit = new Exit(objLoc,
+                                new Point(getCanvasDims().x - objLoc.x, objLoc.y));
+                        object = exit;
+
                         break;
                     case 3: // pacman
-                        object = Pacman.getInstance(new Point(x * DispatchAdapter.gridSize + 10, y * DispatchAdapter.gridSize + 10));
+                        object = Pacman.makePacman(new Point(
+                                x * DispatchAdapter.gridSize + DispatchAdapter.gridSize / 2,
+                                y * DispatchAdapter.gridSize + DispatchAdapter.gridSize / 2));
                         break;
 
                     case 4: // ghost1
-                        object = new Ghost(objLoc, null, "red");
+                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "red");
                         break;
                     case 5: // ghost2
-                        object = new Ghost(objLoc, null, "pink");
+                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "pink");
                         break;
                     case 6: // ghost3
-                        object = new Ghost(objLoc, null, "orange");
+                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "orange");
                         break;
                     case 7: // ghost4
-                        object = new Ghost(objLoc, null, "blue");
+                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "blue");
                         break;
 
                     case 8: // smallDot
@@ -163,14 +169,10 @@ public class DispatchAdapter extends Observable {
                 }
 
                 if (object != null) {
-
                     addObserver(object);
-
                 }
             }
         }
-
-
     }
 
     /**
@@ -226,16 +228,16 @@ public class DispatchAdapter extends Observable {
         String keyCode = body.split("=")[1];
         switch(keyCode) {
             case "37":
-                switchCmd = new SwitchCmd("left");
+                switchCmd = new SwitchCmd("left", this);
                 break;
             case "38":
-                switchCmd = new SwitchCmd("up");
+                switchCmd = new SwitchCmd("up", this);
                 break;
             case "39":
-                switchCmd = new SwitchCmd("right");
+                switchCmd = new SwitchCmd("right", this);
                 break;
             case "40":
-                switchCmd = new SwitchCmd("down");
+                switchCmd = new SwitchCmd("down", this);
                 break;
             default:
                 break;
@@ -244,6 +246,4 @@ public class DispatchAdapter extends Observable {
         notifyObservers(switchCmd);
         clearChanged();
     }
-
-
 }
