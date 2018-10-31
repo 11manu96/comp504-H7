@@ -45,7 +45,7 @@ function createApp(canvas) {
 
     // draw a dot
     var drawDot = function(x, y, size) {
-        c.fillStyle = "black";
+        c.fillStyle = "gold";
         c.beginPath();
         c.arc(x + 10, y + 10, size/2, 0, 2 * Math.PI, false);
         c.closePath();
@@ -54,13 +54,13 @@ function createApp(canvas) {
 
     // draw a wall
     var drawWall = function(startX, startY, size) {
-        c.fillStyle = "black";
+        c.fillStyle = "blue";
         c.fillRect(startX, startY, size, size)
     };
 
     // draw an exit
     var drawExit = function (startX,startY,size) {
-        c.fillStyle = "white";
+        c.fillStyle = "black";
         c.fillRect(startX, startY, size, size)
     };
 
@@ -74,10 +74,10 @@ function createApp(canvas) {
 
     // draw Pacman
     var drawPacMan = function(x, y, size) {
+        c.fillStyle = "yellow";
         var mouth = Math.abs(frameCount % 90 - 45);
         c.beginPath();
         c.arc(x, y, size/2, mouth/180 * Math.PI, (mouth/180+1)* Math.PI, false);
-        c.fillStyle = "yellow";
         c.fill();
         c.beginPath();
         c.arc(x, y, size/2, -(mouth/180+1) * Math.PI, -(mouth/180) * Math.PI, false);
@@ -87,11 +87,14 @@ function createApp(canvas) {
     // clear canvas
     var clear = function() {
         c.clearRect(0, 0, canvas.width, canvas.height);
+        c.fillStyle = "black";
+        c.fillRect(0, 0, canvas.width, canvas.height - 30);
     };
 
     // draw score and lives
     var drawScore = function(score, lives) {
         c.font = "20px Arial";
+        c.fillStyle = "black";
         c.fillText(score, 10, 360 );
         c.fillText(lives, 450, 360);
 
