@@ -9,7 +9,7 @@ import edu.rice.comp504.model.strategy.update.IUpdateStrategy;
 import java.awt.*;
 
 /**
- * This command implementing IGameObjectCmd switches the strategy for a pacman or a ghost
+ * This command implementing IGameObjectCmd switches the strategy for a pacman or a ghost.
  */
 public class SwitchCmd implements IGameObjectCmd {
 
