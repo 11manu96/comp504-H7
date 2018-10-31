@@ -10,10 +10,12 @@ import java.util.Random;
 public class GhostRandomStrategy implements IUpdateStrategy {
     private static GhostRandomStrategy singletonghostrandom;
 
-    private GhostRandomStrategy(){}
+    private GhostRandomStrategy() {
 
-    public static IUpdateStrategy makeStrategy(){
-        if (singletonghostrandom == null){
+    }
+
+    public static IUpdateStrategy makeStrategy() {
+        if (singletonghostrandom == null) {
             singletonghostrandom = new GhostRandomStrategy();
 
         }
@@ -49,9 +51,9 @@ public class GhostRandomStrategy implements IUpdateStrategy {
         loc.y = vel.y + loc.y;
         ghost.setLocation(loc);
     }
-    private int generateVelDirection(){
-        Random random=new Random();
-        return random.nextInt(4)+1;
+    private int generateVelDirection() {
+        Random random = new Random();
+        return random.nextInt(4) + 1;
     }
 
 }

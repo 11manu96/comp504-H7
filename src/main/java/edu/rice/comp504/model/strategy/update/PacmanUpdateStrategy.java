@@ -8,10 +8,10 @@ import edu.rice.comp504.model.gameobjects.character.Pacman;
 import java.awt.*;
 
 /**
- * This strategy implementing IUpdateStrategy is for updating of a single objects.
+ * This strategy implementing IUpdateStrategy is for updating Pacman.
  */
 public class PacmanUpdateStrategy implements IUpdateStrategy{
-    private static PacmanUpdateStrategy SingletonPacmanUpdate;
+    private static PacmanUpdateStrategy singletonPacmanUpdate;
 
     /**
      * Constructor.
@@ -19,27 +19,27 @@ public class PacmanUpdateStrategy implements IUpdateStrategy{
     private PacmanUpdateStrategy(){}
 
     /**
-     * Make a strategy.  There is a singleton.
-     * @return an update strategy.
+     * Initialize or retrieve Pacman update strategy singleton.
+     * @return an update strategy
      */
     public static IUpdateStrategy makeStrategy() {
-        if (SingletonPacmanUpdate == null){
-            SingletonPacmanUpdate = new PacmanUpdateStrategy();
+        if (singletonPacmanUpdate == null){
+            singletonPacmanUpdate = new PacmanUpdateStrategy();
         }
-        return SingletonPacmanUpdate;
+        return singletonPacmanUpdate;
     }
 
     /**
      * Get the strategy name.
-     * @return the strategy name.
+     * @return the strategy name
      */
     public String getName() {
         return "pacman_update";
     }
 
     /**
-     * Update the status of the object.
-     * @param pacman the object to be updated.
+     * Update Pacman state.
+     * @param pacman the object to be updated
      */
     public void update(AGameObject pacman) {
         Point vel = ((Pacman) pacman).getVel();
