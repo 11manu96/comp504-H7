@@ -77,8 +77,8 @@ public class Ghost extends ACharacter {
         Point gameObjLoc = gameObject.getLocation();
         int gameObjSize = gameObject.getSize() / 2;
 
-        int distX = ghostLoc.x + DispatchAdapter.getGridSize() / 2+ghostVel.x - (gameObjLoc.x + DispatchAdapter.getGridSize() / 2);
-        int distY = ghostLoc.y + DispatchAdapter.getGridSize() / 2+ghostVel.y - (gameObjLoc.y + DispatchAdapter.getGridSize() / 2);
+        int distX = ghostLoc.x + DispatchAdapter.getGridSize() / 2 + ghostVel.x - (gameObjLoc.x + DispatchAdapter.getGridSize() / 2);
+        int distY = ghostLoc.y + DispatchAdapter.getGridSize() / 2 + ghostVel.y - (gameObjLoc.y + DispatchAdapter.getGridSize() / 2);
         if ((Math.abs(distX) < ghostSize + gameObjSize) && (Math.abs(distY) < ghostSize + gameObjSize)) {
             return true;
         }

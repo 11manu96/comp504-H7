@@ -51,7 +51,7 @@ public class Pacman extends ACharacter {
 
         int distX = pacmanLoc.x + pacmanVel.x - (gameObjLoc.x + DispatchAdapter.getGridSize() / 2);
         int distY = pacmanLoc.y + pacmanVel.y - (gameObjLoc.y + DispatchAdapter.getGridSize() / 2);
-        if ((Math.abs(distX) < pacmanSize + gameObjSize)&& (Math.abs(distY) < pacmanSize + gameObjSize)) {
+        if ((Math.abs(distX) < pacmanSize + gameObjSize) && (Math.abs(distY) < pacmanSize + gameObjSize)) {
             return true;
         }
         return false;

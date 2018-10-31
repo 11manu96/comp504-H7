@@ -76,8 +76,8 @@ public class DispatchAdapterTest extends TestCase {
         adapter.addObserver(new Wall(new Point(ghostX, ghostY - 20)));
 
         adapter.updatePacWorld();
-//        assertEquals("Check ghost x location after wall collision", ghostX, ghost.getLocation().x);
-//        assertEquals("Check ghost y location after wall collision", ghostY, ghost.getLocation().y);
+        assertEquals("Check ghost x location after wall collision", ghostX, ghost.getLocation().x);
+        assertEquals("Check ghost y location after wall collision", ghostY, ghost.getLocation().y);
 
         // test ghost exit collision
         adapter.deleteObservers();
@@ -94,8 +94,8 @@ public class DispatchAdapterTest extends TestCase {
         adapter.addObserver(new Exit(new Point(ghostX, ghostY - 20), new Point(0, 160)));
 
         adapter.updatePacWorld();
-//        assertEquals("Check ghost x location after exit collision", 20, ghost.getLocation().x);
-//        assertEquals("Check ghost y location after exit collision", 160, ghost.getLocation().y);
+        assertEquals("Check ghost x location after exit collision", 20, ghost.getLocation().x);
+        assertEquals("Check ghost y location after exit collision", 160, ghost.getLocation().y);
     }
 
     public void testSwitchDirection() {

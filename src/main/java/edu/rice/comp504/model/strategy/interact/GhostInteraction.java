@@ -51,8 +51,7 @@ public class GhostInteraction implements IInteractStrategy {
                 break;
             case "exit":
                 Point newLoc = ((Exit) dest).getExitTo();
-                ghost.setLocation(new Point(newLoc.x + DispatchAdapter.getGridSize() / 2,
-                        newLoc.y + DispatchAdapter.getGridSize() / 2));
+                ghost.setLocation(new Point(newLoc.x, newLoc.y));
                 break;
         }
     }

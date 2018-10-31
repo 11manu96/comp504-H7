@@ -25,29 +25,32 @@ public class GhostRandomStrategy implements IUpdateStrategy {
     }
 
     public void update(AGameObject ghost) {
-        int veldirection = generateVelDirection();
-        Point vel = null;
-        switch (veldirection) {
-            case 1:
-                vel = new Point(20,0);
-                break;
-            case 2:
-                vel = new Point(-20,0);
-                break;
-            case 3:
-                vel = new Point(0,20);
-                break;
-            case 4:
-                vel = new Point(0,-20);
-                break;
-            default:
-                break;
-        }
-        ((Ghost) ghost).setVel(vel);
+        Point vel = ((Ghost) ghost).getVel();
         Point loc = ghost.getLocation();
         loc.x = vel.x + loc.x;
         loc.y = vel.y + loc.y;
         ghost.setLocation(loc);
+
+        int veldirection = generateVelDirection();
+        Point newvVel = null;
+        switch (veldirection) {
+            case 1:
+                newvVel = new Point(20,0);
+                break;
+            case 2:
+                newvVel = new Point(-20,0);
+                break;
+            case 3:
+                newvVel = new Point(0,20);
+                break;
+            case 4:
+                newvVel = new Point(0,-20);
+                break;
+            default:
+                break;
+        }
+        ((Ghost) ghost).setVel(newvVel);
+
     }
     private int generateVelDirection(){
         Random random=new Random();
