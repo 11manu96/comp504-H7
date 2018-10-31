@@ -4,7 +4,6 @@ import edu.rice.comp504.model.DispatchAdapter;
 import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.character.Ghost;
 import edu.rice.comp504.model.gameobjects.character.Pacman;
-import edu.rice.comp504.model.strategy.update.IUpdateStrategy;
 
 import java.awt.*;
 
@@ -17,7 +16,7 @@ public class SwitchCmd implements IGameObjectCmd {
     DispatchAdapter dis;
 
     /**
-     * Constructor
+     * Constructor.
      * @param switchInfo information on what to switch to
      */
     public SwitchCmd(String switchInfo, DispatchAdapter dis) {
@@ -27,14 +26,13 @@ public class SwitchCmd implements IGameObjectCmd {
 
     /**
      * Execute the command.
-     * @param context The receiver gameobj.
+     * @param context The receiver gameobj
      */
     public void execute(AGameObject context) {
 
         String type = context.getType();
 
         if (type.equals("pacman")) {
-
             Pacman pacman = (Pacman) context;
 
             // receive from the front end
@@ -54,13 +52,10 @@ public class SwitchCmd implements IGameObjectCmd {
                 default:
                     break;
             }
-
             dis.sendCollisionCmd(context);
-
         }
         else if (type.equals("ghost")) {
             Ghost ghost = (Ghost) context;
-
 
         }
 

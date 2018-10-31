@@ -8,7 +8,7 @@ import edu.rice.comp504.model.gameobjects.character.Pacman;
 import java.awt.*;
 
 /**
- * This command implementing IGameObjectCmd updates the status of a pacman or ghost.
+ * This command implementing IGameObjectCmd updates the state of a pacman or ghost.
  */
 public class UpdateCmd implements IGameObjectCmd{
 
@@ -16,7 +16,7 @@ public class UpdateCmd implements IGameObjectCmd{
 
     /**
      * Constructor.
-     * @param dispatchAdapter communicate with dispatchAdapter.
+     * @param dispatchAdapter communicate with dispatchAdapter
      */
     public UpdateCmd(DispatchAdapter dispatchAdapter) {
         this.dispatchAdapter = dispatchAdapter;
@@ -24,12 +24,12 @@ public class UpdateCmd implements IGameObjectCmd{
     }
 
     /**
-     * Excute the command
-     * @param context  The receiver that will execute the command.
+     * Excute the command.
+     * @param context The receiver that will execute the command
      */
     public void execute(AGameObject context) {
 
-        switch(context.getType()) {
+        switch (context.getType()) {
 
             case "pacman":
                 dispatchAdapter.sendCollisionCmd(context);
