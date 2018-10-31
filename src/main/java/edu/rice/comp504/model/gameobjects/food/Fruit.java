@@ -25,7 +25,7 @@ public class Fruit extends AFood {
         this.emptyPositionsList = new ArrayList<Point>();
     }
 
-    public static Fruit makeFruit(Point loc){
+    public static Fruit makeFruit(Point loc) {
         if (fruit == null) {
             fruit = new Fruit(loc);
         } else {
