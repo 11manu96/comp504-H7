@@ -22,9 +22,9 @@ public class PacmanUpdateStrategy implements IUpdateStrategy{
      * Make a strategy.  There is a singleton.
      * @return an update strategy.
      */
-    public static IUpdateStrategy makeStrategy(){
-        if (SingletonPacmanUpdate==null){
-            SingletonPacmanUpdate=new PacmanUpdateStrategy();
+    public static IUpdateStrategy makeStrategy() {
+        if (SingletonPacmanUpdate == null){
+            SingletonPacmanUpdate = new PacmanUpdateStrategy();
         }
         return SingletonPacmanUpdate;
     }
@@ -33,7 +33,7 @@ public class PacmanUpdateStrategy implements IUpdateStrategy{
      * Get the strategy name.
      * @return the strategy name.
      */
-    public String getName(){
+    public String getName() {
         return "pacman_update";
     }
 
@@ -41,11 +41,11 @@ public class PacmanUpdateStrategy implements IUpdateStrategy{
      * Update the status of the object.
      * @param pacman the object to be updated.
      */
-    public void update(AGameObject pacman){
-        Point vel=((Pacman)pacman).getVel();
-        Point loc=pacman.getLocation();
-        loc.x=vel.x+loc.x;
-        loc.y=vel.y+loc.y;
+    public void update(AGameObject pacman) {
+        Point vel = ((Pacman) pacman).getVel();
+        Point loc = pacman.getLocation();
+        loc.x = vel.x + loc.x;
+        loc.y = vel.y + loc.y;
         pacman.setLocation(loc);
     }
 
