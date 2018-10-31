@@ -5,7 +5,9 @@ import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.character.ACharacter;
 import edu.rice.comp504.model.gameobjects.character.Ghost;
 
-
+/**
+ * This command implementing IGameObjectCmd executes the strategy when two objects meet.
+ */
 public class CollisionCmd implements IGameObjectCmd {
     private  AGameObject object;
 

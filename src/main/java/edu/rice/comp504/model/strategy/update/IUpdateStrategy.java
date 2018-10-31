@@ -8,13 +8,13 @@ import edu.rice.comp504.model.gameobjects.AGameObject;
 public interface IUpdateStrategy {
     /**
      * Get the interaction update name.
-     * @return The interaction update name
+     * @return The interaction update name.
      */
     public String getName();
 
     /**
      * Update the state of a game object.
-     * @param context game object to update
+     * @param context game object to update.
      */
     public void update(AGameObject context);
 }
