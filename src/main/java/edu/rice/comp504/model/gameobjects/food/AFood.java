@@ -20,4 +20,8 @@ public abstract class AFood extends AGameObject {
         super(loc, type, size);
         this.points = points;
     }
+
+    public int getPoints() {
+        return this.points;
+    }
 }
