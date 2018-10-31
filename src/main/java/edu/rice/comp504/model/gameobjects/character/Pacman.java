@@ -17,14 +17,14 @@ public class Pacman extends ACharacter {
      * Constructor for Pacman.
      * @param loc pacman location
      */
-    private Pacman(Point loc) {
+    private Pacman(Point loc, DispatchAdapter dis) {
         super(loc, "pacman", new Point(0,0),
-                PacmanUpdateStrategy.makeStrategy(), PacmanInteraction.makeStrategy(), DispatchAdapter.getGridSize());
+                PacmanUpdateStrategy.makeStrategy(), PacmanInteraction.makeStrategy(dis), DispatchAdapter.getGridSize());
     }
 
-    public static Pacman makePacman(Point loc) {
+    public static Pacman makePacman(Point loc, DispatchAdapter dis) {
         if (pacman == null) {
-            pacman = new Pacman(loc);
+            pacman = new Pacman(loc, dis);
         } else {
             pacman.setLocation(loc);
         }

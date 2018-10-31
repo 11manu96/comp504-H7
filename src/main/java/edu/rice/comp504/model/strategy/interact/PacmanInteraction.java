@@ -4,6 +4,7 @@ import edu.rice.comp504.model.DispatchAdapter;
 import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.Exit;
 import edu.rice.comp504.model.gameobjects.character.ACharacter;
+import edu.rice.comp504.model.gameobjects.food.AFood;
 
 import java.awt.*;
 
@@ -12,19 +13,22 @@ import java.awt.*;
  */
 public class PacmanInteraction implements IInteractStrategy {
     private static IInteractStrategy singleton;
+    private static DispatchAdapter dis;
 
     /**
      * Constructor.
      */
-    public PacmanInteraction() {}
+    public PacmanInteraction(DispatchAdapter dis) {
+        this.dis = dis;
+    }
 
     /**
      * Initialize or retrieve Pacman interaction strategy singleton.
      * @return an interact strategy
      */
-    public static IInteractStrategy makeStrategy() {
+    public static IInteractStrategy makeStrategy(DispatchAdapter dis) {
         if (singleton == null) {
-            singleton = new PacmanInteraction();
+            singleton = new PacmanInteraction(dis);
         }
 
         return singleton;
@@ -54,6 +58,23 @@ public class PacmanInteraction implements IInteractStrategy {
                 pacman.setLocation(new Point(newLoc.x + DispatchAdapter.getGridSize() / 2,
                         newLoc.y + DispatchAdapter.getGridSize() / 2));
                 break;
+            case "small_dot":
+                dis.deleteObserver(dest);
+                AFood smallDot = (AFood)dest;
+                dis.setScore(dis.getScore() + smallDot.getPoints());
+                break;
+            case "big_dot":
+                dis.deleteObserver(dest);
+                AFood bigDot = (AFood)dest;
+                dis.setScore(dis.getScore() + bigDot.getPoints());
+                dis.setAfraidTimer(30);
+                break;
+            case "fruit":
+                dis.deleteObserver(dest);
+                AFood fruit = (AFood)dest;
+                dis.setScore(dis.getScore() + fruit.getPoints());
+                break;
+
         }
     }
 }
