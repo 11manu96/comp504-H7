@@ -1,8 +1,7 @@
 package edu.rice.comp504.model.gameobjects;
 
 import edu.rice.comp504.model.cmd.IGameObjectCmd;
-import edu.rice.comp504.model.cmd.SwitchCmd;
-import jdk.nashorn.internal.ir.annotations.Ignore;
+
 
 import java.awt.*;
 import java.util.Observable;

@@ -27,7 +27,7 @@ public class GhostRandomStrategy implements IUpdateStrategy {
 
     @Override
     public void update(AGameObject ghost) {
-        int veldirection=GenerateVelDirection();
+        int veldirection = generateVelDirection();
         Point vel=null;
         switch (veldirection) {
             case 1:
@@ -50,7 +50,7 @@ public class GhostRandomStrategy implements IUpdateStrategy {
         loc.y = vel.y+loc.y;
         ghost.setLocation(loc);
     }
-    private int GenerateVelDirection(){
+    private int generateVelDirection(){
         Random random=new Random();
         return random.nextInt(4)+1;
     }
