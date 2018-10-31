@@ -60,21 +60,15 @@ public class DispatchAdapterTest extends TestCase {
         ghost.setVel(new Point(20, 0));
         adapter.updatePacWorld();
         assertEquals("Check ghost x location after move",
-                ghostX + ghost.getVel().x, ghost.getLocation().x);
+                ghostX + 20, ghost.getLocation().x);
         assertEquals("Check ghost y location after move",
-                ghostY + ghost.getVel().y, ghost.getLocation().y);
+                ghostY, ghost.getLocation().y);
 
         // test ghost wall collision
         ghostX = ghost.getLocation().x;
         ghostY = ghost.getLocation().y;
         ghost.setVel(new Point(20, 0));
-
-        // add walls around ghost since ghost moves randomly
         adapter.addObserver(new Wall(new Point(ghostX + 20, ghostY)));
-        adapter.addObserver(new Wall(new Point(ghostX - 20, ghostY)));
-        adapter.addObserver(new Wall(new Point(ghostX, ghostY + 20)));
-        adapter.addObserver(new Wall(new Point(ghostX, ghostY - 20)));
-
         adapter.updatePacWorld();
         assertEquals("Check ghost x location after wall collision", ghostX, ghost.getLocation().x);
         assertEquals("Check ghost y location after wall collision", ghostY, ghost.getLocation().y);
@@ -86,13 +80,7 @@ public class DispatchAdapterTest extends TestCase {
         ghostX = ghost.getLocation().x;
         ghostY = ghost.getLocation().y;
         ghost.setVel(new Point(20, 0));
-
-        // add exits around ghost since ghost moves randomly
         adapter.addObserver(new Exit(new Point(ghostX + 20, ghostY), new Point(0, 160)));
-        adapter.addObserver(new Exit(new Point(ghostX - 20, ghostY), new Point(0, 160)));
-        adapter.addObserver(new Exit(new Point(ghostX, ghostY + 20), new Point(0, 160)));
-        adapter.addObserver(new Exit(new Point(ghostX, ghostY - 20), new Point(0, 160)));
-
         adapter.updatePacWorld();
         assertEquals("Check ghost x location after exit collision", 20, ghost.getLocation().x);
         assertEquals("Check ghost y location after exit collision", 160, ghost.getLocation().y);

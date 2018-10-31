@@ -34,24 +34,24 @@ public class GhostRandomStrategy implements IUpdateStrategy {
         ghost.setLocation(loc);
 
         int veldirection = generateVelDirection();
-        Point newvVel = null;
+        Point newVel = null;
         switch (veldirection) {
             case 1:
-                newvVel = new Point(20,0);
+                newVel = new Point(20,0);
                 break;
             case 2:
-                newvVel = new Point(-20,0);
+                newVel = new Point(-20,0);
                 break;
             case 3:
-                newvVel = new Point(0,20);
+                newVel = new Point(0,20);
                 break;
             case 4:
-                newvVel = new Point(0,-20);
+                newVel = new Point(0,-20);
                 break;
             default:
                 break;
         }
-        ((Ghost) ghost).setVel(newvVel);
+        ((Ghost) ghost).setVel(newVel);
 
     }
     private int generateVelDirection() {
