@@ -52,7 +52,6 @@ public class SwitchCmd implements IGameObjectCmd {
                 default:
                     break;
             }
-            dis.sendCollisionCmd(context);
         }
         else if (type.equals("ghost")) {
             Ghost ghost = (Ghost) context;

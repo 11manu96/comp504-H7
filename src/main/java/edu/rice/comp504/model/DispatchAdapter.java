@@ -133,7 +133,7 @@ public class DispatchAdapter extends Observable {
                         break;
                     case 2: // exit
                         Exit exit = new Exit(objLoc,
-                                new Point(getCanvasDims().x - objLoc.x, objLoc.y));
+                                new Point(getCanvasDims().x - DispatchAdapter.gridSize - objLoc.x, objLoc.y));
                         object = exit;
 
                         break;
