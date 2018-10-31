@@ -1,5 +1,7 @@
 package edu.rice.comp504.model;
 
+import edu.rice.comp504.model.gameobjects.Exit;
+import edu.rice.comp504.model.gameobjects.Wall;
 import edu.rice.comp504.model.gameobjects.character.Pacman;
 import junit.framework.TestCase;
 
@@ -10,8 +12,10 @@ public class DispatchAdapterTest extends TestCase {
     public void testUpdatePacWorld() {
         DispatchAdapter adapter = new DispatchAdapter();
         adapter.setCanvasDims(new Point(540, 370));
-        adapter.initializeGame();
-        Pacman pacman = Pacman.getInstance();
+        Pacman pacman = Pacman.makePacman(new Point(270, 230));
+        adapter.addObserver(pacman);
+        adapter.addObserver(new Wall(new Point(280, 240)));
+        adapter.addObserver(new Exit(new Point(520, 160), new Point(0, 160)));
 
         // test Pacman movement
         int currentX = pacman.getLocation().x;
