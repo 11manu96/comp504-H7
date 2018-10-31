@@ -8,6 +8,9 @@ import edu.rice.comp504.model.strategy.update.IUpdateStrategy;
 
 import java.awt.*;
 
+/**
+ * This command implementing IGameObjectCmd switches the strategy for a pacman or a ghost.
+ */
 public class SwitchCmd implements IGameObjectCmd {
 
     String switchInfo;
@@ -30,12 +33,11 @@ public class SwitchCmd implements IGameObjectCmd {
 
         String type = context.getType();
 
-
         if (type.equals("pacman")) {
 
             Pacman pacman = (Pacman) context;
 
-
+            // receive from the front end
             switch (switchInfo) {
                 case "left":
                     pacman.setVel(new Point(-20, 0));
