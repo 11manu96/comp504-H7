@@ -4,6 +4,8 @@ import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.character.Ghost;
 
 import java.awt.*;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 
@@ -26,37 +28,22 @@ public class GhostRandomStrategy implements IUpdateStrategy {
         return "ghost_random";
     }
 
-    public void update(AGameObject ghost) {
-        Point vel = ((Ghost) ghost).getVel();
+    public void update(AGameObject gameObj) {
+        Ghost ghost = (Ghost) gameObj;
+        Point vel = ghost.getVel();
+        if (vel.x != 0 || vel.y != 0) {
+            ghost.setOpenSpaces();
+        }
         Point loc = ghost.getLocation();
         loc.x = vel.x + loc.x;
         loc.y = vel.y + loc.y;
         ghost.setLocation(loc);
 
-        int veldirection = generateVelDirection();
-        Point newVel = null;
-        switch (veldirection) {
-            case 1:
-                newVel = new Point(20,0);
-                break;
-            case 2:
-                newVel = new Point(-20,0);
-                break;
-            case 3:
-                newVel = new Point(0,20);
-                break;
-            case 4:
-                newVel = new Point(0,-20);
-                break;
-            default:
-                break;
-        }
-        ((Ghost) ghost).setVel(newVel);
+        // possible directions
+        List<Point> directions = ghost.getOpenSpaces();
+        // randomize directions list
+        Collections.shuffle(directions);
+        ghost.setVel(directions.get(0));
 
     }
-    private int generateVelDirection() {
-        Random random = new Random();
-        return random.nextInt(4) + 1;
-    }
-
 }

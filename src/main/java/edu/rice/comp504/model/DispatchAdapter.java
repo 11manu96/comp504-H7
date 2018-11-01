@@ -145,7 +145,7 @@ public class DispatchAdapter extends Observable {
                         break;
 
                     case 4: // ghost1
-                        object = new Ghost(objLoc, GhostAfraidStrategy.makeStrategy(), "red");
+                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "red");
                         break;
                     case 5: // ghost2
                         object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "pink");
@@ -215,9 +215,14 @@ public class DispatchAdapter extends Observable {
     }
 
 
-    public void sendCollisionCmd(AGameObject context){
+    public void sendCollisionCmd(AGameObject context) {
         setChanged();
         notifyObservers(new CollisionCmd(context));
+    }
+
+    public void sendSwitchCmd(String switchInfo) {
+        setChanged();
+        notifyObservers(new SwitchCmd(switchInfo, this));
     }
 
     /**

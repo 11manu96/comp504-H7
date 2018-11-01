@@ -4,6 +4,7 @@ import edu.rice.comp504.model.DispatchAdapter;
 import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.character.Ghost;
 import edu.rice.comp504.model.gameobjects.character.Pacman;
+import edu.rice.comp504.model.strategy.update.GhostAfraidStrategy;
 
 import java.awt.*;
 
@@ -53,8 +54,16 @@ public class SwitchCmd implements IGameObjectCmd {
                     break;
             }
         }
+        // switch ghost strategy
         else if (type.equals("ghost")) {
             Ghost ghost = (Ghost) context;
+
+            switch (switchInfo) {
+                case "afraid":
+                    ghost.setUpdateStrategy(GhostAfraidStrategy.makeStrategy());
+                default:
+                    break;
+            }
 
         }
 
