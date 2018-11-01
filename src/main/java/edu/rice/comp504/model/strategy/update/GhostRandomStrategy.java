@@ -20,7 +20,6 @@ public class GhostRandomStrategy implements IUpdateStrategy {
     public static IUpdateStrategy makeStrategy() {
         if (singletonghostrandom == null) {
             singletonghostrandom = new GhostRandomStrategy();
-
         }
         return singletonghostrandom;
     }

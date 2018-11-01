@@ -20,7 +20,7 @@ public class GhostInteraction implements IInteractStrategy {
      * Constructor.
      */
     public GhostInteraction(DispatchAdapter dis) {
-        this.dis=dis;
+        GhostInteraction.dis = dis;
     }
 
     /**
@@ -30,6 +30,8 @@ public class GhostInteraction implements IInteractStrategy {
     public static IInteractStrategy makeStrategy(DispatchAdapter dis) {
         if (singleton == null) {
             singleton = new GhostInteraction(dis);
+        } else {
+            GhostInteraction.dis = dis;
         }
 
         return singleton;
@@ -62,10 +64,16 @@ public class GhostInteraction implements IInteractStrategy {
                 ghost.setLocation(new Point(newLoc.x, newLoc.y));
                 break;
             case "pacman":
-                Pacman pacman = (Pacman)dest;
-                dis.setLives(dis.getLives()-1);
-                pacman.setLocation(pacman.getInitialLoc());
-                pacman.setVel(new Point(0,0));
+                Pacman pacman = (Pacman) dest;
+                if (dis.getAfraidTimer() == 0) {
+                    dis.setLives(dis.getLives() - 1);
+                    pacman.setLocation(pacman.getInitialLoc());
+                    pacman.setVel(new Point(0, 0));
+                } else {
+                    ghost.setLocation(ghost.getInitialLoc());
+                    dis.setScore(dis.getScore() + ghost.getPoints());
+                    dis.sendSwitchCmd(ghost.getColor());
+                }
                 break;
         }
     }

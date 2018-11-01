@@ -17,7 +17,6 @@ public class Ghost extends ACharacter {
     private int jailTimer;
     private String color;
     private int points;
-    private Point initialLocation;
     private List<Point> openSpaces;
 
     /**
@@ -31,7 +30,6 @@ public class Ghost extends ACharacter {
         this.jailTimer = 3;
         this.color = color;
         this.points = 200;
-        this.initialLocation = loc;
         this.setOpenSpaces();
     }
 
@@ -50,6 +48,8 @@ public class Ghost extends ACharacter {
     public void setColor(String color) {
         this.color = color;
     }
+
+    public int getPoints() { return this.points; }
 
     /**
      * Get the jail timer.

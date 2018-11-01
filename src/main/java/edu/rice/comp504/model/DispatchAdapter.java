@@ -215,7 +215,10 @@ public class DispatchAdapter extends Observable {
         if (afraidTimer > 0) {
             afraidTimer -= 1;
             if (afraidTimer == 0) {
-                sendSwitchCmd("attack");
+                sendSwitchCmd("red");
+                sendSwitchCmd("pink");
+                sendSwitchCmd("orange");
+                sendSwitchCmd("blue");
             }
         }
     }
