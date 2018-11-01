@@ -26,8 +26,8 @@ public class Ghost extends ACharacter {
      * @param updateStrategy update strategy
      * @param color ghost color
      */
-    public Ghost(Point loc, IUpdateStrategy updateStrategy, String color) {
-        super(loc, "ghost", new Point(0,0), updateStrategy, GhostInteraction.makeStrategy(), DispatchAdapter.getGridSize());
+    public Ghost(Point loc, IUpdateStrategy updateStrategy, String color, DispatchAdapter dis) {
+        super(loc, "ghost", new Point(0,0), updateStrategy, GhostInteraction.makeStrategy(dis), DispatchAdapter.getGridSize());
         this.jailTimer = 3;
         this.color = color;
         this.points = 200;
@@ -96,7 +96,24 @@ public class Ghost extends ACharacter {
 
         int distX = ghostLoc.x + DispatchAdapter.getGridSize() / 2 + ghostVel.x - (gameObjLoc.x + DispatchAdapter.getGridSize() / 2);
         int distY = ghostLoc.y + DispatchAdapter.getGridSize() / 2 + ghostVel.y - (gameObjLoc.y + DispatchAdapter.getGridSize() / 2);
-        if ((Math.abs(distX) < ghostSize + gameObjSize) && (Math.abs(distY) < ghostSize + gameObjSize)) {
+
+        if(gameObject.getType().equals("pacman")){
+
+            Pacman pacman = (Pacman)gameObject;
+
+            int distX1 = ghostLoc.x + DispatchAdapter.getGridSize() / 2 - gameObjLoc.x;
+            int distY1 = ghostLoc.y + DispatchAdapter.getGridSize() / 2 - gameObjLoc.y;
+
+            if(((ghostVel.x + pacman.getVel().x)==0) && ((ghostVel.y + pacman.getVel().y)==0)){
+                if ((Math.abs(distX1) <= ghostSize + gameObjSize) && (Math.abs(distY1) <= ghostSize + gameObjSize)) {
+                    return true;
+                }
+            }
+            else if ((Math.abs(distX1) < ghostSize + gameObjSize) && (Math.abs(distY1) < ghostSize + gameObjSize)) {
+                return true;
+            }
+        }
+        else if ((Math.abs(distX) < ghostSize + gameObjSize) && (Math.abs(distY) < ghostSize + gameObjSize)) {
             return true;
         }
         return false;
