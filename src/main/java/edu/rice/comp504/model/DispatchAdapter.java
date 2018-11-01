@@ -130,6 +130,7 @@ public class DispatchAdapter extends Observable {
                 switch (map[y][x]) {
                     case 1: // wall
                         object = new Wall(objLoc);
+
                         break;
                     case 2: // exit
                         Exit exit = new Exit(objLoc,
@@ -173,6 +174,7 @@ public class DispatchAdapter extends Observable {
                 }
             }
         }
+
     }
 
     /**

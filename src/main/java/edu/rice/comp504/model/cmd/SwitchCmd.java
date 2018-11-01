@@ -9,7 +9,7 @@ import java.awt.*;
 
 /**
  * This command implementing IGameObjectCmd switches the strategy for a pacman or a ghost.
- */
+  */
 public class SwitchCmd implements IGameObjectCmd {
 
     String switchInfo;
@@ -29,25 +29,22 @@ public class SwitchCmd implements IGameObjectCmd {
      * @param context The receiver gameobj
      */
     public void execute(AGameObject context) {
-
         String type = context.getType();
-
         if (type.equals("pacman")) {
             Pacman pacman = (Pacman) context;
-
             // receive from the front end
             switch (switchInfo) {
                 case "left":
-                    pacman.setVel(new Point(-20, 0));
+                    pacman.setSwitchdirection(new Point(-20,0));
                     break;
                 case "right":
-                    pacman.setVel(new Point(20, 0));
+                    pacman.setSwitchdirection(new Point(20,0));
                     break;
                 case "up":
-                    pacman.setVel(new Point(0, -20));
+                    pacman.setSwitchdirection(new Point(0,-20));
                     break;
                 case "down":
-                    pacman.setVel(new Point(0, 20));
+                    pacman.setSwitchdirection(new Point(0,20));
                     break;
                 default:
                     break;

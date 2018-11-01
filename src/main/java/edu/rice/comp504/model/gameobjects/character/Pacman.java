@@ -13,6 +13,10 @@ import java.awt.*;
 public class Pacman extends ACharacter {
 
     private static Pacman pacman;
+    private boolean changedircollision=false;
+
+    private Point switchdirection=new Point(0,0);
+
     /**
      * Constructor for Pacman.
      * @param loc pacman location
@@ -36,6 +40,24 @@ public class Pacman extends ACharacter {
         return pacman;
     }
 
+    public boolean isChangedircollision() {
+        return changedircollision;
+    }
+
+    public void setChangedircollision(boolean changedircollision) {
+        this.changedircollision = changedircollision;
+    }
+
+    public Point getSwitchdirection() {
+        return switchdirection;
+    }
+
+    public void setSwitchdirection(Point switchdirection) {
+        this.switchdirection = switchdirection;
+    }
+
+
+
     /**
      * Handle collision between Pacman and game object.
      * @param gameObject object the check collision against
@@ -52,6 +74,22 @@ public class Pacman extends ACharacter {
 
         int distX = pacmanLoc.x + pacmanVel.x - (gameObjLoc.x + DispatchAdapter.getGridSize() / 2);
         int distY = pacmanLoc.y + pacmanVel.y - (gameObjLoc.y + DispatchAdapter.getGridSize() / 2);
+        if ((Math.abs(distX) < pacmanSize + gameObjSize) && (Math.abs(distY) < pacmanSize + gameObjSize)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean virtualCollision(AGameObject gameObject){
+        Point pacmanLoc = this.getLocation();
+        int pacmanSize = this.getSize() / 2;
+        Point virtualvel = this.getSwitchdirection();
+
+        Point gameObjLoc = gameObject.getLocation();
+        int gameObjSize = gameObject.getSize() / 2;
+
+        int distX = pacmanLoc.x + virtualvel.x - (gameObjLoc.x + DispatchAdapter.getGridSize() / 2);
+        int distY = pacmanLoc.y + virtualvel.y - (gameObjLoc.y + DispatchAdapter.getGridSize() / 2);
         if ((Math.abs(distX) < pacmanSize + gameObjSize) && (Math.abs(distY) < pacmanSize + gameObjSize)) {
             return true;
         }
