@@ -49,7 +49,7 @@ public abstract class AGameObject implements Observer {
      * @param location a Point
      */
     public void setLocation(Point location) {
-        this.location = location;
+        this.location = new Point(location);
     }
 
     /**
