@@ -4,6 +4,7 @@ import edu.rice.comp504.model.DispatchAdapter;
 import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.Exit;
 import edu.rice.comp504.model.gameobjects.character.ACharacter;
+import edu.rice.comp504.model.gameobjects.character.Pacman;
 import edu.rice.comp504.model.gameobjects.food.AFood;
 
 import java.awt.*;
@@ -50,7 +51,7 @@ public class PacmanInteraction implements IInteractStrategy {
      * @param dest the dest object behavior will be affected by the src object interaction strategy
      */
     public void interact(AGameObject src, AGameObject dest) {
-        ACharacter pacman = (ACharacter) src;
+        Pacman pacman = (Pacman) src;
         switch (dest.getType()) {
             case "wall":
                 pacman.setVel(new Point(0,0));
@@ -76,7 +77,6 @@ public class PacmanInteraction implements IInteractStrategy {
                 AFood fruit = (AFood)dest;
                 dis.setScore(dis.getScore() + fruit.getPoints());
                 break;
-
         }
     }
 }
