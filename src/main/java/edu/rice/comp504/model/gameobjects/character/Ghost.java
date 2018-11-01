@@ -6,6 +6,9 @@ import edu.rice.comp504.model.strategy.interact.GhostInteraction;
 import edu.rice.comp504.model.strategy.update.IUpdateStrategy;
 
 import java.awt.*;
+import java.util.List;
+import java.util.Arrays;
+import java.util.LinkedList;
 
 /**
  * This concrete class extends ACharacter and represents ghost game objects.
@@ -15,6 +18,7 @@ public class Ghost extends ACharacter {
     private String color;
     private int points;
     private Point initialLocation;
+    private List<Point> openSpaces;
 
     /**
      * Constructor for Ghost.
@@ -28,7 +32,7 @@ public class Ghost extends ACharacter {
         this.color = color;
         this.points = 200;
         this.initialLocation = loc;
-
+        this.setOpenSpaces();
     }
 
     /**
@@ -62,6 +66,19 @@ public class Ghost extends ACharacter {
     public void setJailTimer(int jailTimer) {
         this.jailTimer = jailTimer;
     }
+
+
+    public void setOpenSpaces() {
+        this.openSpaces = new LinkedList<Point>(Arrays.asList(
+                new Point(-20, 0), new Point(20, 0),
+                new Point(0, 20), new Point(0, -20)));
+    }
+
+    public void removeOpenSpace(Point direction) {
+        this.openSpaces.remove(direction);
+    }
+
+    public List<Point> getOpenSpaces() { return this.openSpaces; }
 
     /**
      * Handle collision between ghost and game object.
