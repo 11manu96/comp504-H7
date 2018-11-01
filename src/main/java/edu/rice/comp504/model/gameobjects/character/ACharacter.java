@@ -11,6 +11,7 @@ import java.awt.*;
  */
 public abstract class ACharacter extends AGameObject {
     private Point vel;
+    private Point initialLoc;
     private IUpdateStrategy updateStrategy;
     private IInteractStrategy interactStrategy;
 
@@ -26,6 +27,7 @@ public abstract class ACharacter extends AGameObject {
     public ACharacter(Point loc, String type, Point vel, IUpdateStrategy updateStrategy, IInteractStrategy interactStrategy, int size) {
         super(loc, type, size);
         this.vel = vel;
+        this.initialLoc = loc;
         this.updateStrategy = updateStrategy;
         this.interactStrategy = interactStrategy;
     }
@@ -60,6 +62,10 @@ public abstract class ACharacter extends AGameObject {
      */
     public void setUpdateStrategy(IUpdateStrategy updateStrategy) {
         this.updateStrategy = updateStrategy;
+    }
+
+    public Point getInitialLoc(){
+        return this.initialLoc;
     }
 
     /**

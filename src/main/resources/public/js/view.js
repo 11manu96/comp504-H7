@@ -5,13 +5,15 @@ var app;
 var frameCount = 0;
 
 var redGhostImg = new Image();
-redGhostImg.src = location.href + "redGhost.jpg";
+redGhostImg.src = location.href + "redGhost.gif";
 var blueGhostImg = new Image();
-blueGhostImg.src = location.href + "blueGhost.png";
+blueGhostImg.src = location.href + "blueGhost.gif";
 var pinkGhostImg = new Image();
-pinkGhostImg.src = location.href + "pinkGhost.png";
+pinkGhostImg.src = location.href + "pinkGhost.gif";
 var orangeGhostImg = new Image();
-orangeGhostImg.src = location.href + "orangeGhost.jpg";
+orangeGhostImg.src = location.href + "orangeGhost.gif";
+var afraidGhostImg = new Image();
+afraidGhostImg.src = location.href + "afraidGhost.gif";
 var fruitImg = new Image();
 
 
@@ -152,17 +154,21 @@ function updateGameWorld() {
                 app.drawPacMan(element.location.x, element.location.y, element.size);
             }
             else if(element.type === "ghost") {
-                if (element.color === "red") {
-                    app.drawImage(element.location.x, element.location.y, element.size, redGhostImg);
-                }
-                else if (element.color === "pink") {
-                    app.drawImage(element.location.x, element.location.y, element.size, pinkGhostImg);
-                }
-                else if (element.color === "orange") {
-                    app.drawImage(element.location.x, element.location.y, element.size, orangeGhostImg);
-                }
-                else if (element.color === "blue") {
-                    app.drawImage(element.location.x, element.location.y, element.size, blueGhostImg);
+                if (element.updateStrategy.name !== "ghost_afraid") {
+                    if (element.color === "red") {
+                        app.drawImage(element.location.x, element.location.y, element.size, redGhostImg);
+                    }
+                    else if (element.color === "pink") {
+                        app.drawImage(element.location.x, element.location.y, element.size, pinkGhostImg);
+                    }
+                    else if (element.color === "orange") {
+                        app.drawImage(element.location.x, element.location.y, element.size, orangeGhostImg);
+                    }
+                    else if (element.color === "blue") {
+                        app.drawImage(element.location.x, element.location.y, element.size, blueGhostImg);
+                    }
+                } else {
+                    app.drawImage(element.location.x, element.location.y, element.size, afraidGhostImg);
                 }
             }
             else if (element.type === "small_dot") {

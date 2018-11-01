@@ -65,23 +65,26 @@ public class SwitchCmd implements IGameObjectCmd {
                     ghost.setUpdateStrategy(GhostAfraidStrategy.makeStrategy());
                     break;
                 // switch ghosts to attack strategy
-                case "attack":
-                    switch (ghost.getColor()) {
-                        case "red":
-                            ghost.setUpdateStrategy(GhostRandomStrategy.makeStrategy());
-                            break;
-                        case "pink":
-                            ghost.setUpdateStrategy(GhostRandomStrategy.makeStrategy());
-                            break;
-                        case "orange":
-                            ghost.setUpdateStrategy(GhostRandomStrategy.makeStrategy());
-                            break;
-                        case "blue":
-                            ghost.setUpdateStrategy(GhostRandomStrategy.makeStrategy());
-                            break;
-                        default:
-                            break;
+                case "red":
+                    if (ghost.getColor().equals("red")) {
+                        ghost.setUpdateStrategy(GhostRandomStrategy.makeStrategy());
                     }
+                    break;
+                case "pink":
+                    if (ghost.getColor().equals("pink")) {
+                        ghost.setUpdateStrategy(GhostRandomStrategy.makeStrategy());
+                    }
+                    break;
+                case "orange":
+                    if (ghost.getColor().equals("orange")) {
+                        ghost.setUpdateStrategy(GhostRandomStrategy.makeStrategy());
+                    }
+                    break;
+                case "blue":
+                    if (ghost.getColor().equals("blue")) {
+                        ghost.setUpdateStrategy(GhostRandomStrategy.makeStrategy());
+                    }
+                    break;
                 default:
                     break;
             }

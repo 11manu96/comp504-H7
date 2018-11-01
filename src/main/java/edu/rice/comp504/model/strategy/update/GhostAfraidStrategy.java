@@ -27,7 +27,7 @@ public class GhostAfraidStrategy implements IUpdateStrategy {
     }
 
     public String getName() {
-        return "ghost_afraid";
+        return this.name;
     }
 
     public void update(AGameObject gameObj) {
