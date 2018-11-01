@@ -4,6 +4,8 @@ import edu.rice.comp504.model.DispatchAdapter;
 import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.Exit;
 import edu.rice.comp504.model.gameobjects.character.ACharacter;
+import edu.rice.comp504.model.gameobjects.character.Ghost;
+import edu.rice.comp504.model.gameobjects.character.Pacman;
 
 import java.awt.*;
 
@@ -12,19 +14,24 @@ import java.awt.*;
  */
 public class GhostInteraction implements IInteractStrategy {
     private static IInteractStrategy singleton;
+    private static DispatchAdapter dis;
 
     /**
      * Constructor.
      */
-    public GhostInteraction() {}
+    public GhostInteraction(DispatchAdapter dis) {
+        GhostInteraction.dis = dis;
+    }
 
     /**
      * Make a strategy. This is a singleton.
      * @return an interact strategy.
      */
-    public static IInteractStrategy makeStrategy() {
+    public static IInteractStrategy makeStrategy(DispatchAdapter dis) {
         if (singleton == null) {
-            singleton = new GhostInteraction();
+            singleton = new GhostInteraction(dis);
+        } else {
+            GhostInteraction.dis = dis;
         }
 
         return singleton;
@@ -44,14 +51,29 @@ public class GhostInteraction implements IInteractStrategy {
      * @param dest the dest object behavior will be affected by the src object interaction strategy.
      */
     public void interact(AGameObject src, AGameObject dest) {
-        ACharacter ghost = (ACharacter) src;
+        Ghost ghost = (Ghost) src;
         switch (dest.getType()) {
             case "wall":
+                // we know which direction wall is in based on ghost velocity
+                ghost.removeOpenSpace(ghost.getVel());
+
                 ghost.setVel(new Point(0,0));
                 break;
             case "exit":
                 Point newLoc = ((Exit) dest).getExitTo();
                 ghost.setLocation(new Point(newLoc.x, newLoc.y));
+                break;
+            case "pacman":
+                Pacman pacman = (Pacman) dest;
+                if (ghost.getUpdateStrategy().getName().equals("ghost_afraid")) {
+                    ghost.setLocation(ghost.getInitialLoc());
+                    dis.setScore(dis.getScore() + ghost.getPoints());
+                    dis.sendSwitchCmd(ghost.getColor());
+                } else {
+                    dis.setLives(dis.getLives() - 1);
+                    pacman.setLocation(pacman.getInitialLoc());
+                    pacman.setVel(new Point(0, 0));
+                }
                 break;
         }
     }

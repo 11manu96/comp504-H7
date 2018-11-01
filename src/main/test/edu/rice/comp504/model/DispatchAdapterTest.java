@@ -75,6 +75,7 @@ public class DispatchAdapterTest extends TestCase {
         adapter.setScore(0);
         adapter.updatePacWorld();
         assertEquals("Check big dot was destroyed", 2, adapter.countObservers());
+        assertEquals("Check small dot updated score", bigDot.getPoints(), adapter.getScore());
         assertEquals("Check big dot updated afraid timer", 30, adapter.getAfraidTimer());
         adapter.setScore(0);
         adapter.updatePacWorld();
@@ -85,7 +86,7 @@ public class DispatchAdapterTest extends TestCase {
     public void testUpdateGhost() {
         DispatchAdapter adapter = new DispatchAdapter();
         adapter.setCanvasDims(new Point(540, 370));
-        Ghost ghost = new Ghost(new Point(220, 100), GhostRandomStrategy.makeStrategy(), "red");
+        Ghost ghost = new Ghost(new Point(220, 100), GhostRandomStrategy.makeStrategy(), "red", adapter);
         adapter.addObserver(ghost);
 
         // test ghost movement
@@ -109,7 +110,7 @@ public class DispatchAdapterTest extends TestCase {
 
         // test ghost exit collision
         adapter.deleteObservers();
-        ghost = new Ghost(new Point(220, 100), GhostRandomStrategy.makeStrategy(), "red");
+        ghost = new Ghost(new Point(220, 100), GhostRandomStrategy.makeStrategy(), "red", adapter);
         adapter.addObserver(ghost);
         ghostX = ghost.getLocation().x;
         ghostY = ghost.getLocation().y;
@@ -123,7 +124,7 @@ public class DispatchAdapterTest extends TestCase {
     public void testEatPacman() {
         DispatchAdapter adapter = new DispatchAdapter();
         adapter.setCanvasDims(new Point(540, 370));
-        Ghost ghost = new Ghost(new Point(220, 100), GhostRandomStrategy.makeStrategy(), "red");
+        Ghost ghost = new Ghost(new Point(220, 100), GhostRandomStrategy.makeStrategy(), "red", adapter);
         adapter.addObserver(ghost);
         Pacman pacman = Pacman.makePacman(new Point(270, 230), adapter);
         adapter.addObserver(pacman);
