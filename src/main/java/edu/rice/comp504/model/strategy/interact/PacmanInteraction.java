@@ -77,9 +77,6 @@ public class PacmanInteraction implements IInteractStrategy {
                 AFood fruit = (AFood)dest;
                 dis.setScore(dis.getScore() + fruit.getPoints());
                 break;
-            case "ghost":
-                dis.setLives(dis.getLives()-1);
-                pacman.setLocation(pacman.getInitialLoc());
         }
     }
 }

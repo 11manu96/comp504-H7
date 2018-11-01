@@ -144,16 +144,16 @@ public class DispatchAdapter extends Observable {
                         break;
 
                     case 4: // ghost1
-                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "red");
+                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "red", this);
                         break;
                     case 5: // ghost2
-                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "pink");
+                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "pink", this);
                         break;
                     case 6: // ghost3
-                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "orange");
+                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "orange", this);
                         break;
                     case 7: // ghost4
-                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "blue");
+                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "blue", this);
                         break;
 
                     case 8: // smallDot
