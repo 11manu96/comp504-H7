@@ -4,6 +4,7 @@ import edu.rice.comp504.model.DispatchAdapter;
 import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.Exit;
 import edu.rice.comp504.model.gameobjects.character.ACharacter;
+import edu.rice.comp504.model.gameobjects.character.Ghost;
 import edu.rice.comp504.model.gameobjects.character.Pacman;
 
 import java.awt.*;
@@ -48,9 +49,12 @@ public class GhostInteraction implements IInteractStrategy {
      * @param dest the dest object behavior will be affected by the src object interaction strategy.
      */
     public void interact(AGameObject src, AGameObject dest) {
-        ACharacter ghost = (ACharacter) src;
+        Ghost ghost = (Ghost) src;
         switch (dest.getType()) {
             case "wall":
+                // we know which direction wall is in based on ghost velocity
+                ghost.removeOpenSpace(ghost.getVel());
+
                 ghost.setVel(new Point(0,0));
                 break;
             case "exit":

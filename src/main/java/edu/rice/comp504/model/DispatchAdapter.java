@@ -4,6 +4,7 @@ import edu.rice.comp504.model.cmd.*;
 import edu.rice.comp504.model.gameobjects.*;
 import edu.rice.comp504.model.gameobjects.character.*;
 import edu.rice.comp504.model.gameobjects.food.*;
+import edu.rice.comp504.model.strategy.update.GhostAfraidStrategy;
 import edu.rice.comp504.model.strategy.update.GhostRandomStrategy;
 
 import java.awt.*;
@@ -211,12 +212,23 @@ public class DispatchAdapter extends Observable {
     public void updatePacWorld() {
         setChanged();
         notifyObservers(new UpdateCmd(this));
+        if (afraidTimer > 0) {
+            afraidTimer -= 1;
+            if (afraidTimer == 0) {
+                sendSwitchCmd("attack");
+            }
+        }
     }
 
 
-    public void sendCollisionCmd(AGameObject context){
+    public void sendCollisionCmd(AGameObject context) {
         setChanged();
         notifyObservers(new CollisionCmd(context));
+    }
+
+    public void sendSwitchCmd(String switchInfo) {
+        setChanged();
+        notifyObservers(new SwitchCmd(switchInfo, this));
     }
 
     /**
@@ -244,6 +256,5 @@ public class DispatchAdapter extends Observable {
         }
         setChanged();
         notifyObservers(switchCmd);
-        clearChanged();
     }
 }

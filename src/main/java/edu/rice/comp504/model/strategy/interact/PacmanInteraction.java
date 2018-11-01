@@ -1,6 +1,7 @@
 package edu.rice.comp504.model.strategy.interact;
 
 import edu.rice.comp504.model.DispatchAdapter;
+import edu.rice.comp504.model.cmd.SwitchCmd;
 import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.Exit;
 import edu.rice.comp504.model.gameobjects.character.ACharacter;
@@ -70,7 +71,8 @@ public class PacmanInteraction implements IInteractStrategy {
                 dis.deleteObserver(dest);
                 AFood bigDot = (AFood)dest;
                 dis.setScore(dis.getScore() + bigDot.getPoints());
-                dis.setAfraidTimer(30);
+                dis.setAfraidTimer(100);
+                dis.sendSwitchCmd("afraid");
                 break;
             case "fruit":
                 dis.deleteObserver(dest);
