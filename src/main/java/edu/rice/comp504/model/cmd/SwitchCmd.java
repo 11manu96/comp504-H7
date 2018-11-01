@@ -32,6 +32,7 @@ public class SwitchCmd implements IGameObjectCmd {
      */
     public void execute(AGameObject context) {
         String type = context.getType();
+
         if (type.equals("pacman")) {
             Pacman pacman = (Pacman) context;
 
@@ -53,7 +54,7 @@ public class SwitchCmd implements IGameObjectCmd {
                     break;
 
             }
-            dis.sendCollisionCmd(context);
+
         }
         // switch ghost strategy
         else if (type.equals("ghost")) {

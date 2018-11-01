@@ -5,6 +5,7 @@ import edu.rice.comp504.model.gameobjects.Exit;
 import edu.rice.comp504.model.gameobjects.Wall;
 import edu.rice.comp504.model.gameobjects.character.ACharacter;
 import edu.rice.comp504.model.gameobjects.character.Pacman;
+import edu.rice.comp504.model.gameobjects.food.AFood;
 
 import java.awt.*;
 
@@ -32,11 +33,13 @@ public class CollisionCmd implements IGameObjectCmd {
                     pacman.setVel(pacman.getSwitchdirection());
                     if (pacman.collision(context) && context instanceof Wall) {
                         pacman.setChangedircollision(true);
-
                     }
                     if (pacman.collision(context) && context instanceof Exit) {
                         pacman.getInteractStrategy().interact(pacman,context);
                         pacman.setVel(pacman.getSwitchdirection());
+                    }
+                    else if (pacman.collision(context) && context instanceof AFood) {
+                        pacman.getInteractStrategy().interact(pacman,context);
                     }
                     else {
                         pacman.setVel(tempvel);
