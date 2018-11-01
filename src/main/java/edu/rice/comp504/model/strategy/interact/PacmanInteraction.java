@@ -29,6 +29,8 @@ public class PacmanInteraction implements IInteractStrategy {
     public static IInteractStrategy makeStrategy(DispatchAdapter dis) {
         if (singleton == null) {
             singleton = new PacmanInteraction(dis);
+        } else {
+            PacmanInteraction.dis = dis;
         }
 
         return singleton;

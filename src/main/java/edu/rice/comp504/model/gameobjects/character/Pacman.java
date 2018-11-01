@@ -27,6 +27,7 @@ public class Pacman extends ACharacter {
             pacman = new Pacman(loc, dis);
         } else {
             pacman.setLocation(loc);
+            pacman.setInteractStrategy(PacmanInteraction.makeStrategy(dis));
         }
         return pacman;
     }
