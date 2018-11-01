@@ -71,7 +71,7 @@ public class PacmanInteraction implements IInteractStrategy {
                 dis.deleteObserver(dest);
                 AFood bigDot = (AFood)dest;
                 dis.setScore(dis.getScore() + bigDot.getPoints());
-                dis.setAfraidTimer(30);
+                dis.setAfraidTimer(100);
                 dis.sendSwitchCmd("afraid");
                 break;
             case "fruit":

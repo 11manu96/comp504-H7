@@ -13,9 +13,10 @@ import java.util.Random;
 
 public class GhostAfraidStrategy implements IUpdateStrategy {
     private static GhostAfraidStrategy singletonGhostAfraid;
+    private String name;
 
     private GhostAfraidStrategy() {
-
+        this.name = "ghost_afraid";
     }
 
     public static IUpdateStrategy makeStrategy() {

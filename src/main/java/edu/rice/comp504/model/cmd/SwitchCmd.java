@@ -5,6 +5,7 @@ import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.character.Ghost;
 import edu.rice.comp504.model.gameobjects.character.Pacman;
 import edu.rice.comp504.model.strategy.update.GhostAfraidStrategy;
+import edu.rice.comp504.model.strategy.update.GhostRandomStrategy;
 
 import java.awt.*;
 
@@ -59,8 +60,28 @@ public class SwitchCmd implements IGameObjectCmd {
             Ghost ghost = (Ghost) context;
 
             switch (switchInfo) {
+                // switch ghosts to afraid strategy
                 case "afraid":
                     ghost.setUpdateStrategy(GhostAfraidStrategy.makeStrategy());
+                    break;
+                // switch ghosts to attack strategy
+                case "attack":
+                    switch (ghost.getColor()) {
+                        case "red":
+                            ghost.setUpdateStrategy(GhostRandomStrategy.makeStrategy());
+                            break;
+                        case "pink":
+                            ghost.setUpdateStrategy(GhostRandomStrategy.makeStrategy());
+                            break;
+                        case "orange":
+                            ghost.setUpdateStrategy(GhostRandomStrategy.makeStrategy());
+                            break;
+                        case "blue":
+                            ghost.setUpdateStrategy(GhostRandomStrategy.makeStrategy());
+                            break;
+                        default:
+                            break;
+                    }
                 default:
                     break;
             }

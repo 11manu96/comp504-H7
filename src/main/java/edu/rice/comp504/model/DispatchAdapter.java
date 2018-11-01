@@ -212,6 +212,12 @@ public class DispatchAdapter extends Observable {
     public void updatePacWorld() {
         setChanged();
         notifyObservers(new UpdateCmd(this));
+        if (afraidTimer > 0) {
+            afraidTimer -= 1;
+            if (afraidTimer == 0) {
+                sendSwitchCmd("attack");
+            }
+        }
     }
 
 
@@ -250,6 +256,5 @@ public class DispatchAdapter extends Observable {
         }
         setChanged();
         notifyObservers(switchCmd);
-        clearChanged();
     }
 }

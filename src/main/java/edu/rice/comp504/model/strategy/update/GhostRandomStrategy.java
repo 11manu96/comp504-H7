@@ -11,9 +11,10 @@ import java.util.Random;
 
 public class GhostRandomStrategy implements IUpdateStrategy {
     private static GhostRandomStrategy singletonghostrandom;
+    private String name;
 
     private GhostRandomStrategy() {
-
+        this.name = "ghost_random";
     }
 
     public static IUpdateStrategy makeStrategy() {
@@ -25,7 +26,7 @@ public class GhostRandomStrategy implements IUpdateStrategy {
     }
 
     public String getName() {
-        return "ghost_random";
+        return this.name;
     }
 
     public void update(AGameObject gameObj) {
