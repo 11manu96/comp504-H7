@@ -65,14 +65,14 @@ public class GhostInteraction implements IInteractStrategy {
                 break;
             case "pacman":
                 Pacman pacman = (Pacman) dest;
-                if (dis.getAfraidTimer() == 0) {
-                    dis.setLives(dis.getLives() - 1);
-                    pacman.setLocation(pacman.getInitialLoc());
-                    pacman.setVel(new Point(0, 0));
-                } else {
+                if (ghost.getUpdateStrategy().getName().equals("ghost_afraid")) {
                     ghost.setLocation(ghost.getInitialLoc());
                     dis.setScore(dis.getScore() + ghost.getPoints());
                     dis.sendSwitchCmd(ghost.getColor());
+                } else {
+                    dis.setLives(dis.getLives() - 1);
+                    pacman.setLocation(pacman.getInitialLoc());
+                    pacman.setVel(new Point(0, 0));
                 }
                 break;
         }
