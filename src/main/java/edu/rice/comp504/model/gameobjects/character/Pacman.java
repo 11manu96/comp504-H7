@@ -13,18 +13,20 @@ import java.awt.*;
 public class Pacman extends ACharacter {
 
     private static Pacman pacman;
+    private Point initialLoc;
     /**
      * Constructor for Pacman.
      * @param loc pacman location
      */
-    private Pacman(Point loc) {
+    private Pacman(Point loc,DispatchAdapter dis) {
         super(loc, "pacman", new Point(0,0),
-                PacmanUpdateStrategy.makeStrategy(), PacmanInteraction.makeStrategy(), DispatchAdapter.getGridSize());
+                PacmanUpdateStrategy.makeStrategy(), PacmanInteraction.makeStrategy(dis), DispatchAdapter.getGridSize());
+        this.initialLoc=new Point(loc);
     }
 
-    public static Pacman makePacman(Point loc) {
+    public static Pacman makePacman(Point loc,DispatchAdapter dis) {
         if (pacman == null) {
-            pacman = new Pacman(loc);
+            pacman = new Pacman(loc,dis);
         } else {
             pacman.setLocation(loc);
         }
@@ -34,6 +36,8 @@ public class Pacman extends ACharacter {
     public static Pacman getInstance() {
         return pacman;
     }
+
+    public Point getInitialLoc(){return this.initialLoc;}
 
     /**
      * Handle collision between Pacman and game object.

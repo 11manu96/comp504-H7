@@ -140,7 +140,7 @@ public class DispatchAdapter extends Observable {
                     case 3: // pacman
                         object = Pacman.makePacman(new Point(
                                 x * DispatchAdapter.gridSize + DispatchAdapter.gridSize / 2,
-                                y * DispatchAdapter.gridSize + DispatchAdapter.gridSize / 2));
+                                y * DispatchAdapter.gridSize + DispatchAdapter.gridSize / 2),this);
                         break;
 
                     case 4: // ghost1
