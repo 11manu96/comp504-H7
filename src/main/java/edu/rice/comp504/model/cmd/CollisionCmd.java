@@ -1,6 +1,7 @@
 package edu.rice.comp504.model.cmd;
 
 import edu.rice.comp504.model.gameobjects.AGameObject;
+import edu.rice.comp504.model.gameobjects.Exit;
 import edu.rice.comp504.model.gameobjects.Wall;
 import edu.rice.comp504.model.gameobjects.character.ACharacter;
 import edu.rice.comp504.model.gameobjects.character.Pacman;
@@ -27,8 +28,18 @@ public class CollisionCmd implements IGameObjectCmd {
                 }
                 if (object instanceof Pacman) {
                     Pacman pacman=((Pacman) object);
-                    if (pacman.virtualCollision(context) && context instanceof Wall) {
+                    Point tempvel=pacman.getVel();
+                    pacman.setVel(pacman.getSwitchdirection());
+                    if (pacman.collision(context) && context instanceof Wall) {
                         pacman.setChangedircollision(true);
+
+                    }
+                    if (pacman.collision(context) && context instanceof Exit) {
+                        pacman.getInteractStrategy().interact(pacman,context);
+                        pacman.setVel(pacman.getSwitchdirection());
+                    }
+                    else {
+                        pacman.setVel(tempvel);
                     }
 
                 }

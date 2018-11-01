@@ -13,9 +13,9 @@ import java.awt.*;
 public class Pacman extends ACharacter {
 
     private static Pacman pacman;
-    private boolean changedircollision=false;
+    private boolean changedircollision;
 
-    private Point switchdirection=new Point(0,0);
+    private Point switchdirection;
 
     /**
      * Constructor for Pacman.
@@ -24,6 +24,8 @@ public class Pacman extends ACharacter {
     private Pacman(Point loc, DispatchAdapter dis) {
         super(loc, "pacman", new Point(0,0),
                 PacmanUpdateStrategy.makeStrategy(), PacmanInteraction.makeStrategy(dis), DispatchAdapter.getGridSize());
+        this.changedircollision=false;
+        this.switchdirection=new Point(0,0);
     }
 
     public static Pacman makePacman(Point loc, DispatchAdapter dis) {
@@ -80,19 +82,4 @@ public class Pacman extends ACharacter {
         return false;
     }
 
-    public boolean virtualCollision(AGameObject gameObject){
-        Point pacmanLoc = this.getLocation();
-        int pacmanSize = this.getSize() / 2;
-        Point virtualvel = this.getSwitchdirection();
-
-        Point gameObjLoc = gameObject.getLocation();
-        int gameObjSize = gameObject.getSize() / 2;
-
-        int distX = pacmanLoc.x + virtualvel.x - (gameObjLoc.x + DispatchAdapter.getGridSize() / 2);
-        int distY = pacmanLoc.y + virtualvel.y - (gameObjLoc.y + DispatchAdapter.getGridSize() / 2);
-        if ((Math.abs(distX) < pacmanSize + gameObjSize) && (Math.abs(distY) < pacmanSize + gameObjSize)) {
-            return true;
-        }
-        return false;
-    }
 }

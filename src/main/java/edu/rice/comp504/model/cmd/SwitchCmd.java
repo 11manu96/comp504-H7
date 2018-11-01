@@ -34,6 +34,7 @@ public class SwitchCmd implements IGameObjectCmd {
         String type = context.getType();
         if (type.equals("pacman")) {
             Pacman pacman = (Pacman) context;
+
             // receive from the front end
             switch (switchInfo) {
                 case "left":
@@ -50,7 +51,9 @@ public class SwitchCmd implements IGameObjectCmd {
                     break;
                 default:
                     break;
+
             }
+            dis.sendCollisionCmd(context);
         }
         // switch ghost strategy
         else if (type.equals("ghost")) {

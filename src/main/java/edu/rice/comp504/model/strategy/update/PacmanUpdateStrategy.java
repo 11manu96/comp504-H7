@@ -52,8 +52,6 @@ public class PacmanUpdateStrategy implements IUpdateStrategy{
         loc.y = vel.y + loc.y;
         pacman.setLocation(loc);
 
-
-
     }
 
 }
