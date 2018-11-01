@@ -19,7 +19,7 @@ public class DispatchAdapterTest extends TestCase {
         adapter.setCanvasDims(new Point(540, 370));
 
         // add objects for testing
-        Pacman pacman = Pacman.makePacman(new Point(270, 230));
+        Pacman pacman = Pacman.makePacman(new Point(270, 230), adapter);
         adapter.addObserver(pacman);
         adapter.addObserver(new Wall(new Point(280, 240)));
         adapter.addObserver(new Exit(new Point(520, 160), new Point(0, 160)));
@@ -58,7 +58,7 @@ public class DispatchAdapterTest extends TestCase {
         adapter.setCanvasDims(new Point(540, 370));
 
         // add objects for testing
-        Pacman pacman = Pacman.makePacman(new Point(270, 230));
+        Pacman pacman = Pacman.makePacman(new Point(270, 230), adapter);
         adapter.addObserver(pacman);
         SmallDot smallDot = new SmallDot(new Point(280, 220));
         adapter.addObserver(smallDot);
@@ -75,7 +75,8 @@ public class DispatchAdapterTest extends TestCase {
         adapter.setScore(0);
         adapter.updatePacWorld();
         assertEquals("Check big dot was destroyed", 2, adapter.countObservers());
-        assertEquals("Check big dot updated afraid timer", bigDot.getPoints(), adapter.getAfraidTimer());
+        assertEquals("Check big dot updated afraid timer", 30, adapter.getAfraidTimer());
+        adapter.setScore(0);
         adapter.updatePacWorld();
         assertEquals("Check fruit was destroyed", 1, adapter.countObservers());
         assertEquals("Check fruit updated score", fruit.getPoints(), adapter.getScore());
@@ -124,7 +125,7 @@ public class DispatchAdapterTest extends TestCase {
         adapter.setCanvasDims(new Point(540, 370));
         Ghost ghost = new Ghost(new Point(220, 100), GhostRandomStrategy.makeStrategy(), "red");
         adapter.addObserver(ghost);
-        Pacman pacman = Pacman.makePacman(new Point(270, 230));
+        Pacman pacman = Pacman.makePacman(new Point(270, 230), adapter);
         adapter.addObserver(pacman);
 
         ghost.setVel(new Point(20, 0));
@@ -139,7 +140,7 @@ public class DispatchAdapterTest extends TestCase {
     public void testSwitchDirection() {
         DispatchAdapter adapter = new DispatchAdapter();
         adapter.setCanvasDims(new Point(540, 370));
-        Pacman pacman = Pacman.makePacman(new Point(270, 230));
+        Pacman pacman = Pacman.makePacman(new Point(270, 230), adapter);
         adapter.addObserver(pacman);
 
         // test switch direction

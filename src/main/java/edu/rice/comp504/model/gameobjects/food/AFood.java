@@ -21,7 +21,11 @@ public abstract class AFood extends AGameObject {
         this.points = points;
     }
 
+    /**
+     * Get the points of the food.
+     * @return points
+     */
     public int getPoints() {
-        return this.points;
+        return points;
     }
 }
