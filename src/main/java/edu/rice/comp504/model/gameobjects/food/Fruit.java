@@ -20,7 +20,7 @@ public class Fruit extends AFood {
      * @param loc fruit location
      */
     private Fruit(Point loc) {
-        super(loc, "fruit", DispatchAdapter.getGridSize(), 150);
+        super(loc, "fruit", DispatchAdapter.getGridSize(), 100);
         this.fruitTimer = 30;
         this.emptyPositionsList = new ArrayList<Point>();
     }

@@ -75,6 +75,7 @@ public class DispatchAdapterTest extends TestCase {
         adapter.setScore(0);
         adapter.updatePacWorld();
         assertEquals("Check big dot was destroyed", 2, adapter.countObservers());
+        assertEquals("Check small dot updated score", bigDot.getPoints(), adapter.getScore());
         assertEquals("Check big dot updated afraid timer", 30, adapter.getAfraidTimer());
         adapter.setScore(0);
         adapter.updatePacWorld();
