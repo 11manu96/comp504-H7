@@ -225,14 +225,19 @@ public class DispatchAdapter extends Observable {
                 sendSwitchCmd("blue");
             }
         }
-        System.out.println(Fruit.getFruitTimer());
+
         if (Fruit.getFruitTimer() > 0) {
             Fruit.setFruitTimer(Fruit.getFruitTimer() - 1);
             if (Fruit.getFruitTimer() == 0) {
                 List<Point> positionList = Fruit.getPositionList();
-                Random random = new Random();
-                int index = random.nextInt(positionList.size());
-                addObserver(Fruit.makeFruit(positionList.get(index)));
+                if (positionList.size() > 0) {
+                    Random random = new Random();
+                    int index = random.nextInt(positionList.size());
+                    addObserver(Fruit.makeFruit(positionList.get(index)));
+                } else {
+                    // handle case of no open space
+                    Fruit.setFruitTimer(1);
+                }
             }
         }
     }
