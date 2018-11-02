@@ -14,6 +14,8 @@ var orangeGhostImg = new Image();
 orangeGhostImg.src = location.href + "orangeGhost.gif";
 var afraidGhostImg = new Image();
 afraidGhostImg.src = location.href + "afraidGhost.gif";
+var recoverGhostImg = new Image();
+recoverGhostImg.src = location.href + "recoverGhost.gif";
 var fruitImg = new Image();
 fruitImg.src = location.href + "fruit.png";
 
@@ -168,7 +170,11 @@ function updateGameWorld() {
                         app.drawImage(element.location.x, element.location.y, element.size, blueGhostImg);
                     }
                 } else {
-                    app.drawImage(element.location.x, element.location.y, element.size, afraidGhostImg);
+                    if (data.afraidTimer < 30 && frameCount % 20 == 0) {
+                        app.drawImage(element.location.x, element.location.y, element.size, recoverGhostImg);
+                    } else {
+                        app.drawImage(element.location.x, element.location.y, element.size, afraidGhostImg);
+                    }
                 }
             }
             else if (element.type === "small_dot") {
