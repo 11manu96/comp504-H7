@@ -15,7 +15,7 @@ orangeGhostImg.src = location.href + "orangeGhost.gif";
 var afraidGhostImg = new Image();
 afraidGhostImg.src = location.href + "afraidGhost.gif";
 var fruitImg = new Image();
-fruitImg.src = location.href + "fruit.jpg";
+fruitImg.src = location.href + "fruit.png";
 
 /**
  * Get input from the keyboard and switch Pacman direction

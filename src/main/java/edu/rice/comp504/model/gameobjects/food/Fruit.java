@@ -13,7 +13,7 @@ import java.util.List;
 public class Fruit extends AFood {
 
     private static Fruit fruit;
-    private static int fruitTimer = 1000;
+    private static int fruitTimer = 600;
     private static List<Point> emptyPositionsList = new ArrayList<Point>();
 
     /**
