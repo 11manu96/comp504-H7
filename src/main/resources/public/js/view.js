@@ -15,7 +15,7 @@ orangeGhostImg.src = location.href + "orangeGhost.gif";
 var afraidGhostImg = new Image();
 afraidGhostImg.src = location.href + "afraidGhost.gif";
 var fruitImg = new Image();
-
+fruitImg.src = location.href + "fruit.jpg";
 
 /**
  * Get input from the keyboard and switch Pacman direction
@@ -181,7 +181,7 @@ function updateGameWorld() {
                 }
             }
             else if (element.type === "fruit") {
-                app.drawImage(element.location.x, element.location.y, element.size, "fruit.jpg");
+                app.drawImage(element.location.x, element.location.y, element.size, fruitImg);
             }
         });
     }, "json");
