@@ -13,16 +13,15 @@ import java.util.List;
 public class Fruit extends AFood {
 
     private static Fruit fruit;
-    private static int fruitTimer;
-    private List<Point> emptyPositionsList;
+    private static int fruitTimer = 1000;
+    private static List<Point> emptyPositionsList = new ArrayList<Point>();
+
     /**
      * Constructor for Fruit.
      * @param loc fruit location
      */
     private Fruit(Point loc) {
         super(loc, "fruit", DispatchAdapter.getGridSize(), 100);
-        this.fruitTimer = 30;
-        this.emptyPositionsList = new ArrayList<Point>();
     }
 
     public static Fruit makeFruit(Point loc) {
@@ -34,19 +33,39 @@ public class Fruit extends AFood {
         return fruit;
     }
 
+    public static Fruit getInstance() {
+        return fruit;
+    }
+
     /**
      * Get the fruit timer.
      * @return fruit timer
      */
-    public int getFruitTimer() {
-        return this.fruitTimer;
+    public static int getFruitTimer() {
+        return Fruit.fruitTimer;
     }
 
     /**
      * Set the fruit timer.
      * @param fruitTimer fruit timer
      */
-    public void setFruitTimer(int fruitTimer) {
-        this.fruitTimer = fruitTimer;
+    public static void setFruitTimer(int fruitTimer) {
+        Fruit.fruitTimer = fruitTimer;
+    }
+
+    /**
+     * Get the position list.
+     * @return position list
+     */
+    public static List<Point> getPositionList() {
+        return Fruit.emptyPositionsList;
+    }
+
+    /**
+     * Set the position list.
+     * @param position a possible position for fruit
+     */
+    public static void setPositionList(Point position) {
+        emptyPositionsList.add(position);
     }
 }
