@@ -7,6 +7,7 @@ import edu.rice.comp504.model.gameobjects.Exit;
 import edu.rice.comp504.model.gameobjects.character.ACharacter;
 import edu.rice.comp504.model.gameobjects.character.Pacman;
 import edu.rice.comp504.model.gameobjects.food.AFood;
+import edu.rice.comp504.model.gameobjects.food.Fruit;
 
 import java.awt.*;
 
@@ -66,6 +67,7 @@ public class PacmanInteraction implements IInteractStrategy {
                 dis.deleteObserver(dest);
                 AFood smallDot = (AFood)dest;
                 dis.setScore(dis.getScore() + smallDot.getPoints());
+                Fruit.setPositionList(smallDot.getLocation());
                 break;
             case "big_dot":
                 dis.deleteObserver(dest);
@@ -73,11 +75,13 @@ public class PacmanInteraction implements IInteractStrategy {
                 dis.setScore(dis.getScore() + bigDot.getPoints());
                 dis.setAfraidTimer(100);
                 dis.sendSwitchCmd("afraid");
+                Fruit.setPositionList(bigDot.getLocation());
                 break;
             case "fruit":
                 dis.deleteObserver(dest);
                 AFood fruit = (AFood)dest;
                 dis.setScore(dis.getScore() + fruit.getPoints());
+                Fruit.setFruitTimer(1000);
                 break;
         }
     }
