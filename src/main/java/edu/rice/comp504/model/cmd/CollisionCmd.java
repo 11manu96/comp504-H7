@@ -20,13 +20,17 @@ public class CollisionCmd implements IGameObjectCmd {
     }
 
     public void execute(AGameObject context) {
+        AFood temp = null;
         if (context != object) {
             if (object instanceof ACharacter) {
                 ACharacter character = (ACharacter) object;
                 if (character.collision(context)) {
+                    if(context instanceof AFood)
+                        temp = (AFood)context;
+
                     character.getInteractStrategy().interact(character, context);
-                    }
                 }
+            }
                 if (object instanceof Pacman) {
                     Pacman pacman=((Pacman) object);
                     Point tempvel=pacman.getVel();
@@ -38,8 +42,10 @@ public class CollisionCmd implements IGameObjectCmd {
                         pacman.getInteractStrategy().interact(pacman,context);
                         pacman.setVel(pacman.getSwitchdirection());
                     }
-                    else if (pacman.collision(context) && context instanceof AFood) {
+                    else if (pacman.collision(context) && context instanceof AFood && temp != context) {
+
                         pacman.getInteractStrategy().interact(pacman,context);
+
                     }
                     else {
                         pacman.setVel(tempvel);
