@@ -13,7 +13,7 @@ import java.util.List;
 public class Fruit extends AFood {
 
     private static Fruit fruit;
-    private static int fruitTimer = 100;
+    private static int fruitTimer = 1000;
     private static List<Point> emptyPositionsList = new ArrayList<Point>();
 
     /**
@@ -22,8 +22,6 @@ public class Fruit extends AFood {
      */
     private Fruit(Point loc) {
         super(loc, "fruit", DispatchAdapter.getGridSize(), 100);
-        //this.fruitTimer = 1000;
-        //this.emptyPositionsList = new ArrayList<Point>();
     }
 
     public static Fruit makeFruit(Point loc) {
