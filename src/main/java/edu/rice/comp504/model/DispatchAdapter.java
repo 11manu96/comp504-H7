@@ -5,7 +5,9 @@ import edu.rice.comp504.model.gameobjects.*;
 import edu.rice.comp504.model.gameobjects.character.*;
 import edu.rice.comp504.model.gameobjects.food.*;
 import edu.rice.comp504.model.strategy.update.GhostAfraidStrategy;
+import edu.rice.comp504.model.strategy.update.GhostChaseStrategy;
 import edu.rice.comp504.model.strategy.update.GhostRandomStrategy;
+import edu.rice.comp504.model.strategy.update.GhostTrapStrategy;
 
 import java.awt.Point;
 import java.util.List;
@@ -148,10 +150,10 @@ public class DispatchAdapter extends Observable {
                         break;
 
                     case 4: // ghost1
-                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "red", this);
+                        object = new Ghost(objLoc, GhostChaseStrategy.makeStrategy(), "red", this);
                         break;
                     case 5: // ghost2
-                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "pink", this);
+                        object = new Ghost(objLoc, GhostTrapStrategy.makeStrategy(), "pink", this);
                         break;
                     case 6: // ghost3
                         object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "orange", this);
