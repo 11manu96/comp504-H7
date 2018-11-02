@@ -21,7 +21,7 @@ public class Fruit extends AFood {
      * @param loc fruit location
      */
     private Fruit(Point loc) {
-        super(loc, "fruit", DispatchAdapter.getGridSize(), 100);
+        super(loc, "fruit", DispatchAdapter.getGridSize(), 200);
     }
 
     public static Fruit makeFruit(Point loc) {

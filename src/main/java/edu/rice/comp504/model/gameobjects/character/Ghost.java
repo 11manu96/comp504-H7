@@ -29,7 +29,7 @@ public class Ghost extends ACharacter {
         super(loc, "ghost", new Point(0,0), updateStrategy, GhostInteraction.makeStrategy(dis), DispatchAdapter.getGridSize());
         this.jailTimer = 3;
         this.color = color;
-        this.points = 200;
+        this.points = 100;
         this.setOpenSpaces();
     }
 
