@@ -34,6 +34,7 @@ public class UpdateCmd implements IGameObjectCmd{
             case "pacman":
                 dispatchAdapter.sendCollisionCmd(context);
                 ((Pacman) context).getUpdateStrategy().update(context);
+                ((Pacman) context).setChangedircollision(false);
                 break;
 
             case "ghost":
