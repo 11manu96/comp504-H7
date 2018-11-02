@@ -7,8 +7,10 @@ import edu.rice.comp504.model.gameobjects.food.*;
 import edu.rice.comp504.model.strategy.update.GhostAfraidStrategy;
 import edu.rice.comp504.model.strategy.update.GhostRandomStrategy;
 
-import java.awt.*;
+import java.awt.Point;
+import java.util.List;
 import java.util.Observable;
+import java.util.Random;
 
 /**
  * DispatchAdapter class acts as the game host.
@@ -219,6 +221,16 @@ public class DispatchAdapter extends Observable {
                 sendSwitchCmd("pink");
                 sendSwitchCmd("orange");
                 sendSwitchCmd("blue");
+            }
+        }
+
+        if (Fruit.getFruitTimer() > 0) {
+            Fruit.setFruitTimer(Fruit.getFruitTimer() - 1);
+            if (Fruit.getFruitTimer() == 0) {
+                List<Point> positionList = Fruit.getPositionList();
+                Random random = new Random();
+                int index = random.nextInt(positionList.size());
+                addObserver(Fruit.makeFruit(positionList.get(index)));
             }
         }
     }
