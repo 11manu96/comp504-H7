@@ -27,7 +27,6 @@ public class Ghost extends ACharacter {
      */
     public Ghost(Point loc, IUpdateStrategy updateStrategy, String color, DispatchAdapter dis) {
         super(loc, "ghost", new Point(0,0), updateStrategy, GhostInteraction.makeStrategy(dis), DispatchAdapter.getGridSize());
-        this.jailTimer = 3;
         this.color = color;
         this.points = 100;
         this.setOpenSpaces();
@@ -50,23 +49,6 @@ public class Ghost extends ACharacter {
     }
 
     public int getPoints() { return this.points; }
-
-    /**
-     * Get the jail timer.
-     * @return time ghost will stay in jail
-     */
-    public int getJailTimer() {
-        return this.jailTimer;
-    }
-
-    /**
-     * Set the jail timer.
-     * @param jailTimer time ghost will stay in jail
-     */
-    public void setJailTimer(int jailTimer) {
-        this.jailTimer = jailTimer;
-    }
-
 
     public void setOpenSpaces() {
         this.openSpaces = new LinkedList<Point>(Arrays.asList(

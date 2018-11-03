@@ -57,7 +57,4 @@ public class GhostChaseStrategy implements IUpdateStrategy {
         ghost.setVel(minDir);
 
     }
-
-
-
 }

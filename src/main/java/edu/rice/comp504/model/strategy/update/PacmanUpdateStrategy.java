@@ -16,7 +16,7 @@ public class PacmanUpdateStrategy implements IUpdateStrategy{
     /**
      * Constructor.
      */
-    private PacmanUpdateStrategy(){}
+    private PacmanUpdateStrategy() {}
 
     /**
      * Initialize or retrieve Pacman update strategy singleton.

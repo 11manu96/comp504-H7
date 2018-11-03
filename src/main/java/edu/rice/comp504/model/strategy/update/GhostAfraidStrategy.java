@@ -63,5 +63,4 @@ public class GhostAfraidStrategy implements IUpdateStrategy {
         }
         ghost.setVel(maxDir);
     }
-
 }

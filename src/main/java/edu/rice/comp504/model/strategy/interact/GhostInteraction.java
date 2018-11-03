@@ -75,6 +75,7 @@ public class GhostInteraction implements IInteractStrategy {
                     pacman.setLocation(pacman.getInitialLoc());
                     pacman.setVel(new Point(0, 0));
                     ghost.setLocation(ghost.getInitialLoc());
+                    ghost.setVel(new Point(0, 0));
                 }
                 break;
         }
