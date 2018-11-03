@@ -1,10 +1,8 @@
 package edu.rice.comp504.model.strategy.interact;
 
 import edu.rice.comp504.model.DispatchAdapter;
-import edu.rice.comp504.model.cmd.SwitchCmd;
 import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.Exit;
-import edu.rice.comp504.model.gameobjects.character.ACharacter;
 import edu.rice.comp504.model.gameobjects.character.Pacman;
 import edu.rice.comp504.model.gameobjects.food.AFood;
 import edu.rice.comp504.model.gameobjects.food.Fruit;
@@ -19,7 +17,8 @@ public class PacmanInteraction implements IInteractStrategy {
     private static DispatchAdapter dis;
 
     /**
-     * Pacman Interaction Constructor.
+     * Pacman interaction strategy constructor.
+     * @param dis dispatch adapter instance
      */
     public PacmanInteraction(DispatchAdapter dis) {
         this.dis = dis;
@@ -27,7 +26,7 @@ public class PacmanInteraction implements IInteractStrategy {
 
     /**
      * Initialize or retrieve Pacman interaction strategy singleton.
-     * @return an interact strategy.
+     * @return an interact strategy
      */
     public static IInteractStrategy makeStrategy(DispatchAdapter dis) {
         if (singleton == null) {
@@ -35,16 +34,15 @@ public class PacmanInteraction implements IInteractStrategy {
         } else {
             PacmanInteraction.dis = dis;
         }
-
         return singleton;
     }
 
     /**
      * Get the interaction strategy name.
-     * @return the interaction strategy name.
+     * @return the interaction strategy name
      */
     public String getName() {
-        return "PacmanInteraction";
+        return "pacman_interact";
     }
 
     /**

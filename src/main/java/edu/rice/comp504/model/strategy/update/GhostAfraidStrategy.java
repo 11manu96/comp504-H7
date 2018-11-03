@@ -5,10 +5,8 @@ import edu.rice.comp504.model.gameobjects.character.Ghost;
 import edu.rice.comp504.model.gameobjects.character.Pacman;
 
 import java.awt.*;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 /**
  * This strategy implementing IUpdateStrategy is for ghost afraid.
@@ -18,7 +16,7 @@ public class GhostAfraidStrategy implements IUpdateStrategy {
     private String name;
 
     /**
-     * Ghost Afraid Strategy constructor.
+     * Ghost afraid strategy constructor.
      */
     private GhostAfraidStrategy() {
         this.name = "ghost_afraid";
@@ -26,7 +24,7 @@ public class GhostAfraidStrategy implements IUpdateStrategy {
 
     /**
      * Get a singleton of ghost afraid strategy.
-     * @return a singleton.
+     * @return a singleton
      */
     public static IUpdateStrategy makeStrategy() {
         if (singletonGhostAfraid == null) {
@@ -37,7 +35,7 @@ public class GhostAfraidStrategy implements IUpdateStrategy {
 
     /**
      * Get the strategy name.
-     * @return the strategy name.
+     * @return the strategy name
      */
     public String getName() {
         return this.name;
@@ -45,7 +43,7 @@ public class GhostAfraidStrategy implements IUpdateStrategy {
 
     /**
      * Update the ghost status.
-     * @param gameObj the ghost.
+     * @param gameObj the ghost
      */
     public void update(AGameObject gameObj) {
         Ghost ghost = (Ghost) gameObj;

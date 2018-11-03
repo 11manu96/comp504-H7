@@ -2,7 +2,6 @@ package edu.rice.comp504.model.gameobjects;
 
 import edu.rice.comp504.model.cmd.IGameObjectCmd;
 
-
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
@@ -18,9 +17,9 @@ public abstract class AGameObject implements Observer {
 
     /**
      * Constructor for AGameObject.
-     * @param location left upper conner of the object.
-     * @param type type of the object.
-     * @param size size of the object.
+     * @param location left upper conner of the object
+     * @param type type of the object
+     * @param size size of the object
      */
     public AGameObject(Point location, String type, int size) {
         this.location = location;
@@ -30,7 +29,7 @@ public abstract class AGameObject implements Observer {
 
     /**
      * Get the type of the object.
-     * @return type.
+     * @return type
      */
     public String getType() {
         return this.type;
@@ -38,7 +37,7 @@ public abstract class AGameObject implements Observer {
 
     /**
      * Get the location of the object.
-     * @return location.
+     * @return location
      */
     public Point getLocation() {
         return this.location;
@@ -46,7 +45,7 @@ public abstract class AGameObject implements Observer {
 
     /**
      * Set the location of the object.
-     * @param location a Point.
+     * @param location a Point
      */
     public void setLocation(Point location) {
         this.location = new Point(location);
@@ -54,7 +53,7 @@ public abstract class AGameObject implements Observer {
 
     /**
      * Get the size of the object.
-     * @return size.
+     * @return size
      */
     public int getSize() {
         return this.size;
@@ -62,8 +61,8 @@ public abstract class AGameObject implements Observer {
 
     /**
      * Update the state of the object using strategies associated with the object.
-     * @param obs observable.
-     * @param o object.
+     * @param obs observable
+     * @param o object
      */
     public void update(Observable obs, Object o) {
         IGameObjectCmd cmd = (IGameObjectCmd) o;

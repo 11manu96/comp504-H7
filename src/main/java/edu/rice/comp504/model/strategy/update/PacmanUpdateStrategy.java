@@ -1,9 +1,7 @@
 package edu.rice.comp504.model.strategy.update;
 
-
 import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.character.Pacman;
-
 
 import java.awt.*;
 

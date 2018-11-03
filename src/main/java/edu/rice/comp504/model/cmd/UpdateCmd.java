@@ -11,21 +11,19 @@ import java.awt.*;
  * This command implementing IGameObjectCmd updates the state of a pacman or ghost.
  */
 public class UpdateCmd implements IGameObjectCmd{
-
     private DispatchAdapter dispatchAdapter;
 
     /**
-     * Update command Constructor.
-     * @param dispatchAdapter communicate with dispatchAdapter.
+     * Update command constructor.
+     * @param dispatchAdapter communicate with dispatchAdapter
      */
     public UpdateCmd(DispatchAdapter dispatchAdapter) {
         this.dispatchAdapter = dispatchAdapter;
-
     }
 
     /**
      * Excute the command.
-     * @param context The receiver that will execute the command.
+     * @param context The receiver that will execute the command
      */
     public void execute(AGameObject context) {
         switch (context.getType()) {
@@ -54,5 +52,4 @@ public class UpdateCmd implements IGameObjectCmd{
                 break;
         }
     }
-
 }

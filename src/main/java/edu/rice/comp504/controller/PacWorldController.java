@@ -14,7 +14,7 @@ public class PacWorldController {
 
     /**
      * Main function that runs the Pacman game.
-     * @param args args.
+     * @param args args
      */
     public static void main(String[] args) {
         //set the port for Heroku
@@ -50,7 +50,7 @@ public class PacWorldController {
 
     /**
      * Get the Heroku assigned port.
-     * @return the port.
+     * @return the port
      */
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();

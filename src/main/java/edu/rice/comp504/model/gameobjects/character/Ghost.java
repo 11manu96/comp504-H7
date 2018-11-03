@@ -14,7 +14,6 @@ import java.util.LinkedList;
  * This concrete class extends ACharacter and represents ghost game objects.
  */
 public class Ghost extends ACharacter {
-    private int jailTimer;
     private String color;
     private int points;
     private List<Point> openSpaces;
@@ -26,7 +25,8 @@ public class Ghost extends ACharacter {
      * @param color ghost color
      */
     public Ghost(Point loc, IUpdateStrategy updateStrategy, String color, DispatchAdapter dis) {
-        super(loc, "ghost", new Point(0,0), updateStrategy, GhostInteraction.makeStrategy(dis), DispatchAdapter.getGridSize());
+        super(loc, "ghost", new Point(0,0), updateStrategy,
+                GhostInteraction.makeStrategy(dis), DispatchAdapter.getGridSize());
         this.color = color;
         this.points = 100;
         this.setOpenSpaces();
@@ -50,10 +50,11 @@ public class Ghost extends ACharacter {
 
     /**
      * Get the points.
-     * @return the points.
+     * @return the points
      */
-    public int getPoints() { return this.points; }
-
+    public int getPoints() {
+        return this.points;
+    }
 
     /**
      * Set the open spaces for the ghost.
@@ -66,7 +67,7 @@ public class Ghost extends ACharacter {
 
     /**
      * Remove the open space.
-     * @param direction a Point direction.
+     * @param direction a Point direction
      */
     public void removeOpenSpace(Point direction) {
         this.openSpaces.remove(direction);
@@ -74,9 +75,11 @@ public class Ghost extends ACharacter {
 
     /**
      * Get the open space.
-     * @return a List.
+     * @return a list of open spaces
      */
-    public List<Point> getOpenSpaces() { return this.openSpaces; }
+    public List<Point> getOpenSpaces() {
+        return this.openSpaces;
+    }
 
     /**
      * Handle collision between ghost and game object.

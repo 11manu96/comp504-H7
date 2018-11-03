@@ -24,6 +24,11 @@ public class Fruit extends AFood {
         super(loc, "fruit", DispatchAdapter.getGridSize(), 200);
     }
 
+    /**
+     * Instantiate or update singleton fruit instance.
+     * @param loc fruit location
+     * @return fruit instance
+     */
     public static Fruit makeFruit(Point loc) {
         if (fruit == null) {
             fruit = new Fruit(loc);
@@ -33,6 +38,10 @@ public class Fruit extends AFood {
         return fruit;
     }
 
+    /**
+     * Get singleton instance of fruit.
+     * @return fruit instance
+     */
     public static Fruit getInstance() {
         return fruit;
     }
@@ -54,7 +63,7 @@ public class Fruit extends AFood {
     }
 
     /**
-     * Get the position list.
+     * Get the list of open positions.
      * @return position list
      */
     public static List<Point> getPositionList() {

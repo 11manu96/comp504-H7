@@ -18,11 +18,13 @@ public class GhostTrailStrategy implements IUpdateStrategy {
     /**
      * Ghost trail strategy constructor.
      */
-    private GhostTrailStrategy() { this.name="ghost_trail"; }
+    private GhostTrailStrategy() {
+        this.name = "ghost_trail";
+    }
 
     /**
      * Get a singleton of ghost trail strategy.
-     * @return a singleton.
+     * @return a singleton
      */
     public static IUpdateStrategy makeStrategy() {
         if (singletonGhostTrail == null) {
@@ -33,7 +35,7 @@ public class GhostTrailStrategy implements IUpdateStrategy {
 
     /**
      * Get the strategy name.
-     * @return the strategy name.
+     * @return the strategy name
      */
     public String getName() {
         return this.name;
@@ -41,7 +43,7 @@ public class GhostTrailStrategy implements IUpdateStrategy {
 
     /**
      * Update the ghost status.
-     * @param gameObj the ghost.
+     * @param gameObj the ghost
      */
     public void update(AGameObject gameObj) {
         Ghost ghost = (Ghost) gameObj;

@@ -105,7 +105,6 @@ public class DispatchAdapter extends Observable {
         this.afraidTimer = afraidTimer;
     }
 
-
     /**
      * Read initialization from a 2D array and add all necessary objects as observers.
      */
@@ -245,7 +244,7 @@ public class DispatchAdapter extends Observable {
 
     /**
      * Send the collision command.
-     * @param context object.
+     * @param context object to check collision against
      */
     public void sendCollisionCmd(AGameObject context) {
         setChanged();
@@ -254,7 +253,7 @@ public class DispatchAdapter extends Observable {
 
     /**
      * Sent the swith command.
-     * @param switchInfo a String.
+     * @param switchInfo descriptor of what to switch
      */
     public void sendSwitchCmd(String switchInfo) {
         setChanged();
@@ -263,7 +262,7 @@ public class DispatchAdapter extends Observable {
 
     /**
      * Switch Pacman direction.
-     * @param body The request body.
+     * @param body the request body
      */
     public void switchDirection(String body) {
         SwitchCmd switchCmd = null;
@@ -290,7 +289,7 @@ public class DispatchAdapter extends Observable {
 
     /**
      * Get the number of dots left.
-     * @return the number of dots left.
+     * @return the number of dots left
      */
     public int getDotsLeft() {
         return dotsLeft;
@@ -298,7 +297,7 @@ public class DispatchAdapter extends Observable {
 
     /**
      * Set the number of dots left.
-     * @param dotsLeft the number of dots left.
+     * @param dotsLeft the number of dots left
      */
     public void setDotsLeft(int dotsLeft) {
         this.dotsLeft = dotsLeft;

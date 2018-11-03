@@ -8,7 +8,6 @@ import java.awt.*;
  * This concrete class extends AGameObject and represents exit game objects.
  */
 public class Exit extends AGameObject {
-
     //this variable holds the value of the point from where the ghost/pacman appears after entering a a exit
     private Point exitTo;
 
@@ -23,17 +22,17 @@ public class Exit extends AGameObject {
 
     /**
      * Get the next location from the exit.
-     * @return Point the next location.
+     * @return Point the next location
      */
-    public Point getExitTo(){
+    public Point getExitTo() {
         return this.exitTo;
     }
 
     /**
      * Set the next location from the exit.
-     * @param exitTo the next location from this exit.
+     * @param exitTo the next location from this exit
      */
-    public void setExitTo(Point exitTo){
+    public void setExitTo(Point exitTo) {
         this.exitTo = exitTo;
     }
 }

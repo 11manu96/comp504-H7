@@ -18,11 +18,13 @@ public class GhostTrapStrategy implements IUpdateStrategy {
     /**
      * Ghost trap strategy constructor.
      */
-    private GhostTrapStrategy() { this.name="ghost_trap"; }
+    private GhostTrapStrategy() {
+        this.name = "ghost_trap";
+    }
 
     /**
      * Get the ghost trap strategy singleton.
-     * @return a singleton.
+     * @return a singleton
      */
     public static IUpdateStrategy makeStrategy() {
         if (singletonGhostTrap == null) {
@@ -33,7 +35,7 @@ public class GhostTrapStrategy implements IUpdateStrategy {
 
     /**
      * Get the strategy name.
-     * @return the strategy name.
+     * @return the strategy name
      */
     public String getName() {
         return this.name;
@@ -41,7 +43,7 @@ public class GhostTrapStrategy implements IUpdateStrategy {
 
     /**
      * Update the ghost status.
-     * @param gameObj the ghost.
+     * @param gameObj the ghost
      */
     public void update(AGameObject gameObj) {
         Ghost ghost = (Ghost) gameObj;
