@@ -32,9 +32,24 @@ public class UpdateCmd implements IGameObjectCmd{
         switch (context.getType()) {
 
             case "pacman":
+                ((Pacman) context).setSwitchDirectionCollision(false);
+
+
+                Point tempvel=((Pacman) context).getVel();
+                Point switchVelocity = ((Pacman) context).getSwitchdirection();
+                //set pacman velocity to key pressed velocity if key pressed
+                ((Pacman) context).setVel(new Point(switchVelocity.x, switchVelocity.y));
                 dispatchAdapter.sendCollisionCmd(context);
+
+                //collision when switching direction, isSwitchDirectionCollision only true when pacman collides with wall
+                if(((Pacman) context).isSwitchDirectionCollision()){
+                    ((Pacman) context).setVel(tempvel);
+                    dispatchAdapter.sendCollisionCmd(context);
+                }
+
+
+
                 ((Pacman) context).getUpdateStrategy().update(context);
-                ((Pacman) context).setChangedircollision(false);
                 break;
 
             case "ghost":

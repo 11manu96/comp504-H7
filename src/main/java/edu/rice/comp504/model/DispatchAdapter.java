@@ -26,6 +26,7 @@ public class DispatchAdapter extends Observable {
 
     private int afraidTimer;
     private int dotsLeft;
+    private boolean gameOver;
 
 
 
@@ -34,6 +35,7 @@ public class DispatchAdapter extends Observable {
      */
     public DispatchAdapter() {
         DispatchAdapter.gridSize = 20;
+        gameOver = false;
     }
 
      /**
@@ -123,6 +125,7 @@ public class DispatchAdapter extends Observable {
         this.lives = 3;
         this.afraidTimer = 0;
         this.dotsLeft = 0;
+        this.gameOver = false;
 
         // add observers at locations specified in layout
         int height = map.length;
@@ -216,29 +219,36 @@ public class DispatchAdapter extends Observable {
      * Call the update method on all observers to update their position in the game.
      */
     public void updatePacWorld() {
-        setChanged();
-        notifyObservers(new UpdateCmd(this));
-        if (afraidTimer > 0) {
-            afraidTimer -= 1;
-            if (afraidTimer == 0) {
-                sendSwitchCmd("red");
-                sendSwitchCmd("pink");
-                sendSwitchCmd("orange");
-                sendSwitchCmd("blue");
-            }
+        //System.out.println(dotsLeft);
+        if(lives == 0  || dotsLeft == 0){
+            //System.out.println("game up");
+            gameOver = true;
         }
+        if(!gameOver) {
+            setChanged();
+            notifyObservers(new UpdateCmd(this));
+            if (afraidTimer > 0) {
+                afraidTimer -= 1;
+                if (afraidTimer == 0) {
+                    sendSwitchCmd("red");
+                    sendSwitchCmd("pink");
+                    sendSwitchCmd("orange");
+                    sendSwitchCmd("blue");
+                }
+            }
 
-        if (Fruit.getFruitTimer() > 0) {
-            Fruit.setFruitTimer(Fruit.getFruitTimer() - 1);
-            if (Fruit.getFruitTimer() == 0) {
-                List<Point> positionList = Fruit.getPositionList();
-                if (positionList.size() > 0) {
-                    Random random = new Random();
-                    int index = random.nextInt(positionList.size());
-                    addObserver(Fruit.makeFruit(positionList.get(index)));
-                } else {
-                    // handle case of no open space
-                    Fruit.setFruitTimer(1);
+            if (Fruit.getFruitTimer() > 0) {
+                Fruit.setFruitTimer(Fruit.getFruitTimer() - 1);
+                if (Fruit.getFruitTimer() == 0) {
+                    List<Point> positionList = Fruit.getPositionList();
+                    if (positionList.size() > 0) {
+                        Random random = new Random();
+                        int index = random.nextInt(positionList.size());
+                        addObserver(Fruit.makeFruit(positionList.get(index)));
+                    } else {
+                        // handle case of no open space
+                        Fruit.setFruitTimer(1);
+                    }
                 }
             }
         }
@@ -280,5 +290,13 @@ public class DispatchAdapter extends Observable {
         }
         setChanged();
         notifyObservers(switchCmd);
+    }
+
+    public int getDotsLeft() {
+        return dotsLeft;
+    }
+
+    public void setDotsLeft(int dotsLeft) {
+        this.dotsLeft = dotsLeft;
     }
 }
