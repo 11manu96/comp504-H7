@@ -66,9 +66,5 @@ public class GhostRandomStrategy implements IUpdateStrategy {
             Collections.shuffle(directions);
             ghost.setVel(directions.get(0));
         }
-
-
-
-
     }
 }

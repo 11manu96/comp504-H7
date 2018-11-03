@@ -23,6 +23,9 @@ public class DispatchAdapterTest extends TestCase {
         adapter.addObserver(pacman);
         adapter.addObserver(new Wall(new Point(280, 240)));
         adapter.addObserver(new Exit(new Point(520, 160), new Point(0, 160)));
+        // prevent game from ending
+        adapter.setLives(1);
+        adapter.setDotsLeft(1);
 
         // test Pacman movement
         int currentX = pacman.getLocation().x;
@@ -47,7 +50,7 @@ public class DispatchAdapterTest extends TestCase {
         // test Pacman exit collision
         pacman.setLocation(new Point(510, 170));
         currentY = pacman.getLocation().y;
-        pacman.setVel(new Point(20, 0));
+        pacman.setSwitchdirection(new Point(20, 0));
         adapter.updatePacWorld();
         assertEquals("Check Pacman x location after exit collision", 30, pacman.getLocation().x);
         assertEquals("Check Pacman y location after exit collision", currentY, pacman.getLocation().y);
@@ -56,6 +59,9 @@ public class DispatchAdapterTest extends TestCase {
     public void testEatFood() {
         DispatchAdapter adapter = new DispatchAdapter();
         adapter.setCanvasDims(new Point(540, 370));
+        // prevent game from ending
+        adapter.setLives(1);
+        adapter.setDotsLeft(3);
 
         // add objects for testing
         Pacman pacman = Pacman.makePacman(new Point(270, 230), adapter);
@@ -67,7 +73,7 @@ public class DispatchAdapterTest extends TestCase {
         Fruit fruit = Fruit.makeFruit(new Point(320, 220));
         adapter.addObserver(fruit);
 
-        pacman.setVel(new Point(20, 0));
+        pacman.setSwitchdirection(new Point(20, 0));
         assertEquals("Check all objects added", 4, adapter.countObservers());
         adapter.updatePacWorld();
         assertEquals("Check small dot was destroyed", 3, adapter.countObservers());
@@ -76,7 +82,7 @@ public class DispatchAdapterTest extends TestCase {
         adapter.updatePacWorld();
         assertEquals("Check big dot was destroyed", 2, adapter.countObservers());
         assertEquals("Check small dot updated score", bigDot.getPoints(), adapter.getScore());
-        assertEquals("Check big dot updated afraid timer", 30, adapter.getAfraidTimer());
+        assertEquals("Check big dot updated afraid timer", 99, adapter.getAfraidTimer());
         adapter.setScore(0);
         adapter.updatePacWorld();
         assertEquals("Check fruit was destroyed", 1, adapter.countObservers());
@@ -86,6 +92,12 @@ public class DispatchAdapterTest extends TestCase {
     public void testUpdateGhost() {
         DispatchAdapter adapter = new DispatchAdapter();
         adapter.setCanvasDims(new Point(540, 370));
+        // prevent game from ending
+        adapter.setLives(1);
+        adapter.setDotsLeft(3);
+
+        Pacman pacman = Pacman.makePacman(new Point(270, 230), adapter);
+        adapter.addObserver(pacman);
         Ghost ghost = new Ghost(new Point(220, 100), GhostRandomStrategy.makeStrategy(), "red", adapter);
         adapter.addObserver(ghost);
 
@@ -124,6 +136,10 @@ public class DispatchAdapterTest extends TestCase {
     public void testEatPacman() {
         DispatchAdapter adapter = new DispatchAdapter();
         adapter.setCanvasDims(new Point(540, 370));
+        // prevent game from ending
+        adapter.setLives(3);
+        adapter.setDotsLeft(1);
+
         Ghost ghost = new Ghost(new Point(220, 100), GhostRandomStrategy.makeStrategy(), "red", adapter);
         adapter.addObserver(ghost);
         Pacman pacman = Pacman.makePacman(new Point(270, 230), adapter);
@@ -133,21 +149,30 @@ public class DispatchAdapterTest extends TestCase {
         pacman.setLocation(new Point(250, 110));
         pacman.setVel(new Point(0, 0));
         adapter.updatePacWorld();
+        adapter.updatePacWorld();
+        assertEquals("Check Pacman lives after being eaten", 2, adapter.getLives());
         assertEquals("Check Pacman x location after being eaten", 270, pacman.getLocation().x);
         assertEquals("Check Pacman y location after being eaten", 230, pacman.getLocation().y);
-        assertEquals("Check Pacman lives after being eaten", 2, adapter.getLives());
+        assertEquals("Check ghost x location after eating Pacman", 220, ghost.getLocation().x);
+        assertEquals("Check ghost y location after eating Pacman", 100, ghost.getLocation().y);
     }
 
     public void testSwitchDirection() {
         DispatchAdapter adapter = new DispatchAdapter();
         adapter.setCanvasDims(new Point(540, 370));
+        // prevent game from ending
+        adapter.setLives(3);
+        adapter.setDotsLeft(1);
+
         Pacman pacman = Pacman.makePacman(new Point(270, 230), adapter);
         adapter.addObserver(pacman);
 
         // test switch direction
         adapter.switchDirection("keycode=40");
-        assertEquals("Check Pacman x velocity after switching direction", 0, pacman.getVel().x);
-        assertEquals("Check Pacman y velocity after switching direction", 20, pacman.getVel().y);
+        assertEquals("Check Pacman x velocity after switching direction",
+                0, pacman.getSwitchdirection().x);
+        assertEquals("Check Pacman y velocity after switching direction",
+                20, pacman.getSwitchdirection().y);
 
         adapter.addObserver(new Wall(new Point(280, 220)));
         pacman.setVel(new Point(0, 20));

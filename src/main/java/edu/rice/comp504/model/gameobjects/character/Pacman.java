@@ -14,7 +14,6 @@ public class Pacman extends ACharacter {
 
     private static Pacman pacman;
     private boolean switchDirectionCollision;
-
     private Point switchdirection;
 
     /**
@@ -24,8 +23,8 @@ public class Pacman extends ACharacter {
     private Pacman(Point loc, DispatchAdapter dis) {
         super(loc, "pacman", new Point(0,0),
                 PacmanUpdateStrategy.makeStrategy(), PacmanInteraction.makeStrategy(dis), DispatchAdapter.getGridSize());
-        this.switchDirectionCollision =false;
-        this.switchdirection=new Point(0,0);
+        this.switchDirectionCollision = false;
+        this.switchdirection = new Point(0, 0);
     }
 
     public static Pacman makePacman(Point loc, DispatchAdapter dis) {
@@ -34,6 +33,8 @@ public class Pacman extends ACharacter {
         } else {
             pacman.setLocation(loc);
             pacman.setInteractStrategy(PacmanInteraction.makeStrategy(dis));
+            pacman.setSwitchdirection(new Point(0, 0));
+            pacman.setSwitchDirectionCollision(false);
         }
         return pacman;
     }
