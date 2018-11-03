@@ -14,7 +14,7 @@ public class PacmanUpdateStrategy implements IUpdateStrategy{
     private static PacmanUpdateStrategy singletonPacmanUpdate;
 
     /**
-     * Constructor.
+     * Pacman update strategy constructor.
      */
     private PacmanUpdateStrategy() {}
 

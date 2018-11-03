@@ -13,17 +13,25 @@ public class Exit extends AGameObject {
     private Point exitTo;
     /**
      * Constructor for Exit.
-     * @param loc exit location
+     * @param loc exit location.
      */
     public Exit(Point loc, Point exitTo) {
         super(loc,"exit", DispatchAdapter.getGridSize());
         this.exitTo = exitTo;
     }
-    
+
+    /**
+     * Get the next location from the exit.
+     * @return Point the next location.
+     */
     public Point getExitTo(){
         return this.exitTo;
     }
-    
+
+    /**
+     * Set the next location from the exit.
+     * @param exitTo the next location from this exit.
+     */
     public void setExitTo(Point exitTo){
         this.exitTo = exitTo;
     }
