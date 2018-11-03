@@ -4,10 +4,7 @@ import edu.rice.comp504.model.cmd.*;
 import edu.rice.comp504.model.gameobjects.*;
 import edu.rice.comp504.model.gameobjects.character.*;
 import edu.rice.comp504.model.gameobjects.food.*;
-import edu.rice.comp504.model.strategy.update.GhostAfraidStrategy;
-import edu.rice.comp504.model.strategy.update.GhostChaseStrategy;
-import edu.rice.comp504.model.strategy.update.GhostRandomStrategy;
-import edu.rice.comp504.model.strategy.update.GhostTrapStrategy;
+import edu.rice.comp504.model.strategy.update.*;
 
 import java.awt.Point;
 import java.util.List;
@@ -159,7 +156,7 @@ public class DispatchAdapter extends Observable {
                         object = new Ghost(objLoc, GhostTrapStrategy.makeStrategy(), "pink", this);
                         break;
                     case 6: // ghost3
-                        object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "orange", this);
+                        object = new Ghost(objLoc, GhostTrailStrategy.makeStrategy(), "orange", this);
                         break;
                     case 7: // ghost4
                         object = new Ghost(objLoc, GhostRandomStrategy.makeStrategy(), "blue", this);
@@ -198,7 +195,7 @@ public class DispatchAdapter extends Observable {
                 {1, 8, 8, 8, 8, 8, 8, 8, 8, 8, 1, 8, 8, 0, 8, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1},
                 {1, 8, 1, 8, 1, 8, 1, 1, 1, 8, 1, 1, 1, 0, 1, 1, 1, 8, 1, 8, 1, 9, 1, 8, 1, 8, 1},
                 {1, 8, 1, 8, 8, 8, 8, 9, 1, 8, 1, 4, 5, 0, 6, 7, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1},
-                {1, 8, 1, 8, 1, 8, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1},
+                {1, 8, 1, 8, 1, 8, 1, 1, 1, 8, 1, 1, 1, 0, 1, 1, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1},
                 {1, 8, 1, 8, 8, 8, 8, 8, 8, 8, 1, 8, 8, 8, 8, 8, 1, 8, 1, 8, 8, 8, 8, 8, 1, 8, 1},
                 {2, 8, 1, 1, 1, 8, 1, 1, 1, 8, 1, 8, 1, 1, 1, 8, 1, 8, 1, 1, 1, 8, 1, 1, 1, 8, 2},
                 {1, 8, 8, 8, 8, 8, 8, 8, 1, 8, 1, 8, 8, 8, 8, 8, 1, 8, 8, 8, 8, 8, 8, 8, 1, 8, 1},

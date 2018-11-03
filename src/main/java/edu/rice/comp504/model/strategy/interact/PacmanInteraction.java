@@ -72,7 +72,7 @@ public class PacmanInteraction implements IInteractStrategy {
                 AFood smallDot = (AFood)dest;
                 dis.setScore(dis.getScore() + smallDot.getPoints());
                 Fruit.setPositionList(smallDot.getLocation());
-                dis.setDotsLeft(dis.getDotsLeft() -1);
+                dis.setDotsLeft(dis.getDotsLeft() - 1);
                 break;
             case "big_dot":
                 dis.deleteObserver(dest);
@@ -81,7 +81,7 @@ public class PacmanInteraction implements IInteractStrategy {
                 dis.setAfraidTimer(100);
                 dis.sendSwitchCmd("afraid");
                 Fruit.setPositionList(bigDot.getLocation());
-                dis.setDotsLeft(dis.getDotsLeft() -1);
+                dis.setDotsLeft(dis.getDotsLeft() - 1);
                 break;
             case "fruit":
                 dis.deleteObserver(dest);
