@@ -11,7 +11,7 @@ public class Wall extends AGameObject {
 
     /**
      * Constructor for Wall.
-     * @param loc wall location
+     * @param loc wall location.
      */
     public Wall(Point loc) {
         super(loc, "wall", DispatchAdapter.getGridSize());

@@ -18,8 +18,8 @@ public class SwitchCmd implements IGameObjectCmd {
     DispatchAdapter dis;
 
     /**
-     * Constructor.
-     * @param switchInfo information on what to switch to
+     * Switch Command Constructor.
+     * @param switchInfo information on what to switch to.
      */
     public SwitchCmd(String switchInfo, DispatchAdapter dis) {
         this.switchInfo = switchInfo;

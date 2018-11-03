@@ -15,8 +15,8 @@ public class UpdateCmd implements IGameObjectCmd{
     private DispatchAdapter dispatchAdapter;
 
     /**
-     * Constructor.
-     * @param dispatchAdapter communicate with dispatchAdapter
+     * Update command Constructor.
+     * @param dispatchAdapter communicate with dispatchAdapter.
      */
     public UpdateCmd(DispatchAdapter dispatchAdapter) {
         this.dispatchAdapter = dispatchAdapter;

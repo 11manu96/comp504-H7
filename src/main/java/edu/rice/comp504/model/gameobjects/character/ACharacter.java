@@ -17,12 +17,12 @@ public abstract class ACharacter extends AGameObject {
 
     /**
      * Constructor for ACharacter.
-     * @param loc character location
-     * @param type type pacman or ghost
-     * @param vel character velocity
-     * @param updateStrategy update strategy
-     * @param interactStrategy interact strategy
-     * @param size character size
+     * @param loc character location.
+     * @param type type pacman or ghost.
+     * @param vel character velocity.
+     * @param updateStrategy update strategy.
+     * @param interactStrategy interact strategy.
+     * @param size character size.
      */
     public ACharacter(Point loc, String type, Point vel, IUpdateStrategy updateStrategy, IInteractStrategy interactStrategy, int size) {
         super(loc, type, size);
@@ -42,7 +42,7 @@ public abstract class ACharacter extends AGameObject {
 
     /**
      * Get the update strategy.
-     * @return updateStrategy
+     * @return updateStrategy.
      */
     public IUpdateStrategy getUpdateStrategy() {
         return this.updateStrategy;
@@ -50,7 +50,7 @@ public abstract class ACharacter extends AGameObject {
 
     /**
      * Set interact strategy.
-     * @param interactStrategy interaction strategy
+     * @param interactStrategy interaction strategy.
      */
     public void setInteractStrategy(IInteractStrategy interactStrategy) {
         this.interactStrategy = interactStrategy;
@@ -58,7 +58,7 @@ public abstract class ACharacter extends AGameObject {
 
     /**
      * Set update strategy.
-     * @param updateStrategy update strategy
+     * @param updateStrategy update strategy.
      */
     public void setUpdateStrategy(IUpdateStrategy updateStrategy) {
         this.updateStrategy = updateStrategy;
@@ -70,7 +70,7 @@ public abstract class ACharacter extends AGameObject {
 
     /**
      * Get velocity.
-     * @return velocity
+     * @return velocity.
      */
     public Point getVel() {
         return this.vel;
@@ -78,7 +78,7 @@ public abstract class ACharacter extends AGameObject {
 
     /**
      * Set velocity.
-     * @param vel velocity
+     * @param vel velocity.
      */
     public void setVel(Point vel) {
         this.vel = vel;
@@ -86,8 +86,8 @@ public abstract class ACharacter extends AGameObject {
 
     /**
      * Check for collision against AGameObject.
-     * @param gameObject object the check collision against
-     * @return whether there was a collision
+     * @param gameObject object the check collision against.
+     * @return boolean whether there was a collision.
      */
     public abstract boolean collision(AGameObject gameObject);
 

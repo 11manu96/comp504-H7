@@ -19,7 +19,7 @@ public class PacmanInteraction implements IInteractStrategy {
     private static DispatchAdapter dis;
 
     /**
-     * Constructor.
+     * Pacman Interaction Constructor.
      */
     public PacmanInteraction(DispatchAdapter dis) {
         this.dis = dis;
@@ -41,7 +41,7 @@ public class PacmanInteraction implements IInteractStrategy {
 
     /**
      * Get the interaction strategy name.
-     * @return the interaction strategy name
+     * @return the interaction strategy name.
      */
     public String getName() {
         return "PacmanInteraction";
@@ -49,8 +49,8 @@ public class PacmanInteraction implements IInteractStrategy {
 
     /**
      * Handle the interaction when two objects meet.
-     * @param src the src object will impose the interaction strategy on the dest object
-     * @param dest the dest object behavior will be affected by the src object interaction strategy
+     * @param src the src object will impose the interaction strategy on the dest object.
+     * @param dest the dest object behavior will be affected by the src object interaction strategy.
      */
     public void interact(AGameObject src, AGameObject dest) {
         Pacman pacman = (Pacman) src;
