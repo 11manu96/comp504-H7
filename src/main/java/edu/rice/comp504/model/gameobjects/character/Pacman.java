@@ -19,7 +19,7 @@ public class Pacman extends ACharacter {
 
     /**
      * Constructor for Pacman.
-     * @param loc pacman location
+     * @param loc pacman location.
      */
     private Pacman(Point loc, DispatchAdapter dis) {
         super(loc, "pacman", new Point(0,0),
@@ -86,7 +86,7 @@ public class Pacman extends ACharacter {
 
     /**
      * Handle collision between Pacman and game object.
-     * @param gameObject object the check collision against
+     * @param gameObject object the check collision against.
      * @return whether there was a collision.
      */
     public boolean collision(AGameObject gameObject) {

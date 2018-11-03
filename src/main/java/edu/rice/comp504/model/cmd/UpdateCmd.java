@@ -25,7 +25,7 @@ public class UpdateCmd implements IGameObjectCmd{
 
     /**
      * Excute the command.
-     * @param context The receiver that will execute the command
+     * @param context The receiver that will execute the command.
      */
     public void execute(AGameObject context) {
 

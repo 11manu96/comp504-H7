@@ -5,48 +5,25 @@ import edu.rice.comp504.model.gameobjects.character.Ghost;
 import edu.rice.comp504.model.gameobjects.character.Pacman;
 
 import java.awt.*;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
-/**
- * This strategy implementing IUpdateStrategy is for ghost afraid.
- */
-public class GhostAfraidStrategy implements IUpdateStrategy {
-    private static GhostAfraidStrategy singletonGhostAfraid;
+public class GhostTrailStrategy implements IUpdateStrategy {
+    private static GhostTrailStrategy singletonGhostTrail;
     private String name;
 
-    /**
-     * Ghost Afraid Strategy constructor.
-     */
-    private GhostAfraidStrategy() {
-        this.name = "ghost_afraid";
-    }
-
-    /**
-     * Get a singleton of ghost afraid strategy.
-     * @return a singleton.
-     */
+    private GhostTrailStrategy() { this.name="ghost_trail"; }
     public static IUpdateStrategy makeStrategy() {
-        if (singletonGhostAfraid == null) {
-            singletonGhostAfraid = new GhostAfraidStrategy();
+        if (singletonGhostTrail == null) {
+            singletonGhostTrail = new GhostTrailStrategy();
         }
-        return singletonGhostAfraid;
+        return singletonGhostTrail;
     }
 
-    /**
-     * Get the strategy name.
-     * @return the strategy name.
-     */
     public String getName() {
         return this.name;
     }
 
-    /**
-     * Update the ghost status.
-     * @param gameObj the ghost.
-     */
     public void update(AGameObject gameObj) {
         Ghost ghost = (Ghost) gameObj;
         // move ghost to new location
@@ -56,15 +33,19 @@ public class GhostAfraidStrategy implements IUpdateStrategy {
             ghost.setOpenSpaces();
         }
         Point loc = ghost.getLocation();
+
         loc.x = vel.x + loc.x;
         loc.y = vel.y + loc.y;
         ghost.setLocation(loc);
 
-        // pick next spot that maximizes manhattan distance
+        // pick next spot that minimizes manhattan distance to 4 steps ahead of pacman
         loc = ghost.getLocation();
         Point pacLoc = Pacman.getInstance().getLocation();
-        int maxDist = 0;
-        Point maxDir = new Point(0, 0);
+        Point pacVel = Pacman.getInstance().getVel();
+        Point pacDest = new Point(pacLoc.x-4*pacVel.x,pacLoc.y-4*pacVel.y);
+
+        int minDist = Integer.MAX_VALUE;
+        Point minDir = new Point(0, 0);
         int dist;
         // possible directions
         List<Point> directions = ghost.getOpenSpaces();
@@ -72,12 +53,12 @@ public class GhostAfraidStrategy implements IUpdateStrategy {
         Collections.shuffle(directions);
         // find best direction
         for (Point dir : directions) {
-            dist = Math.abs(loc.x + dir.x - pacLoc.x) + Math.abs(loc.y + dir.y - pacLoc.y);
-            if (dist > maxDist) {
-                maxDist = dist;
-                maxDir = dir;
+            dist = Math.abs(loc.x + dir.x - pacDest.x) + Math.abs(loc.y + dir.y - pacDest.y);
+            if (dist < minDist) {
+                minDist = dist;
+                minDir = dir;
             }
         }
-        ghost.setVel(maxDir);
+        ghost.setVel(minDir);
     }
 }

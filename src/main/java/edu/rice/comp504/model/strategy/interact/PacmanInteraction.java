@@ -27,7 +27,7 @@ public class PacmanInteraction implements IInteractStrategy {
 
     /**
      * Initialize or retrieve Pacman interaction strategy singleton.
-     * @return an interact strategy
+     * @return an interact strategy.
      */
     public static IInteractStrategy makeStrategy(DispatchAdapter dis) {
         if (singleton == null) {

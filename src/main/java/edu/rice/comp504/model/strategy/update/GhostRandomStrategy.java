@@ -2,6 +2,7 @@ package edu.rice.comp504.model.strategy.update;
 
 import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.character.Ghost;
+import edu.rice.comp504.model.gameobjects.character.Pacman;
 
 import java.awt.*;
 import java.util.Collections;
@@ -56,11 +57,31 @@ public class GhostRandomStrategy implements IUpdateStrategy {
         loc.y = vel.y + loc.y;
         ghost.setLocation(loc);
 
-        // possible directions
-        List<Point> directions = ghost.getOpenSpaces();
-        // randomize directions list
-        Collections.shuffle(directions);
-        ghost.setVel(directions.get(0));
-
+        Point pacLoc = Pacman.getInstance().getLocation();
+        // random if far from Pacman and chase if nearby
+        int dist = Math.abs(loc.x - pacLoc.x) + Math.abs(loc.y - pacLoc.y);
+        if (dist < 200) {
+            int minDist=Integer.MAX_VALUE;
+            Point minDir = new Point(0, 0);
+            // possible directions
+            List<Point> directions = ghost.getOpenSpaces();
+            // randomize directions list
+            Collections.shuffle(directions);
+            // find best direction
+            for (Point dir : directions) {
+                dist = Math.abs(loc.x + dir.x - pacLoc.x) + Math.abs(loc.y + dir.y - pacLoc.y);
+                if (dist < minDist) {
+                    minDist = dist;
+                    minDir = dir;
+                }
+            }
+            ghost.setVel(minDir);
+        } else {
+            // possible directions
+            List<Point> directions = ghost.getOpenSpaces();
+            // randomize directions list
+            Collections.shuffle(directions);
+            ghost.setVel(directions.get(0));
+        }
     }
 }

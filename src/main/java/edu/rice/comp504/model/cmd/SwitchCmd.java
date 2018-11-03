@@ -4,8 +4,7 @@ import edu.rice.comp504.model.DispatchAdapter;
 import edu.rice.comp504.model.gameobjects.AGameObject;
 import edu.rice.comp504.model.gameobjects.character.Ghost;
 import edu.rice.comp504.model.gameobjects.character.Pacman;
-import edu.rice.comp504.model.strategy.update.GhostAfraidStrategy;
-import edu.rice.comp504.model.strategy.update.GhostRandomStrategy;
+import edu.rice.comp504.model.strategy.update.*;
 
 import java.awt.*;
 
@@ -59,7 +58,6 @@ public class SwitchCmd implements IGameObjectCmd {
         // switch ghost strategy
         else if (type.equals("ghost")) {
             Ghost ghost = (Ghost) context;
-
             switch (switchInfo) {
                 // switch ghosts to afraid strategy
                 case "afraid":
@@ -68,17 +66,17 @@ public class SwitchCmd implements IGameObjectCmd {
                 // switch ghosts to attack strategy
                 case "red":
                     if (ghost.getColor().equals("red")) {
-                        ghost.setUpdateStrategy(GhostRandomStrategy.makeStrategy());
+                        ghost.setUpdateStrategy(GhostChaseStrategy.makeStrategy());
                     }
                     break;
                 case "pink":
                     if (ghost.getColor().equals("pink")) {
-                        ghost.setUpdateStrategy(GhostRandomStrategy.makeStrategy());
+                        ghost.setUpdateStrategy(GhostTrapStrategy.makeStrategy());
                     }
                     break;
                 case "orange":
                     if (ghost.getColor().equals("orange")) {
-                        ghost.setUpdateStrategy(GhostRandomStrategy.makeStrategy());
+                        ghost.setUpdateStrategy(GhostTrailStrategy.makeStrategy());
                     }
                     break;
                 case "blue":

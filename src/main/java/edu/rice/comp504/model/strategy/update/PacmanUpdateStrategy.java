@@ -16,7 +16,7 @@ public class PacmanUpdateStrategy implements IUpdateStrategy{
     /**
      * Pacman update strategy constructor.
      */
-    private PacmanUpdateStrategy(){}
+    private PacmanUpdateStrategy() {}
 
     /**
      * Initialize or retrieve Pacman update strategy singleton.
@@ -57,5 +57,4 @@ public class PacmanUpdateStrategy implements IUpdateStrategy{
         pacman.setLocation(loc);
 
     }
-
 }

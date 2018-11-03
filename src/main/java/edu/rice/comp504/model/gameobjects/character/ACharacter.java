@@ -27,14 +27,14 @@ public abstract class ACharacter extends AGameObject {
     public ACharacter(Point loc, String type, Point vel, IUpdateStrategy updateStrategy, IInteractStrategy interactStrategy, int size) {
         super(loc, type, size);
         this.vel = vel;
-        this.initialLoc = loc;
+        this.initialLoc = new Point(loc);
         this.updateStrategy = updateStrategy;
         this.interactStrategy = interactStrategy;
     }
 
     /**
      * Get the interact strategy.
-     * @return interactStrategy
+     * @return interactStrategy.
      */
     public IInteractStrategy getInteractStrategy() {
         return this.interactStrategy;
