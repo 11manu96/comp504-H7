@@ -18,11 +18,13 @@ public class GhostChaseStrategy implements IUpdateStrategy {
     /**
      * Ghost chase strategy constructor.
      */
-    private GhostChaseStrategy() { this.name="ghost_chase"; }
+    private GhostChaseStrategy() {
+        this.name = "ghost_chase";
+    }
 
     /**
      * Get the ghost chase strategy singleton.
-     * @return a singleton.
+     * @return a singleton
      */
     public static IUpdateStrategy makeStrategy() {
         if (singletonGhostChase == null) {
@@ -33,7 +35,7 @@ public class GhostChaseStrategy implements IUpdateStrategy {
 
     /**
      * Get the strategy name.
-     * @return the strategy name.
+     * @return the strategy name
      */
     public String getName() {
         return this.name;
@@ -41,7 +43,7 @@ public class GhostChaseStrategy implements IUpdateStrategy {
 
     /**
      * Update the ghost status.
-     * @param gameObj the ghost.
+     * @param gameObj the ghost
      */
     public void update(AGameObject gameObj) {
         Ghost ghost = (Ghost) gameObj;
@@ -75,6 +77,5 @@ public class GhostChaseStrategy implements IUpdateStrategy {
             }
         }
         ghost.setVel(minDir);
-
     }
 }

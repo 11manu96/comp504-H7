@@ -12,13 +12,13 @@ import java.awt.*;
  * This command implementing IGameObjectCmd switches the strategy for a pacman or a ghost.
   */
 public class SwitchCmd implements IGameObjectCmd {
-
     String switchInfo;
     DispatchAdapter dis;
 
     /**
-     * Switch Command Constructor.
-     * @param switchInfo information on what to switch to.
+     * Switch command constructor.
+     * @param switchInfo information on what to switch to
+     * @param dis dispatcher adapter instance
      */
     public SwitchCmd(String switchInfo, DispatchAdapter dis) {
         this.switchInfo = switchInfo;
@@ -52,9 +52,8 @@ public class SwitchCmd implements IGameObjectCmd {
                 default:
                     break;
             }
-        }
-        // switch ghost strategy
-        else if (type.equals("ghost")) {
+        } else if (type.equals("ghost")) {
+            // switch ghost strategy
             Ghost ghost = (Ghost) context;
             switch (switchInfo) {
                 // switch ghosts to afraid strategy

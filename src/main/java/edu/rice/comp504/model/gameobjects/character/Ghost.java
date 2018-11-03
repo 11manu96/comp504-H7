@@ -14,7 +14,6 @@ import java.util.LinkedList;
  * This concrete class extends ACharacter and represents ghost game objects.
  */
 public class Ghost extends ACharacter {
-    private int jailTimer;
     private String color;
     private int points;
     private List<Point> openSpaces;
@@ -26,8 +25,8 @@ public class Ghost extends ACharacter {
      * @param color ghost color
      */
     public Ghost(Point loc, IUpdateStrategy updateStrategy, String color, DispatchAdapter dis) {
-        super(loc, "ghost", new Point(0,0), updateStrategy, GhostInteraction.makeStrategy(dis), DispatchAdapter.getGridSize());
-        this.jailTimer = 3;
+        super(loc, "ghost", new Point(0,0), updateStrategy,
+                GhostInteraction.makeStrategy(dis), DispatchAdapter.getGridSize());
         this.color = color;
         this.points = 100;
         this.setOpenSpaces();
@@ -51,24 +50,10 @@ public class Ghost extends ACharacter {
 
     /**
      * Get the points.
-     * @return the points.
+     * @return the points
      */
-    public int getPoints() { return this.points; }
-
-    /**
-     * Get the jail timer.
-     * @return time ghost will stay in jail
-     */
-    public int getJailTimer() {
-        return this.jailTimer;
-    }
-
-    /**
-     * Set the jail timer.
-     * @param jailTimer time ghost will stay in jail
-     */
-    public void setJailTimer(int jailTimer) {
-        this.jailTimer = jailTimer;
+    public int getPoints() {
+        return this.points;
     }
 
     /**
@@ -82,7 +67,7 @@ public class Ghost extends ACharacter {
 
     /**
      * Remove the open space.
-     * @param direction a Point direction.
+     * @param direction a Point direction
      */
     public void removeOpenSpace(Point direction) {
         this.openSpaces.remove(direction);
@@ -90,9 +75,11 @@ public class Ghost extends ACharacter {
 
     /**
      * Get the open space.
-     * @return a List.
+     * @return a list of open spaces
      */
-    public List<Point> getOpenSpaces() { return this.openSpaces; }
+    public List<Point> getOpenSpaces() {
+        return this.openSpaces;
+    }
 
     /**
      * Handle collision between ghost and game object.
@@ -100,7 +87,6 @@ public class Ghost extends ACharacter {
      * @return whether there was collision
      */
     public boolean collision(AGameObject gameObject) {
-
         Point ghostLoc = this.getLocation();
         int ghostSize = this.getSize() / 2;
         Point ghostVel = this.getVel();
@@ -108,26 +94,26 @@ public class Ghost extends ACharacter {
         Point gameObjLoc = gameObject.getLocation();
         int gameObjSize = gameObject.getSize() / 2;
 
-        int distX = ghostLoc.x + DispatchAdapter.getGridSize() / 2 + ghostVel.x - (gameObjLoc.x + DispatchAdapter.getGridSize() / 2);
-        int distY = ghostLoc.y + DispatchAdapter.getGridSize() / 2 + ghostVel.y - (gameObjLoc.y + DispatchAdapter.getGridSize() / 2);
+        int distX = ghostLoc.x + DispatchAdapter.getGridSize() / 2 + ghostVel.x -
+                (gameObjLoc.x + DispatchAdapter.getGridSize() / 2);
+        int distY = ghostLoc.y + DispatchAdapter.getGridSize() / 2 + ghostVel.y -
+                (gameObjLoc.y + DispatchAdapter.getGridSize() / 2);
 
-        if(gameObject.getType().equals("pacman")){
-
-            Pacman pacman = (Pacman)gameObject;
+        if (gameObject.getType().equals("pacman")) {
+            Pacman pacman = (Pacman) gameObject;
 
             int distX1 = ghostLoc.x + DispatchAdapter.getGridSize() / 2 - gameObjLoc.x;
             int distY1 = ghostLoc.y + DispatchAdapter.getGridSize() / 2 - gameObjLoc.y;
 
-            if(((ghostVel.x + pacman.getVel().x)==0) && ((ghostVel.y + pacman.getVel().y)==0)){
+            // handle edge case when ghost and pacman go in opposite directions and skip each other
+            if (((ghostVel.x + pacman.getVel().x) == 0) && ((ghostVel.y + pacman.getVel().y) == 0)) {
                 if ((Math.abs(distX1) <= ghostSize + gameObjSize) && (Math.abs(distY1) <= ghostSize + gameObjSize)) {
                     return true;
                 }
-            }
-            else if ((Math.abs(distX1) < ghostSize + gameObjSize) && (Math.abs(distY1) < ghostSize + gameObjSize)) {
+            } else if ((Math.abs(distX1) < ghostSize + gameObjSize) && (Math.abs(distY1) < ghostSize + gameObjSize)) {
                 return true;
             }
-        }
-        else if ((Math.abs(distX) < ghostSize + gameObjSize) && (Math.abs(distY) < ghostSize + gameObjSize)) {
+        } else if ((Math.abs(distX) < ghostSize + gameObjSize) && (Math.abs(distY) < ghostSize + gameObjSize)) {
             return true;
         }
         return false;

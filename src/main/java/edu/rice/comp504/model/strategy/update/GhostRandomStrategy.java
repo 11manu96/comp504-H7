@@ -7,7 +7,6 @@ import edu.rice.comp504.model.gameobjects.character.Pacman;
 import java.awt.*;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 /**
  * This strategy implementing IUpdateStrategy is for ghost random walk.
@@ -25,7 +24,7 @@ public class GhostRandomStrategy implements IUpdateStrategy {
 
     /**
      * Get the ghost random strategy singleton.
-     * @return a singleton.
+     * @return a singleton
      */
     public static IUpdateStrategy makeStrategy() {
         if (singletonghostrandom == null) {
@@ -36,7 +35,7 @@ public class GhostRandomStrategy implements IUpdateStrategy {
 
     /**
      * Get the strategy name.
-     * @return the strategy name.
+     * @return the strategy name
      */
     public String getName() {
         return this.name;
@@ -44,7 +43,7 @@ public class GhostRandomStrategy implements IUpdateStrategy {
 
     /**
      * Update the ghost status.
-     * @param gameObj the ghost.
+     * @param gameObj the ghost
      */
     public void update(AGameObject gameObj) {
         Ghost ghost = (Ghost) gameObj;
@@ -61,7 +60,7 @@ public class GhostRandomStrategy implements IUpdateStrategy {
         // random if far from Pacman and chase if nearby
         int dist = Math.abs(loc.x - pacLoc.x) + Math.abs(loc.y - pacLoc.y);
         if (dist < 200) {
-            int minDist=Integer.MAX_VALUE;
+            int minDist = Integer.MAX_VALUE;
             Point minDir = new Point(0, 0);
             // possible directions
             List<Point> directions = ghost.getOpenSpaces();

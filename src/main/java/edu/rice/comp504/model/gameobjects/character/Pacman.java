@@ -11,27 +11,27 @@ import java.awt.*;
  * This concrete class extends ACharacter and represents the Pacman game object.
  */
 public class Pacman extends ACharacter {
-
     private static Pacman pacman;
     private boolean switchDirectionCollision;
     private Point switchdirection;
 
     /**
      * Constructor for Pacman.
-     * @param loc pacman location.
+     * @param loc pacman location
+     * @param dis dispatch adapter instance
      */
     private Pacman(Point loc, DispatchAdapter dis) {
         super(loc, "pacman", new Point(0,0),
                 PacmanUpdateStrategy.makeStrategy(), PacmanInteraction.makeStrategy(dis), DispatchAdapter.getGridSize());
-        this.switchDirectionCollision =false;
-        this.switchdirection=new Point(0,0);
+        this.switchDirectionCollision = false;
+        this.switchdirection = new Point(0,0);
     }
 
     /**
      * Get a singleton of Pacman.
-     * @param loc location.
-     * @param dis dispatchAdapter.
-     * @return the Pacman.
+     * @param loc location
+     * @param dis dispatchAdapter
+     * @return the Pacman instance
      */
     public static Pacman makePacman(Point loc, DispatchAdapter dis) {
         if (pacman == null) {
@@ -39,13 +39,15 @@ public class Pacman extends ACharacter {
         } else {
             pacman.setLocation(loc);
             pacman.setInteractStrategy(PacmanInteraction.makeStrategy(dis));
+            pacman.setSwitchDirectionCollision(false);
+            pacman.setSwitchdirection(new Point(0, 0));
         }
         return pacman;
     }
 
     /**
-     * Get a singleton of Pacman.
-     * @return the Pacman.
+     * Get singleton instance of Pacman.
+     * @return the Pacman
      */
     public static Pacman getInstance() {
         return pacman;
@@ -53,7 +55,7 @@ public class Pacman extends ACharacter {
 
     /**
      * Check whether to switch direction in a collision.
-     * @return a boolean.
+     * @return whether pacman switches direction
      */
     public boolean isSwitchDirectionCollision() {
         return switchDirectionCollision;
@@ -61,7 +63,7 @@ public class Pacman extends ACharacter {
 
     /**
      * Set whether to switch direction in a collision.
-     * @param switchDirectionCollision a boolean.
+     * @param switchDirectionCollision whether pacman switches direction
      */
     public void setSwitchDirectionCollision(boolean switchDirectionCollision) {
         this.switchDirectionCollision = switchDirectionCollision;
@@ -69,7 +71,7 @@ public class Pacman extends ACharacter {
 
     /**
      * Get next direction.
-     * @return a Point.
+     * @return new direction
      */
     public Point getSwitchdirection() {
         return switchdirection;
@@ -77,7 +79,7 @@ public class Pacman extends ACharacter {
 
     /**
      * Set next direction.
-     * @param switchdirection a Point.
+     * @param switchdirection new direction to switch to
      */
     public void setSwitchdirection(Point switchdirection) {
         this.switchdirection = switchdirection;
@@ -104,5 +106,4 @@ public class Pacman extends ACharacter {
         }
         return false;
     }
-
 }

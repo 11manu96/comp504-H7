@@ -9,7 +9,7 @@ public interface IGameObjectCmd {
 
     /**
      * Execute the command by the receiver (context).
-     * @param context  The receiver that will execute the command.
+     * @param context  The receiver that will execute the command
      */
     public void execute(AGameObject context);
 }
