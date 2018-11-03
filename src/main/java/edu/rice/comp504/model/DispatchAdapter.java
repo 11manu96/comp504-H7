@@ -4,7 +4,6 @@ import edu.rice.comp504.model.cmd.*;
 import edu.rice.comp504.model.gameobjects.*;
 import edu.rice.comp504.model.gameobjects.character.*;
 import edu.rice.comp504.model.gameobjects.food.*;
-import edu.rice.comp504.model.strategy.update.GhostAfraidStrategy;
 import edu.rice.comp504.model.strategy.update.GhostRandomStrategy;
 
 import java.awt.Point;
@@ -24,7 +23,7 @@ public class DispatchAdapter extends Observable {
 
     private int afraidTimer;
     private int dotsLeft;
-    private boolean gameUp;
+    private boolean gameOver;
 
 
 
@@ -33,7 +32,7 @@ public class DispatchAdapter extends Observable {
      */
     public DispatchAdapter() {
         DispatchAdapter.gridSize = 20;
-        gameUp = false;
+        gameOver = false;
     }
 
      /**
@@ -123,7 +122,7 @@ public class DispatchAdapter extends Observable {
         this.lives = 3;
         this.afraidTimer = 0;
         this.dotsLeft = 0;
-        this.gameUp = false;
+        this.gameOver = false;
 
         // add observers at locations specified in layout
         int height = map.length;
@@ -217,12 +216,12 @@ public class DispatchAdapter extends Observable {
      * Call the update method on all observers to update their position in the game.
      */
     public void updatePacWorld() {
-        System.out.println(dotsLeft);
+        //System.out.println(dotsLeft);
         if(lives == 0  || dotsLeft == 0){
-            System.out.println("game up");
-            gameUp = true;
+            //System.out.println("game up");
+            gameOver = true;
         }
-        if(!gameUp) {
+        if(!gameOver) {
             setChanged();
             notifyObservers(new UpdateCmd(this));
             if (afraidTimer > 0) {

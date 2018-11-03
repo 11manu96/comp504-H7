@@ -55,6 +55,7 @@ public class PacmanInteraction implements IInteractStrategy {
     public void interact(AGameObject src, AGameObject dest) {
         Pacman pacman = (Pacman) src;
 
+
         switch (dest.getType()) {
 
             case "wall":
@@ -65,6 +66,7 @@ public class PacmanInteraction implements IInteractStrategy {
                 pacman.setLocation(new Point(newLoc.x + DispatchAdapter.getGridSize() / 2,
                         newLoc.y + DispatchAdapter.getGridSize() / 2));
                 break;
+
             case "small_dot":
                 dis.deleteObserver(dest);
                 AFood smallDot = (AFood)dest;

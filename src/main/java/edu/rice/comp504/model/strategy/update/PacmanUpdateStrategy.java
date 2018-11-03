@@ -42,11 +42,15 @@ public class PacmanUpdateStrategy implements IUpdateStrategy{
      * @param pacman the object to be updated
      */
     public void update(AGameObject pacman) {
+
         Point vel = ((Pacman) pacman).getVel();
-        if (!((Pacman) pacman).isChangedircollision()){
-            ((Pacman) pacman).setVel(((Pacman) pacman).getSwitchdirection());
-            vel=((Pacman) pacman).getSwitchdirection();
+
+        if (!((Pacman) pacman).isSwitchDirectionCollision()){
+            //((Pacman) pacman).setVel(((Pacman) pacman).getSwitchdirection());
+            //vel=((Pacman) pacman).getSwitchdirection();
+
         }
+
         Point loc = pacman.getLocation();
         loc.x = vel.x + loc.x;
         loc.y = vel.y + loc.y;

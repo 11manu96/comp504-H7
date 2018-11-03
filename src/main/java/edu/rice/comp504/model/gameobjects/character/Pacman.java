@@ -13,7 +13,7 @@ import java.awt.*;
 public class Pacman extends ACharacter {
 
     private static Pacman pacman;
-    private boolean changedircollision;
+    private boolean switchDirectionCollision;
 
     private Point switchdirection;
 
@@ -24,7 +24,7 @@ public class Pacman extends ACharacter {
     private Pacman(Point loc, DispatchAdapter dis) {
         super(loc, "pacman", new Point(0,0),
                 PacmanUpdateStrategy.makeStrategy(), PacmanInteraction.makeStrategy(dis), DispatchAdapter.getGridSize());
-        this.changedircollision=false;
+        this.switchDirectionCollision =false;
         this.switchdirection=new Point(0,0);
     }
 
@@ -42,12 +42,12 @@ public class Pacman extends ACharacter {
         return pacman;
     }
 
-    public boolean isChangedircollision() {
-        return changedircollision;
+    public boolean isSwitchDirectionCollision() {
+        return switchDirectionCollision;
     }
 
-    public void setChangedircollision(boolean changedircollision) {
-        this.changedircollision = changedircollision;
+    public void setSwitchDirectionCollision(boolean switchDirectionCollision) {
+        this.switchDirectionCollision = switchDirectionCollision;
     }
 
     public Point getSwitchdirection() {
