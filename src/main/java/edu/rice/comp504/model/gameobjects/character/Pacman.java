@@ -19,7 +19,7 @@ public class Pacman extends ACharacter {
 
     /**
      * Constructor for Pacman.
-     * @param loc pacman location.
+     * @param loc pacman location
      */
     private Pacman(Point loc, DispatchAdapter dis) {
         super(loc, "pacman", new Point(0,0),
@@ -28,12 +28,6 @@ public class Pacman extends ACharacter {
         this.switchdirection=new Point(0,0);
     }
 
-    /**
-     * Get a singleton Pacman.
-     * @param loc pacman location.
-     * @param dis dispatchAdapter.
-     * @return a pacman.
-     */
     public static Pacman makePacman(Point loc, DispatchAdapter dis) {
         if (pacman == null) {
             pacman = new Pacman(loc, dis);
@@ -44,50 +38,32 @@ public class Pacman extends ACharacter {
         return pacman;
     }
 
-    /**
-     * Get a singleton Pacman.
-     * @return a pacman.
-     */
     public static Pacman getInstance() {
         return pacman;
     }
 
-    /**
-     * Check whether the Pacman is switch direction collision.
-     * @return boolean whether it is switch direction collision.
-     */
     public boolean isSwitchDirectionCollision() {
         return switchDirectionCollision;
     }
 
-    /**
-     * Set switch direction collision.
-     * @param switchDirectionCollision boolean.
-     */
     public void setSwitchDirectionCollision(boolean switchDirectionCollision) {
         this.switchDirectionCollision = switchDirectionCollision;
     }
 
-    /**
-     * Get the next direction for the Pacman.
-     * @return a Point direction.
-     */
     public Point getSwitchdirection() {
         return switchdirection;
     }
 
-    /**
-     * Set the next direction for the Pacman.
-     * @param switchdirection a Point direction.
-     */
     public void setSwitchdirection(Point switchdirection) {
         this.switchdirection = switchdirection;
     }
 
+
+
     /**
      * Handle collision between Pacman and game object.
-     * @param gameObject object the check collision against.
-     * @return whether there was a collision.
+     * @param gameObject object the check collision against
+     * @return whether there was a collision
      */
     public boolean collision(AGameObject gameObject) {
 

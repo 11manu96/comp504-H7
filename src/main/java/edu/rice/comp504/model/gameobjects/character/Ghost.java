@@ -21,9 +21,9 @@ public class Ghost extends ACharacter {
 
     /**
      * Constructor for Ghost.
-     * @param loc ghost location.
-     * @param updateStrategy update strategy.
-     * @param color ghost color.
+     * @param loc ghost location
+     * @param updateStrategy update strategy
+     * @param color ghost color
      */
     public Ghost(Point loc, IUpdateStrategy updateStrategy, String color, DispatchAdapter dis) {
         super(loc, "ghost", new Point(0,0), updateStrategy, GhostInteraction.makeStrategy(dis), DispatchAdapter.getGridSize());
@@ -35,7 +35,7 @@ public class Ghost extends ACharacter {
 
     /**
      * Get the color of the ghost.
-     * @return color.
+     * @return color
      */
     public String getColor() {
         return color;
@@ -43,7 +43,7 @@ public class Ghost extends ACharacter {
 
     /**
      * Set the color of the ghost.
-     * @param color ghost color.
+     * @param color ghost color
      */
     public void setColor(String color) {
         this.color = color;
@@ -53,7 +53,7 @@ public class Ghost extends ACharacter {
 
     /**
      * Get the jail timer.
-     * @return time ghost will stay in jail.
+     * @return time ghost will stay in jail
      */
     public int getJailTimer() {
         return this.jailTimer;
@@ -61,7 +61,7 @@ public class Ghost extends ACharacter {
 
     /**
      * Set the jail timer.
-     * @param jailTimer time ghost will stay in jail.
+     * @param jailTimer time ghost will stay in jail
      */
     public void setJailTimer(int jailTimer) {
         this.jailTimer = jailTimer;
@@ -82,8 +82,8 @@ public class Ghost extends ACharacter {
 
     /**
      * Handle collision between ghost and game object.
-     * @param gameObject object to check collision against.
-     * @return whether there was collision.
+     * @param gameObject object to check collision against
+     * @return whether there was collision
      */
     public boolean collision(AGameObject gameObject) {
 

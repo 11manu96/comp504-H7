@@ -13,18 +13,10 @@ import java.awt.*;
 public class CollisionCmd implements IGameObjectCmd {
     private  AGameObject object;
 
-    /**
-     * CollisionCmd Constructor.
-     * @param object aGameObject.
-     */
     public CollisionCmd(AGameObject object){
         this.object = object;
     }
 
-    /**
-     * Execute the command.
-     * @param context  The receiver that will execute the command.
-     */
     public void execute(AGameObject context) {
 
         if (context != object) {
