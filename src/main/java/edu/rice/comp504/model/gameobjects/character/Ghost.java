@@ -86,7 +86,6 @@ public class Ghost extends ACharacter {
      * @return whether there was collision
      */
     public boolean collision(AGameObject gameObject) {
-
         Point ghostLoc = this.getLocation();
         int ghostSize = this.getSize() / 2;
         Point ghostVel = this.getVel();
@@ -94,17 +93,19 @@ public class Ghost extends ACharacter {
         Point gameObjLoc = gameObject.getLocation();
         int gameObjSize = gameObject.getSize() / 2;
 
-        int distX = ghostLoc.x + DispatchAdapter.getGridSize() / 2 + ghostVel.x - (gameObjLoc.x + DispatchAdapter.getGridSize() / 2);
-        int distY = ghostLoc.y + DispatchAdapter.getGridSize() / 2 + ghostVel.y - (gameObjLoc.y + DispatchAdapter.getGridSize() / 2);
+        int distX = ghostLoc.x + DispatchAdapter.getGridSize() / 2 + ghostVel.x -
+                (gameObjLoc.x + DispatchAdapter.getGridSize() / 2);
+        int distY = ghostLoc.y + DispatchAdapter.getGridSize() / 2 + ghostVel.y -
+                (gameObjLoc.y + DispatchAdapter.getGridSize() / 2);
 
-        if(gameObject.getType().equals("pacman")){
-
-            Pacman pacman = (Pacman)gameObject;
+        if (gameObject.getType().equals("pacman")) {
+            Pacman pacman = (Pacman) gameObject;
 
             int distX1 = ghostLoc.x + DispatchAdapter.getGridSize() / 2 - gameObjLoc.x;
             int distY1 = ghostLoc.y + DispatchAdapter.getGridSize() / 2 - gameObjLoc.y;
 
-            if(((ghostVel.x + pacman.getVel().x)==0) && ((ghostVel.y + pacman.getVel().y)==0)){
+            // handle edge case when ghost and pacman go in opposite directions and skip each other
+            if (((ghostVel.x + pacman.getVel().x) == 0) && ((ghostVel.y + pacman.getVel().y) == 0)) {
                 if ((Math.abs(distX1) <= ghostSize + gameObjSize) && (Math.abs(distY1) <= ghostSize + gameObjSize)) {
                     return true;
                 }

@@ -55,9 +55,7 @@ public class PacmanInteraction implements IInteractStrategy {
     public void interact(AGameObject src, AGameObject dest) {
         Pacman pacman = (Pacman) src;
 
-
         switch (dest.getType()) {
-
             case "wall":
                 pacman.setVel(new Point(0,0));
                 break;

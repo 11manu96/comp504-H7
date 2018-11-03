@@ -135,13 +135,11 @@ public class DispatchAdapter extends Observable {
                 switch (map[y][x]) {
                     case 1: // wall
                         object = new Wall(objLoc);
-
                         break;
                     case 2: // exit
                         Exit exit = new Exit(objLoc,
                                 new Point(getCanvasDims().x - DispatchAdapter.gridSize - objLoc.x, objLoc.y));
                         object = exit;
-
                         break;
                     case 3: // pacman
                         object = Pacman.makePacman(new Point(
@@ -173,7 +171,6 @@ public class DispatchAdapter extends Observable {
                     default:
                         break;
                 }
-
                 if (object != null) {
                     addObserver(object);
                 }
@@ -208,7 +205,6 @@ public class DispatchAdapter extends Observable {
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
         };
 
-
         return map;
     }
 
@@ -216,12 +212,10 @@ public class DispatchAdapter extends Observable {
      * Call the update method on all observers to update their position in the game.
      */
     public void updatePacWorld() {
-        //System.out.println(dotsLeft);
-        if(lives == 0  || dotsLeft == 0){
-            //System.out.println("game up");
+        if (lives == 0 || dotsLeft == 0) {
             gameOver = true;
         }
-        if(!gameOver) {
+        if (!gameOver) {
             setChanged();
             notifyObservers(new UpdateCmd(this));
             if (afraidTimer > 0) {

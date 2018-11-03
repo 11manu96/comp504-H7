@@ -40,8 +40,8 @@ public class GhostTrapStrategy implements IUpdateStrategy {
         // pick next spot that minimizes manhattan distance to 4 steps ahead of pacman
         loc = ghost.getLocation();
         Point pacLoc = Pacman.getInstance().getLocation();
-        Point pacVel=Pacman.getInstance().getVel();
-        Point pacDest=new Point(pacLoc.x+4*pacVel.x,pacLoc.y+4*pacVel.y);
+        Point pacVel = Pacman.getInstance().getVel();
+        Point pacDest = new Point(pacLoc.x+4*pacVel.x,pacLoc.y+4*pacVel.y);
 
         int minDist = Integer.MAX_VALUE;
         Point minDir = new Point(0, 0);
