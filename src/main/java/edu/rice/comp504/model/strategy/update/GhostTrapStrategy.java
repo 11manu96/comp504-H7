@@ -8,14 +8,22 @@ import java.awt.*;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This strategy implementing IUpdateStrategy is for ghost trapping pacman.
+ */
 public class GhostTrapStrategy implements IUpdateStrategy {
     private static GhostTrapStrategy singletonGhostTrap ;
     private String name;
 
-    private GhostTrapStrategy() {
-        this.name = "ghost_trap";
-    }
+    /**
+     * Ghost trap strategy constructor.
+     */
+    private GhostTrapStrategy() { this.name="ghost_trap"; }
 
+    /**
+     * Get the ghost trap strategy singleton.
+     * @return a singleton.
+     */
     public static IUpdateStrategy makeStrategy() {
         if (singletonGhostTrap == null) {
             singletonGhostTrap = new GhostTrapStrategy();
@@ -23,10 +31,18 @@ public class GhostTrapStrategy implements IUpdateStrategy {
         return singletonGhostTrap;
     }
 
+    /**
+     * Get the strategy name.
+     * @return the strategy name.
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Update the ghost status.
+     * @param gameObj the ghost.
+     */
     public void update(AGameObject gameObj) {
         Ghost ghost = (Ghost) gameObj;
         // move ghost to new location

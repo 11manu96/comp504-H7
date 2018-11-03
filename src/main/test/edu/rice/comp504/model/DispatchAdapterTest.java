@@ -12,8 +12,14 @@ import junit.framework.TestCase;
 
 import java.awt.*;
 
+/**
+ * Test the basic functions in DispatchAdapter.
+ */
 public class DispatchAdapterTest extends TestCase {
 
+    /**
+     * Test update Pacman.
+     */
     public void testUpdatePacman() {
         DispatchAdapter adapter = new DispatchAdapter();
         adapter.setCanvasDims(new Point(540, 370));
@@ -56,6 +62,9 @@ public class DispatchAdapterTest extends TestCase {
         assertEquals("Check Pacman y location after exit collision", currentY, pacman.getLocation().y);
     }
 
+    /**
+     * Test pacman eats food.
+     */
     public void testEatFood() {
         DispatchAdapter adapter = new DispatchAdapter();
         adapter.setCanvasDims(new Point(540, 370));
@@ -89,6 +98,9 @@ public class DispatchAdapterTest extends TestCase {
         assertEquals("Check fruit updated score", fruit.getPoints(), adapter.getScore());
     }
 
+    /**
+     * Test update ghost.
+     */
     public void testUpdateGhost() {
         DispatchAdapter adapter = new DispatchAdapter();
         adapter.setCanvasDims(new Point(540, 370));
@@ -133,6 +145,9 @@ public class DispatchAdapterTest extends TestCase {
         assertEquals("Check ghost y location after exit collision", 160, ghost.getLocation().y);
     }
 
+    /**
+     * Test ghost eats pacman.
+     */
     public void testEatPacman() {
         DispatchAdapter adapter = new DispatchAdapter();
         adapter.setCanvasDims(new Point(540, 370));
@@ -157,6 +172,9 @@ public class DispatchAdapterTest extends TestCase {
         assertEquals("Check ghost y location after eating Pacman", 100, ghost.getLocation().y);
     }
 
+    /**
+     * Test switch pacman direction.
+     */
     public void testSwitchDirection() {
         DispatchAdapter adapter = new DispatchAdapter();
         adapter.setCanvasDims(new Point(540, 370));

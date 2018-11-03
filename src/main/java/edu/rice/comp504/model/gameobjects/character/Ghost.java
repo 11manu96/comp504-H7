@@ -48,23 +48,35 @@ public class Ghost extends ACharacter {
         this.color = color;
     }
 
-    public int getPoints() {
-        return this.points;
-    }
+    /**
+     * Get the points.
+     * @return the points.
+     */
+    public int getPoints() { return this.points; }
 
+
+    /**
+     * Set the open spaces for the ghost.
+     */
     public void setOpenSpaces() {
         this.openSpaces = new LinkedList<Point>(Arrays.asList(
                 new Point(-20, 0), new Point(20, 0),
                 new Point(0, 20), new Point(0, -20)));
     }
 
+    /**
+     * Remove the open space.
+     * @param direction a Point direction.
+     */
     public void removeOpenSpace(Point direction) {
         this.openSpaces.remove(direction);
     }
 
-    public List<Point> getOpenSpaces() {
-        return this.openSpaces;
-    }
+    /**
+     * Get the open space.
+     * @return a List.
+     */
+    public List<Point> getOpenSpaces() { return this.openSpaces; }
 
     /**
      * Handle collision between ghost and game object.

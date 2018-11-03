@@ -25,10 +25,8 @@ public class DispatchAdapter extends Observable {
     private int dotsLeft;
     private boolean gameOver;
 
-
-
     /**
-     * Constructor.
+     * DispatchAdapter constructor.
      */
     public DispatchAdapter() {
         DispatchAdapter.gridSize = 20;
@@ -245,12 +243,19 @@ public class DispatchAdapter extends Observable {
         }
     }
 
-
+    /**
+     * Send the collision command.
+     * @param context object.
+     */
     public void sendCollisionCmd(AGameObject context) {
         setChanged();
         notifyObservers(new CollisionCmd(context));
     }
 
+    /**
+     * Sent the swith command.
+     * @param switchInfo a String.
+     */
     public void sendSwitchCmd(String switchInfo) {
         setChanged();
         notifyObservers(new SwitchCmd(switchInfo, this));
@@ -258,7 +263,7 @@ public class DispatchAdapter extends Observable {
 
     /**
      * Switch Pacman direction.
-     * @param body The request body
+     * @param body The request body.
      */
     public void switchDirection(String body) {
         SwitchCmd switchCmd = null;
@@ -283,10 +288,18 @@ public class DispatchAdapter extends Observable {
         notifyObservers(switchCmd);
     }
 
+    /**
+     * Get the number of dots left.
+     * @return the number of dots left.
+     */
     public int getDotsLeft() {
         return dotsLeft;
     }
 
+    /**
+     * Set the number of dots left.
+     * @param dotsLeft the number of dots left.
+     */
     public void setDotsLeft(int dotsLeft) {
         this.dotsLeft = dotsLeft;
     }

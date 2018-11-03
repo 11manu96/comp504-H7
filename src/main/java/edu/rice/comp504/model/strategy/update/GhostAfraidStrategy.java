@@ -10,15 +10,24 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-
+/**
+ * This strategy implementing IUpdateStrategy is for ghost afraid.
+ */
 public class GhostAfraidStrategy implements IUpdateStrategy {
     private static GhostAfraidStrategy singletonGhostAfraid;
     private String name;
 
+    /**
+     * Ghost Afraid Strategy constructor.
+     */
     private GhostAfraidStrategy() {
         this.name = "ghost_afraid";
     }
 
+    /**
+     * Get a singleton of ghost afraid strategy.
+     * @return a singleton.
+     */
     public static IUpdateStrategy makeStrategy() {
         if (singletonGhostAfraid == null) {
             singletonGhostAfraid = new GhostAfraidStrategy();
@@ -26,10 +35,18 @@ public class GhostAfraidStrategy implements IUpdateStrategy {
         return singletonGhostAfraid;
     }
 
+    /**
+     * Get the strategy name.
+     * @return the strategy name.
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Update the ghost status.
+     * @param gameObj the ghost.
+     */
     public void update(AGameObject gameObj) {
         Ghost ghost = (Ghost) gameObj;
         // move ghost to new location

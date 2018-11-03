@@ -17,7 +17,7 @@ public class GhostInteraction implements IInteractStrategy {
     private static DispatchAdapter dis;
 
     /**
-     * Constructor.
+     * Ghost Interaction Constructor.
      */
     public GhostInteraction(DispatchAdapter dis) {
         GhostInteraction.dis = dis;

@@ -15,8 +15,8 @@ public class UpdateCmd implements IGameObjectCmd{
     private DispatchAdapter dispatchAdapter;
 
     /**
-     * Constructor.
-     * @param dispatchAdapter communicate with dispatchAdapter
+     * Update command Constructor.
+     * @param dispatchAdapter communicate with dispatchAdapter.
      */
     public UpdateCmd(DispatchAdapter dispatchAdapter) {
         this.dispatchAdapter = dispatchAdapter;
@@ -25,7 +25,7 @@ public class UpdateCmd implements IGameObjectCmd{
 
     /**
      * Excute the command.
-     * @param context The receiver that will execute the command
+     * @param context The receiver that will execute the command.
      */
     public void execute(AGameObject context) {
         switch (context.getType()) {
