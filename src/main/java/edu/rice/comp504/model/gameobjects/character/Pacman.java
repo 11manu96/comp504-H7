@@ -59,14 +59,12 @@ public class Pacman extends ACharacter {
     }
 
 
-
     /**
      * Handle collision between Pacman and game object.
      * @param gameObject object the check collision against
      * @return whether there was a collision
      */
     public boolean collision(AGameObject gameObject) {
-
         Point pacmanLoc = this.getLocation();
         int pacmanSize = this.getSize() / 2;
         Point pacmanVel = this.getVel();

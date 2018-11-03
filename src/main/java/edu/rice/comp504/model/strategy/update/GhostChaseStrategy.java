@@ -32,14 +32,14 @@ public class GhostChaseStrategy implements IUpdateStrategy {
             ghost.setOpenSpaces();
         }
         Point loc = ghost.getLocation();
-        vel=ghost.getVel();
+        vel = ghost.getVel();
         loc.x = vel.x + loc.x;
         loc.y = vel.y + loc.y;
         ghost.setLocation(loc);
+
         // pick next spot that minimizes manhattan distance
-        //loc = ghost.getLocation();
         Point pacLoc = Pacman.getInstance().getLocation();
-        int minDist=Integer.MAX_VALUE;
+        int minDist = Integer.MAX_VALUE;
         Point minDir = new Point(0, 0);
         int dist;
         // possible directions
