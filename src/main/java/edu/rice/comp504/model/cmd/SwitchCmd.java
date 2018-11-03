@@ -51,9 +51,7 @@ public class SwitchCmd implements IGameObjectCmd {
                     break;
                 default:
                     break;
-
             }
-
         }
         // switch ghost strategy
         else if (type.equals("ghost")) {
