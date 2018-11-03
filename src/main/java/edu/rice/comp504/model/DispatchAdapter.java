@@ -263,7 +263,7 @@ public class DispatchAdapter extends Observable {
     public void switchDirection(String body) {
         SwitchCmd switchCmd = null;
         String keyCode = body.split("=")[1];
-        switch(keyCode) {
+        switch (keyCode) {
             case "37":
                 switchCmd = new SwitchCmd("left", this);
                 break;

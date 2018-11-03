@@ -23,7 +23,7 @@ public class PacmanUpdateStrategy implements IUpdateStrategy{
      * @return an update strategy
      */
     public static IUpdateStrategy makeStrategy() {
-        if (singletonPacmanUpdate == null){
+        if (singletonPacmanUpdate == null) {
             singletonPacmanUpdate = new PacmanUpdateStrategy();
         }
         return singletonPacmanUpdate;

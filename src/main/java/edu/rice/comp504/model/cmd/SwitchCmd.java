@@ -52,9 +52,8 @@ public class SwitchCmd implements IGameObjectCmd {
                 default:
                     break;
             }
-        }
-        // switch ghost strategy
-        else if (type.equals("ghost")) {
+        } else if (type.equals("ghost")) {
+            // switch ghost strategy
             Ghost ghost = (Ghost) context;
             switch (switchInfo) {
                 // switch ghosts to afraid strategy

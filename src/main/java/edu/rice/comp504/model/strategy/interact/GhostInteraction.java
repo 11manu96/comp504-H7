@@ -78,6 +78,8 @@ public class GhostInteraction implements IInteractStrategy {
                     ghost.setVel(new Point(0, 0));
                 }
                 break;
+            default:
+                break;
         }
     }
 }

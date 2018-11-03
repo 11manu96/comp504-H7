@@ -11,7 +11,11 @@ import java.util.List;
 public class GhostTrapStrategy implements IUpdateStrategy {
     private static GhostTrapStrategy singletonGhostTrap ;
     private String name;
-    private GhostTrapStrategy() { this.name="ghost_trap"; }
+
+    private GhostTrapStrategy() {
+        this.name = "ghost_trap";
+    }
+
     public static IUpdateStrategy makeStrategy() {
         if (singletonGhostTrap == null) {
             singletonGhostTrap = new GhostTrapStrategy();
@@ -41,7 +45,7 @@ public class GhostTrapStrategy implements IUpdateStrategy {
         loc = ghost.getLocation();
         Point pacLoc = Pacman.getInstance().getLocation();
         Point pacVel = Pacman.getInstance().getVel();
-        Point pacDest = new Point(pacLoc.x+4*pacVel.x,pacLoc.y+4*pacVel.y);
+        Point pacDest = new Point(pacLoc.x + 4 * pacVel.x,pacLoc.y + 4 * pacVel.y);
 
         int minDist = Integer.MAX_VALUE;
         Point minDir = new Point(0, 0);

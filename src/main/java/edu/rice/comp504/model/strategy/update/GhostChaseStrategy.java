@@ -11,7 +11,11 @@ import java.util.List;
 public class GhostChaseStrategy implements IUpdateStrategy {
     private static GhostChaseStrategy singletonGhostChase;
     private String name;
-    private GhostChaseStrategy() { this.name="ghost_chase"; }
+
+    private GhostChaseStrategy() {
+        this.name = "ghost_chase";
+    }
+
     public static IUpdateStrategy makeStrategy() {
         if (singletonGhostChase == null) {
             singletonGhostChase = new GhostChaseStrategy();

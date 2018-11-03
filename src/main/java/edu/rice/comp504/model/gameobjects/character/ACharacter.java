@@ -64,7 +64,7 @@ public abstract class ACharacter extends AGameObject {
         this.updateStrategy = updateStrategy;
     }
 
-    public Point getInitialLoc(){
+    public Point getInitialLoc() {
         return this.initialLoc;
     }
 

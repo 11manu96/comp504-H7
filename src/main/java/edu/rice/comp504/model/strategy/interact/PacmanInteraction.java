@@ -87,6 +87,8 @@ public class PacmanInteraction implements IInteractStrategy {
                 dis.setScore(dis.getScore() + fruit.getPoints());
                 Fruit.setFruitTimer(600);
                 break;
+            default:
+                break;
         }
     }
 }

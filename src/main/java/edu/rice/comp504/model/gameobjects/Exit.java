@@ -11,6 +11,7 @@ public class Exit extends AGameObject {
 
     //this variable holds the value of the point from where the ghost/pacman appears after entering a a exit
     private Point exitTo;
+
     /**
      * Constructor for Exit.
      * @param loc exit location
@@ -20,11 +21,11 @@ public class Exit extends AGameObject {
         this.exitTo = exitTo;
     }
     
-    public Point getExitTo(){
+    public Point getExitTo() {
         return this.exitTo;
     }
     
-    public void setExitTo(Point exitTo){
+    public void setExitTo(Point exitTo) {
         this.exitTo = exitTo;
     }
 }

@@ -44,7 +44,7 @@ public class GhostRandomStrategy implements IUpdateStrategy {
         // random if far from Pacman and chase if nearby
         int dist = Math.abs(loc.x - pacLoc.x) + Math.abs(loc.y - pacLoc.y);
         if (dist < 200) {
-            int minDist=Integer.MAX_VALUE;
+            int minDist = Integer.MAX_VALUE;
             Point minDir = new Point(0, 0);
             // possible directions
             List<Point> directions = ghost.getOpenSpaces();

@@ -48,7 +48,9 @@ public class Ghost extends ACharacter {
         this.color = color;
     }
 
-    public int getPoints() { return this.points; }
+    public int getPoints() {
+        return this.points;
+    }
 
     public void setOpenSpaces() {
         this.openSpaces = new LinkedList<Point>(Arrays.asList(
@@ -60,7 +62,9 @@ public class Ghost extends ACharacter {
         this.openSpaces.remove(direction);
     }
 
-    public List<Point> getOpenSpaces() { return this.openSpaces; }
+    public List<Point> getOpenSpaces() {
+        return this.openSpaces;
+    }
 
     /**
      * Handle collision between ghost and game object.
@@ -91,12 +95,10 @@ public class Ghost extends ACharacter {
                 if ((Math.abs(distX1) <= ghostSize + gameObjSize) && (Math.abs(distY1) <= ghostSize + gameObjSize)) {
                     return true;
                 }
-            }
-            else if ((Math.abs(distX1) < ghostSize + gameObjSize) && (Math.abs(distY1) < ghostSize + gameObjSize)) {
+            } else if ((Math.abs(distX1) < ghostSize + gameObjSize) && (Math.abs(distY1) < ghostSize + gameObjSize)) {
                 return true;
             }
-        }
-        else if ((Math.abs(distX) < ghostSize + gameObjSize) && (Math.abs(distY) < ghostSize + gameObjSize)) {
+        } else if ((Math.abs(distX) < ghostSize + gameObjSize) && (Math.abs(distY) < ghostSize + gameObjSize)) {
             return true;
         }
         return false;

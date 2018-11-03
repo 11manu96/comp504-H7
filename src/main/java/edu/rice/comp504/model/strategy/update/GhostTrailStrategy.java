@@ -12,7 +12,11 @@ public class GhostTrailStrategy implements IUpdateStrategy {
     private static GhostTrailStrategy singletonGhostTrail;
     private String name;
 
-    private GhostTrailStrategy() { this.name="ghost_trail"; }
+    private GhostTrailStrategy() {
+        this.name = "ghost_trail";
+    }
+
+
     public static IUpdateStrategy makeStrategy() {
         if (singletonGhostTrail == null) {
             singletonGhostTrail = new GhostTrailStrategy();
@@ -42,7 +46,7 @@ public class GhostTrailStrategy implements IUpdateStrategy {
         loc = ghost.getLocation();
         Point pacLoc = Pacman.getInstance().getLocation();
         Point pacVel = Pacman.getInstance().getVel();
-        Point pacDest = new Point(pacLoc.x-4*pacVel.x,pacLoc.y-4*pacVel.y);
+        Point pacDest = new Point(pacLoc.x - 4 * pacVel.x,pacLoc.y - 4 * pacVel.y);
 
         int minDist = Integer.MAX_VALUE;
         Point minDir = new Point(0, 0);
