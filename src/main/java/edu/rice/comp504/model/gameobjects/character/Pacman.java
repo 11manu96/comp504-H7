@@ -14,12 +14,11 @@ public class Pacman extends ACharacter {
 
     private static Pacman pacman;
     private boolean switchDirectionCollision;
-
     private Point switchdirection;
 
     /**
      * Constructor for Pacman.
-     * @param loc pacman location
+     * @param loc pacman location.
      */
     private Pacman(Point loc, DispatchAdapter dis) {
         super(loc, "pacman", new Point(0,0),
@@ -28,6 +27,12 @@ public class Pacman extends ACharacter {
         this.switchdirection=new Point(0,0);
     }
 
+    /**
+     * Get a singleton of Pacman.
+     * @param loc location.
+     * @param dis dispatchAdapter.
+     * @return the Pacman.
+     */
     public static Pacman makePacman(Point loc, DispatchAdapter dis) {
         if (pacman == null) {
             pacman = new Pacman(loc, dis);
@@ -38,27 +43,45 @@ public class Pacman extends ACharacter {
         return pacman;
     }
 
+    /**
+     * Get a singleton of Pacman.
+     * @return the Pacman.
+     */
     public static Pacman getInstance() {
         return pacman;
     }
 
+    /**
+     * Check whether to switch direction in a collision.
+     * @return a boolean.
+     */
     public boolean isSwitchDirectionCollision() {
         return switchDirectionCollision;
     }
 
+    /**
+     * Set whether to switch direction in a collision.
+     * @param switchDirectionCollision a boolean.
+     */
     public void setSwitchDirectionCollision(boolean switchDirectionCollision) {
         this.switchDirectionCollision = switchDirectionCollision;
     }
 
+    /**
+     * Get next direction.
+     * @return a Point.
+     */
     public Point getSwitchdirection() {
         return switchdirection;
     }
 
+    /**
+     * Set next direction.
+     * @param switchdirection a Point.
+     */
     public void setSwitchdirection(Point switchdirection) {
         this.switchdirection = switchdirection;
     }
-
-
 
     /**
      * Handle collision between Pacman and game object.
