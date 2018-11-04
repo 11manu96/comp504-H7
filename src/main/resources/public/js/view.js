@@ -77,50 +77,42 @@ function createApp(canvas) {
     };
 
     // draw Pacman
-    var drawPacMan = function(x, y, size,velX,velY) {
+    var drawPacMan = function(x, y, size, velX, velY) {
         c.fillStyle = "yellow";
-        var mouth = (Math.abs(frameCount % 90 - 45)/180);
-        if(velX === 20)
-        {
-            c.beginPath();
-            c.arc(x, y, size/2, mouth * Math.PI, (mouth+1)* Math.PI, false);
+        var mouthX = (Math.abs(frameCount % 90 - 45)/180);
+        var mouthY = (Math.abs(frameCount % 90 - 45)/180) + 0.5;
+        c.beginPath();
+        if(velX === 20) {
+            c.arc(x, y, size/2, mouthX * Math.PI, (mouthX+1) * Math.PI, false);
             c.fill();
             c.beginPath();
-            c.arc(x, y, size/2, -(mouth+1) * Math.PI, -mouth * Math.PI, false);
-            c.fill();
+            c.arc(x, y, size/2, -(mouthX+1) * Math.PI, -mouthX * Math.PI, false);
         }
-        else if(velX === -20){
-            c.beginPath();
-            c.arc(x, y, size/2, -mouth * Math.PI, -(mouth+1)* Math.PI, false);
+        else if(velX === -20) {
+            c.arc(x, y, size/2, -mouthX * Math.PI, -(mouthX+1) * Math.PI, false);
             c.fill();
             c.beginPath();
-            c.arc(x, y, size/2, (mouth+1) * Math.PI, mouth * Math.PI, false);
-            c.fill();
+            c.arc(x, y, size/2, (mouthX+1) * Math.PI, mouthX * Math.PI, false);
         }
         else if(velY === 20){
-            c.beginPath();
-            c.arc(x, y, size/2, mouth+0.5 * Math.PI, (mouth+1.5)* Math.PI, false);
+            c.arc(x, y, size/2, mouthY * Math.PI, (mouthY+1) * Math.PI, false);
             c.fill();
             c.beginPath();
-            c.arc(x, y, size/2, -(mouth+0.5) * Math.PI, -(mouth+1.5) * Math.PI, false);
-            c.fill();
+            c.arc(x, y, size/2, -mouthY * Math.PI, -(mouthY+1) * Math.PI, false);
         }
         else if(velY === -20){
-            c.beginPath();
-            c.arc(x, y, size/2, mouth+1.5 * Math.PI, mouth+0.5* Math.PI, false);
+            c.arc(x, y, size/2, (mouthY+1) * Math.PI, mouthY * Math.PI, false);
             c.fill();
             c.beginPath();
-            c.arc(x, y, size/2, -(mouth+1.5) * Math.PI, -(mouth+0.5) * Math.PI, false);
-            c.fill();
+            c.arc(x, y, size/2, -(mouthY+1) * Math.PI, -mouthY * Math.PI, false);
         }
         else{
-            c.beginPath();
-            c.arc(x, y, size/2, mouth * Math.PI, (mouth+1)* Math.PI, false);
+            c.arc(x, y, size/2, mouthX * Math.PI, (mouthX+1) * Math.PI, false);
             c.fill();
             c.beginPath();
-            c.arc(x, y, size/2, -(mouth+1) * Math.PI, -mouth * Math.PI, false);
-            c.fill();
+            c.arc(x, y, size/2, -(mouthX+1) * Math.PI, -mouthX * Math.PI, false);
         }
+        c.fill();
     };
 
     // clear canvas
