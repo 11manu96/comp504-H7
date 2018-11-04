@@ -77,15 +77,50 @@ function createApp(canvas) {
     };
 
     // draw Pacman
-    var drawPacMan = function(x, y, size) {
+    var drawPacMan = function(x, y, size,velX,velY) {
         c.fillStyle = "yellow";
-        var mouth = Math.abs(frameCount % 90 - 45);
-        c.beginPath();
-        c.arc(x, y, size/2, mouth/180 * Math.PI, (mouth/180+1)* Math.PI, false);
-        c.fill();
-        c.beginPath();
-        c.arc(x, y, size/2, -(mouth/180+1) * Math.PI, -(mouth/180) * Math.PI, false);
-        c.fill();
+        var mouth = (Math.abs(frameCount % 90 - 45)/180);
+        if(velX === 20)
+        {
+            c.beginPath();
+            c.arc(x, y, size/2, mouth * Math.PI, (mouth+1)* Math.PI, false);
+            c.fill();
+            c.beginPath();
+            c.arc(x, y, size/2, -(mouth+1) * Math.PI, -mouth * Math.PI, false);
+            c.fill();
+        }
+        else if(velX === -20){
+            c.beginPath();
+            c.arc(x, y, size/2, -mouth * Math.PI, -(mouth+1)* Math.PI, false);
+            c.fill();
+            c.beginPath();
+            c.arc(x, y, size/2, (mouth+1) * Math.PI, mouth * Math.PI, false);
+            c.fill();
+        }
+        else if(velY === 20){
+            c.beginPath();
+            c.arc(x, y, size/2, mouth+0.5 * Math.PI, (mouth+1.5)* Math.PI, false);
+            c.fill();
+            c.beginPath();
+            c.arc(x, y, size/2, -(mouth+0.5) * Math.PI, -(mouth+1.5) * Math.PI, false);
+            c.fill();
+        }
+        else if(velY === -20){
+            c.beginPath();
+            c.arc(x, y, size/2, mouth+1.5 * Math.PI, mouth+0.5* Math.PI, false);
+            c.fill();
+            c.beginPath();
+            c.arc(x, y, size/2, -(mouth+1.5) * Math.PI, -(mouth+0.5) * Math.PI, false);
+            c.fill();
+        }
+        else{
+            c.beginPath();
+            c.arc(x, y, size/2, mouth * Math.PI, (mouth+1)* Math.PI, false);
+            c.fill();
+            c.beginPath();
+            c.arc(x, y, size/2, -(mouth+1) * Math.PI, -mouth * Math.PI, false);
+            c.fill();
+        }
     };
 
     // clear canvas
@@ -153,7 +188,7 @@ function updateGameWorld() {
                 app.drawExit(element.location.x, element.location.y, element.size);
             }
             else if (element.type === "pacman") {
-                app.drawPacMan(element.location.x, element.location.y, element.size);
+                app.drawPacMan(element.location.x, element.location.y, element.size, element.vel.x, element.vel.y);
             }
             else if(element.type === "ghost") {
                 if (element.updateStrategy.name !== "ghost_afraid") {
