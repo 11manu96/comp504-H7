@@ -12,7 +12,7 @@ public class CollisionCmd implements IGameObjectCmd {
     private  AGameObject object;
 
     /**
-     * Collision command contructor.
+     * Collision command constructor.
      * @param object an AGameObject to check collision against
      */
     public CollisionCmd(AGameObject object) {

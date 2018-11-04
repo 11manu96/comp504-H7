@@ -3,159 +3,163 @@
   <ID>JAVA</ID>
   <OriginalElement>edu.rice.comp504.model</OriginalElement>
   <nodes>
-    <node x="0.0" y="1039.0">edu.rice.comp504.model.strategy.update.PacmanUpdateStrategy</node>
-    <node x="537.2083333333334" y="0.0">edu.rice.comp504.model.gameobjects.AGameObject</node>
-    <node x="1266.9583333333335" y="0.0">edu.rice.comp504.model.DispatchAdapter</node>
-    <node x="807.0" y="1325.0">edu.rice.comp504.model.cmd.CollisionCmd</node>
-    <node x="0.0" y="1336.0">edu.rice.comp504.model.strategy.interact.PacmanInteraction</node>
-    <node x="949.25" y="366.0">edu.rice.comp504.model.gameobjects.food.AFood</node>
-    <node x="950.25" y="895.0">edu.rice.comp504.model.strategy.update.IUpdateStrategy</node>
-    <node x="1067.0" y="1314.0">edu.rice.comp504.model.cmd.SwitchCmd</node>
-    <node x="730.9583333333334" y="611.0">edu.rice.comp504.model.gameobjects.food.Fruit</node>
-    <node x="1327.0" y="1325.0">edu.rice.comp504.model.cmd.UpdateCmd</node>
-    <node x="1067.0" y="1213.0">edu.rice.comp504.model.cmd.IGameObjectCmd</node>
-    <node x="1073.0" y="1028.0">edu.rice.comp504.model.strategy.update.GhostRandomStrategy</node>
-    <node x="1445.0" y="1028.0">edu.rice.comp504.model.strategy.update.GhostTrailStrategy</node>
-    <node x="72.95833333333337" y="600.0">edu.rice.comp504.model.gameobjects.character.Ghost</node>
-    <node x="215.5" y="1213.0">edu.rice.comp504.model.strategy.interact.IInteractStrategy</node>
-    <node x="1774.0" y="1028.0">edu.rice.comp504.model.strategy.update.GhostAfraidStrategy</node>
-    <node x="391.0" y="1336.0">edu.rice.comp504.model.strategy.interact.GhostInteraction</node>
-    <node x="719.9999999999999" y="1028.0">edu.rice.comp504.model.strategy.update.GhostChaseStrategy</node>
-    <node x="218.0" y="256.0">edu.rice.comp504.model.gameobjects.character.ACharacter</node>
-    <node x="1649.0" y="1213.0">edu.rice.comp504.model.DispatchAdapterTest</node>
-    <node x="0.0" y="355.0">edu.rice.comp504.model.gameobjects.Exit</node>
-    <node x="386.9999999999999" y="1028.0">edu.rice.comp504.model.strategy.update.GhostTrapStrategy</node>
-    <node x="357.95833333333337" y="600.0">edu.rice.comp504.model.gameobjects.character.Pacman</node>
-    <node x="1119.9583333333335" y="710.5">edu.rice.comp504.model.gameobjects.food.SmallDot</node>
-    <node x="1126.25" y="388.5">edu.rice.comp504.model.gameobjects.Wall</node>
-    <node x="1009.9583333333334" y="710.5">edu.rice.comp504.model.gameobjects.food.BigDot</node>
+    <node x="333.0" y="1167.0">edu.rice.comp504.model.strategy.update.PacmanUpdateStrategy</node>
+    <node x="575.6083333333333" y="0.0">edu.rice.comp504.model.gameobjects.AGameObject</node>
+    <node x="1484.3583333333333" y="0.0">edu.rice.comp504.model.DispatchAdapter</node>
+    <node x="297.0" y="1466.0">edu.rice.comp504.model.cmd.CollisionCmd</node>
+    <node x="391.0" y="824.0">edu.rice.comp504.model.strategy.interact.PacmanInteraction</node>
+    <node x="971.55" y="235.5">edu.rice.comp504.model.gameobjects.food.AFood</node>
+    <node x="945.0" y="1033.0">edu.rice.comp504.model.strategy.update.IUpdateStrategy</node>
+    <node x="563.0" y="1455.0">edu.rice.comp504.model.cmd.SwitchCmd</node>
+    <node x="1180.3583333333333" y="404.0">edu.rice.comp504.model.gameobjects.food.Fruit</node>
+    <node x="0.0" y="1466.0">edu.rice.comp504.model.cmd.UpdateCmd</node>
+    <node x="300.0" y="1354.0">edu.rice.comp504.model.cmd.IGameObjectCmd</node>
+    <node x="1424.0" y="1167.0">edu.rice.comp504.model.strategy.update.GhostRandomStrategy</node>
+    <node x="1796.0" y="1167.0">edu.rice.comp504.model.strategy.update.GhostTrailStrategy</node>
+    <node x="7.3583333333333485" y="437.0">edu.rice.comp504.model.gameobjects.character.Ghost</node>
+    <node x="215.5" y="700.0">edu.rice.comp504.model.strategy.interact.IInteractStrategy</node>
+    <node x="1073.0" y="1167.0">edu.rice.comp504.model.strategy.update.GhostAfraidStrategy</node>
+    <node x="720.0" y="1167.0">edu.rice.comp504.model.strategy.update.GhostChaseStrategy</node>
+    <node x="0.0" y="824.0">edu.rice.comp504.model.strategy.interact.GhostInteraction</node>
+    <node x="160.0" y="191.0">edu.rice.comp504.model.gameobjects.character.ACharacter</node>
+    <node x="1238.55" y="235.5">edu.rice.comp504.model.gameobjects.Exit</node>
+    <node x="0.0" y="1167.0">edu.rice.comp504.model.strategy.update.GhostTrapStrategy</node>
+    <node x="443.35833333333335" y="436.5">edu.rice.comp504.model.gameobjects.character.Pacman</node>
+    <node x="0.0" y="247.0">edu.rice.comp504.model.gameobjects.Wall</node>
+    <node x="992.3583333333333" y="504.0">edu.rice.comp504.model.gameobjects.food.SmallDot</node>
+    <node x="816.3583333333333" y="504.0">edu.rice.comp504.model.gameobjects.food.BigDot</node>
   </nodes>
   <notes />
   <edges>
     <edge source="edu.rice.comp504.model.strategy.update.GhostTrailStrategy" target="edu.rice.comp504.model.strategy.update.IUpdateStrategy">
-      <point x="0.0" y="-70.0" />
-      <point x="1599.5" y="998.0" />
-      <point x="1126.5" y="998.0" />
-      <point x="58.75" y="36.5" />
+      <point x="0.0" y="-71.0" />
+      <point x="1950.5" y="1127.0" />
+      <point x="1160.4166666666667" y="1127.0" />
+      <point x="97.91666666666674" y="37.0" />
     </edge>
     <edge source="edu.rice.comp504.model.gameobjects.food.AFood" target="edu.rice.comp504.model.gameobjects.AGameObject">
       <point x="0.0" y="-37.0" />
-      <point x="1027.75" y="236.0" />
-      <point x="704.7083333333334" y="236.0" />
-      <point x="33.5" y="103.0" />
+      <point x="1095.05" y="171.0" />
+      <point x="743.1083333333333" y="171.0" />
+      <point x="33.5" y="70.5" />
     </edge>
     <edge source="edu.rice.comp504.model.strategy.interact.GhostInteraction" target="edu.rice.comp504.model.strategy.interact.IInteractStrategy">
-      <point x="0.0" y="-70.0" />
-      <point x="576.5" y="1311.0" />
-      <point x="463.75" y="1311.0" />
-      <point x="82.75" y="36.5" />
+      <point x="0.0" y="-82.0" />
+      <point x="185.5" y="799.0" />
+      <point x="298.25" y="799.0" />
+      <point x="-82.75" y="37.0" />
     </edge>
     <edge source="edu.rice.comp504.model.gameobjects.Exit" target="edu.rice.comp504.model.gameobjects.AGameObject">
-      <point x="0.0" y="-48.0" />
-      <point x="99.0" y="226.0" />
-      <point x="570.7083333333334" y="226.0" />
-      <point x="-100.5" y="103.0" />
+      <point x="0.0" y="-37.0" />
+      <point x="1327.05" y="161.0" />
+      <point x="810.1083333333333" y="161.0" />
+      <point x="100.5" y="70.5" />
     </edge>
     <edge source="edu.rice.comp504.model.gameobjects.character.Pacman" target="edu.rice.comp504.model.gameobjects.character.ACharacter">
-      <point x="0.0" y="-125.0" />
-      <point x="534.4583333333334" y="575.0" />
-      <point x="464.0" y="575.0" />
-      <point x="82.0" y="147.0" />
+      <point x="0.0" y="-93.0" />
+      <point x="619.8583333333333" y="379.0" />
+      <point x="542.5" y="379.0" />
+      <point x="127.5" y="81.5" />
     </edge>
     <edge source="edu.rice.comp504.model.cmd.UpdateCmd" target="edu.rice.comp504.model.cmd.IGameObjectCmd">
-      <point x="0.0" y="-37.0" />
-      <point x="1465.5" y="1289.0" />
-      <point x="1267.0" y="1289.0" />
-      <point x="80.0" y="25.5" />
-    </edge>
-    <edge source="edu.rice.comp504.model.gameobjects.food.BigDot" target="edu.rice.comp504.model.gameobjects.food.AFood">
-      <point x="0.0" y="-14.5" />
-      <point x="1054.9583333333335" y="575.0" />
-      <point x="1027.75" y="575.0" />
-      <point x="0.0" y="37.0" />
-    </edge>
-    <edge source="edu.rice.comp504.model.gameobjects.Wall" target="edu.rice.comp504.model.gameobjects.AGameObject">
-      <point x="0.0" y="-14.5" />
-      <point x="1163.25" y="226.0" />
-      <point x="771.7083333333334" y="226.0" />
-      <point x="100.5" y="103.0" />
-    </edge>
-    <edge source="edu.rice.comp504.model.strategy.update.GhostAfraidStrategy" target="edu.rice.comp504.model.strategy.update.IUpdateStrategy">
-      <point x="0.0" y="-70.0" />
-      <point x="1939.5" y="988.0" />
-      <point x="1165.6666666666667" y="988.0" />
-      <point x="97.91666666666674" y="36.5" />
-    </edge>
-    <edge source="edu.rice.comp504.model.gameobjects.character.ACharacter" target="edu.rice.comp504.model.gameobjects.AGameObject">
-      <point x="0.0" y="-147.0" />
-      <point x="382.0" y="236.0" />
-      <point x="637.7083333333334" y="236.0" />
-      <point x="-33.5" y="103.0" />
-    </edge>
-    <edge source="edu.rice.comp504.model.gameobjects.food.SmallDot" target="edu.rice.comp504.model.gameobjects.food.AFood">
-      <point x="0.0" y="-14.5" />
-      <point x="1170.9583333333335" y="575.0" />
-      <point x="1080.0833333333333" y="575.0" />
-      <point x="52.33333333333326" y="37.0" />
-    </edge>
-    <edge source="edu.rice.comp504.model.cmd.SwitchCmd" target="edu.rice.comp504.model.cmd.IGameObjectCmd">
-      <point x="0.0" y="-48.0" />
-      <point x="0.0" y="25.5" />
-    </edge>
-    <edge source="edu.rice.comp504.model.gameobjects.food.Fruit" target="edu.rice.comp504.model.gameobjects.food.AFood">
-      <point x="0.0" y="-114.0" />
-      <point x="860.4583333333334" y="575.0" />
-      <point x="975.4166666666666" y="575.0" />
-      <point x="-52.33333333333337" y="37.0" />
-    </edge>
-    <edge source="edu.rice.comp504.model.strategy.interact.PacmanInteraction" target="edu.rice.comp504.model.strategy.interact.IInteractStrategy">
-      <point x="0.0" y="-70.0" />
-      <point x="185.5" y="1311.0" />
-      <point x="298.25" y="1311.0" />
-      <point x="-82.75" y="36.5" />
-    </edge>
-    <edge source="edu.rice.comp504.model.strategy.update.GhostTrapStrategy" target="edu.rice.comp504.model.strategy.update.IUpdateStrategy">
-      <point x="0.0" y="-70.0" />
-      <point x="543.4999999999999" y="998.0" />
-      <point x="1009.0" y="998.0" />
-      <point x="-58.75" y="36.5" />
-    </edge>
-    <edge source="edu.rice.comp504.model.strategy.update.GhostRandomStrategy" target="edu.rice.comp504.model.strategy.update.IUpdateStrategy">
-      <point x="0.0" y="-70.0" />
-      <point x="1249.0" y="1008.0" />
-      <point x="1087.3333333333333" y="1008.0" />
-      <point x="19.583333333333258" y="36.5" />
-    </edge>
-    <edge source="edu.rice.comp504.model.cmd.CollisionCmd" target="edu.rice.comp504.model.cmd.IGameObjectCmd">
-      <point x="0.0" y="-37.0" />
-      <point x="927.0" y="1289.0" />
-      <point x="1107.0" y="1289.0" />
+      <point x="0.0" y="-48.5" />
+      <point x="138.5" y="1430.0" />
+      <point x="340.0" y="1430.0" />
       <point x="-80.0" y="25.5" />
     </edge>
+    <edge source="edu.rice.comp504.model.gameobjects.food.BigDot" target="edu.rice.comp504.model.gameobjects.food.AFood">
+      <point x="0.0" y="-25.5" />
+      <point x="894.3583333333333" y="379.0" />
+      <point x="1012.7166666666667" y="379.0" />
+      <point x="-82.33333333333326" y="37.0" />
+    </edge>
+    <edge source="edu.rice.comp504.model.gameobjects.Wall" target="edu.rice.comp504.model.gameobjects.AGameObject">
+      <point x="0.0" y="-25.5" />
+      <point x="70.0" y="161.0" />
+      <point x="609.1083333333333" y="161.0" />
+      <point x="-100.5" y="70.5" />
+    </edge>
+    <edge source="edu.rice.comp504.model.strategy.update.GhostAfraidStrategy" target="edu.rice.comp504.model.strategy.update.IUpdateStrategy">
+      <point x="0.0" y="-71.0" />
+      <point x="1238.5" y="1147.0" />
+      <point x="1082.0833333333333" y="1147.0" />
+      <point x="19.583333333333258" y="37.0" />
+    </edge>
+    <edge source="edu.rice.comp504.model.gameobjects.character.ACharacter" target="edu.rice.comp504.model.gameobjects.AGameObject">
+      <point x="0.0" y="-81.5" />
+      <point x="415.0" y="171.0" />
+      <point x="676.1083333333333" y="171.0" />
+      <point x="-33.5" y="70.5" />
+    </edge>
+    <edge source="edu.rice.comp504.model.gameobjects.food.SmallDot" target="edu.rice.comp504.model.gameobjects.food.AFood">
+      <point x="0.0" y="-25.5" />
+      <point x="1076.3583333333333" y="379.0" />
+      <point x="1095.05" y="379.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="edu.rice.comp504.model.cmd.SwitchCmd" target="edu.rice.comp504.model.cmd.IGameObjectCmd">
+      <point x="0.0" y="-59.5" />
+      <point x="712.5" y="1430.0" />
+      <point x="500.0" y="1430.0" />
+      <point x="80.0" y="25.5" />
+    </edge>
+    <edge source="edu.rice.comp504.model.gameobjects.food.Fruit" target="edu.rice.comp504.model.gameobjects.food.AFood">
+      <point x="0.0" y="-125.5" />
+      <point x="1309.8583333333333" y="379.0" />
+      <point x="1177.3833333333332" y="379.0" />
+      <point x="82.33333333333326" y="37.0" />
+    </edge>
+    <edge source="edu.rice.comp504.model.strategy.interact.PacmanInteraction" target="edu.rice.comp504.model.strategy.interact.IInteractStrategy">
+      <point x="0.0" y="-82.0" />
+      <point x="576.5" y="799.0" />
+      <point x="463.75" y="799.0" />
+      <point x="82.75" y="37.0" />
+    </edge>
+    <edge source="edu.rice.comp504.model.strategy.update.GhostTrapStrategy" target="edu.rice.comp504.model.strategy.update.IUpdateStrategy">
+      <point x="0.0" y="-71.0" />
+      <point x="156.5" y="1127.0" />
+      <point x="964.5833333333335" y="1127.0" />
+      <point x="-97.91666666666663" y="37.0" />
+    </edge>
+    <edge source="edu.rice.comp504.model.strategy.update.GhostRandomStrategy" target="edu.rice.comp504.model.strategy.update.IUpdateStrategy">
+      <point x="0.0" y="-71.0" />
+      <point x="1600.0" y="1137.0" />
+      <point x="1121.25" y="1137.0" />
+      <point x="58.75" y="37.0" />
+    </edge>
     <edge source="edu.rice.comp504.model.strategy.update.GhostChaseStrategy" target="edu.rice.comp504.model.strategy.update.IUpdateStrategy">
-      <point x="0.0" y="-70.0" />
-      <point x="886.4999999999999" y="1008.0" />
-      <point x="1048.1666666666665" y="1008.0" />
-      <point x="-19.58333333333337" y="36.5" />
+      <point x="0.0" y="-71.0" />
+      <point x="886.5" y="1147.0" />
+      <point x="1042.9166666666667" y="1147.0" />
+      <point x="-19.583333333333258" y="37.0" />
+    </edge>
+    <edge source="edu.rice.comp504.model.cmd.CollisionCmd" target="edu.rice.comp504.model.cmd.IGameObjectCmd">
+      <point x="0.0" y="-48.5" />
+      <point x="0.0" y="25.5" />
     </edge>
     <edge source="edu.rice.comp504.model.strategy.update.PacmanUpdateStrategy" target="edu.rice.comp504.model.strategy.update.IUpdateStrategy">
-      <point x="0.0" y="-59.0" />
-      <point x="183.5" y="988.0" />
-      <point x="969.8333333333333" y="988.0" />
-      <point x="-97.91666666666663" y="36.5" />
+      <point x="0.0" y="-71.0" />
+      <point x="516.5" y="1137.0" />
+      <point x="1003.75" y="1137.0" />
+      <point x="-58.75" y="37.0" />
     </edge>
     <edge source="edu.rice.comp504.model.gameobjects.character.Ghost" target="edu.rice.comp504.model.gameobjects.character.ACharacter">
-      <point x="-5.6843418860808015E-14" y="-125.0" />
-      <point x="205.45833333333326" y="575.0" />
-      <point x="300.0" y="575.0" />
-      <point x="-82.0" y="147.0" />
+      <point x="0.0" y="-92.5" />
+      <point x="215.35833333333335" y="379.0" />
+      <point x="287.5" y="379.0" />
+      <point x="-127.5" y="81.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.49064171122994654" x="1052.5" y="738.0" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="0.5275401069518716" x="1503.951849974658" y="1333.4196654840346" />
+  <SelectedNodes>
+    <node>edu.rice.comp504.model.cmd.IGameObjectCmd</node>
+  </SelectedNodes>
   <Categories>
-    <Category>Fields</Category>
     <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Fields</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
