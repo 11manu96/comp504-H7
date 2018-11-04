@@ -57,30 +57,30 @@ There are three groups of use cases for the Pacman game. We will look at the use
 We have a single canvas in index.html where the game and game values will be displayed. In view.js there are functions to start and run the game and display game objects. The view makes requests to the controller to reset the game as well as update the game state. 
 
 \begin{itemize}
-  \item /resetGame - called on page load to setup the game
-  \item /updateGame - called every 0.1 sec to receive game state. Game objects are drawn onto the canvas based on received data
-  \item /switchDirection - called based on user input to change Pacman direction
+  \item /resetGame - called on page load to setup the game.
+  \item /updateGame - called every 0.1 sec to receive game state. Game objects are drawn onto the canvas based on received data. 
+  \item /switchDirection - called based on user input to change Pacman direction from the keyboard and send this information to the Controller. 
 \end{itemize}
 
-Based on the returned data, the view draws the game objects onto the canvas. The ghosts and fruit are image files, and the remaining game objects are drawn using canvas functions. Display-only features that do not affect the game operation, such as flashing ghosts, blinking dots, and the Pacman animation are handled exclusively in the view.
+Based on the returned data, the view draws the game objects onto the canvas. The ghosts and fruit are image files, and the remaining game objects are drawn using canvas functions. Display-only features that do not affect the game operation, such as flashing ghosts, blinking dots, and the Pacman animation are handled exclusively in the view. There are no game logics in the view. 
 
 \section{Controller}
-The PacWorldController processes GET and POST requests and returns the JSON representation of the DispatchAdapter, which contains all the game objects in the PacWorld. The controller creates the DispatchAdapter and defines the REST endpoints \\ 
+The PacWorldController processes GET and POST requests and returns the JSON representation of the DispatchAdapter, which contains all the game objects in the PacWorld. The controller creates the DispatchAdapter and defines the REST endpoints. The controller transfers the information between the game and the view. \\ 
 
 These are the supported requests handled by PacWorldController:
 \begin{itemize}
-  \item /resetGame - gets the canvas dimension and passes it to the DispatchAdapter; resets game values and resets all game objects to the starting positions
+  \item /resetGame - gets the canvas dimension and passes it to the DispatchAdapter; resets game values and resets all game objects to the starting positions.
   \item /udpateGame - updates the game state with collisions, new locations, removed objects, etc.
-  \item /switchDirection - takes user input to change the Pacman movement direction
+  \item /switchDirection - takes user input from the front end to change the Pacman movement direction.
 \end{itemize}
 
-The controller also gets and sets the port assigned by Heroku for hosting.
+The controller also gets and sets the port assigned by Heroku for hosting. 
 
 \section{Model}
 The model includes the DispatchAdapter, commands, strategies, and game objects.
 
 \subsection{DispatchAdapter}
-The DispatchAdapter communicates with the model and the view. It contains the observers and values for the game. These values include:
+The DispatchAdapter communicates with the model and the view. It updates the game object states through commands, where command design pattern is used. It contains the observers and values for the game. We put these values here since they are associated with the game. These values include:
 \begin{itemize}
   \item Point dims - dimensions of game map
   \item static int gridSize - size of grid spaces for game scaling (static for easy access in concrete classes)
@@ -92,30 +92,30 @@ The DispatchAdapter communicates with the model and the view. It contains the ob
   \item boolean gameOver - check whether the game is over
 \end{itemize}
 
-Methods in the DispatchAdapter include getters and setters for the fields as well as methods to run the game.
+Methods in the DispatchAdapter include getters and setters for the fields as well as methods to run the game and communication between objects.  All these methods are associated with the game.
 \begin{itemize}
   \item DispatchAdapter() - constructor
-  \item setCanvasDims(Point dims) - set the canvas dimensions
-  \item getCanvasDims() - get the canvas dimensions
-  \item getGridSize() - get the game grid size
-  \item getScore() - get the game score
-  \item setScore(int score) - set the game score
-  \item getLives() - get the remaining lives of the Pacman
-  \item setLives(int lives) - set the remaining lives of the Pacman
-  \item getAfraidTimer() - get the afraid time for the ghost
-  \item setAfraidTimer(int afraidTimer) - set the afraid time for the ghost
-  \item initializeGame() - reset observers and game values and add game objects as observers according to map layout
-  \item initializeMap() - return 2D array representing layout of game objects
-  \item updatePacWorld() - update game state, handling object movement and collisions
-  \item sendCollisionCmd(AGameObject context) - send the collision command
-  \item sendSwitchCmd(String switchInfo) - send the switch command
-  \item switchDirection(String body) - read user input from body and change Pacman direction
-  \item getDotsLeft() - get the number of dots left
-  \item setDotsLeft(int dotsLeft) - set the number of dots left
+  \item setCanvasDims(Point dims) - set the canvas dimensions, making the game more adaptable. 
+  \item getCanvasDims() - get the canvas dimensions, making the game more adaptable. 
+  \item getGridSize() - get the game grid size, making the game more adaptable. 
+  \item getScore() - get the game score.
+  \item setScore(int score) - set the game score.
+  \item getLives() - get the remaining lives of the Pacman.
+  \item setLives(int lives) - set the remaining lives of the Pacman.
+  \item getAfraidTimer() - get the afraid time for the ghost. When the Pacman eats a fruit, the ghosts will turn to afraid state, this timer record the remaining time of this state.
+  \item setAfraidTimer(int afraidTimer) - set the afraid time for the ghost.
+  \item initializeGame() - reset observers and game values and add game objects as observers according to map layout.
+  \item initializeMap() - return 2D array representing layout of game objects.
+  \item updatePacWorld() - update game state, handling object movement and collisions.
+  \item sendCollisionCmd(AGameObject context) - send the collision command.
+  \item sendSwitchCmd(String switchInfo) - send the switch command.
+  \item switchDirection(String body) - read user input from body and change Pacman direction.
+  \item getDotsLeft() - get the number of dots left.
+  \item setDotsLeft(int dotsLeft) - set the number of dots left.
  \end{itemize}
  
 \subsection{Command}
-The cmd package has an interface IGameObjectCmd. Three concrete commands CollisionCmd, SwitchCmd and UpdateCmd implement this interface. The hierarchy of this package is shown in figure \ref{figcmd}. 
+The cmd package has an interface IGameObjectCmd. Three concrete commands CollisionCmd, SwitchCmd and UpdateCmd implement this interface. These commands execute strategies on the objects. The hierarchy of this package is shown in figure \ref{figcmd}. 
 
 \begin{figure}[htbp] 
   \centering
@@ -125,10 +125,13 @@ The cmd package has an interface IGameObjectCmd. Three concrete commands Collisi
 \end{figure}
 
 \begin{itemize}
-  \item IGameObjectCmd - interface for all commands to allow game objects to act on game. The concrete commands will be UpdateCmd (object update), CollisionCmd (object collision), and SwitchCmd (Pacman direction). These three tasks can be performed with just the execute() method defined in the interface. 
+  \item IGameObjectCmd - interface for all commands to allow game objects to act on game. The concrete commands will be UpdateCmd (object update), CollisionCmd (object collision), and SwitchCmd (Pacman direction). These three tasks can be performed with just the execute() method defined in the interface. These three commands are enough for our task. 
   \begin{itemize}
     \item execute(AGameObject context) - allows context to act on the game state. The context object is the receiver that executes the command.
   \end{itemize}
+  
+  %%%%% concrete classes are not required %%%%%%
+  \iffalse
   \item CollisionCmd - a concrete command executes the strategy when two objects meet.
   \begin{itemize}
   \item CollisionCmd(AGameObject object) - constructor
@@ -144,10 +147,13 @@ The cmd package has an interface IGameObjectCmd. Three concrete commands Collisi
   \item UpdateCmd(DispatchAdapter dispatchAdapter) - constructor
   \item execute(AGameObject context) - updates the states of the object
   \end{itemize}
+  \fi
+  %%%%  concrete classes are not required %%%%%%%
+  
 \end{itemize}
 
 \subsection{Strategy}
-The strategy package has two interfaces - IUpdateStrategy and IInteractStrategy. Six concrete strategies for single object (GhostAfraidStrategy, GhostChaseStrategy, GhostRandomStrategy, GhostTrailStrategy, GhostTrapStrategy and PacmanUpdateStrategy) implement IUpdatesStrategy interface. Two concrete strategies for two-object interactions (GhostInteraction and PacmanInteraction) implement IInteractStrategy interface. The hierarchy of this package is shown in figure \ref{figstrategy}.
+The strategy package has two interfaces - IUpdateStrategy and IInteractStrategy. Six concrete strategies for single object (GhostAfraidStrategy, GhostChaseStrategy, GhostRandomStrategy, GhostTrailStrategy, GhostTrapStrategy and PacmanUpdateStrategy) implement IUpdatesStrategy interface. Two concrete strategies for two-object interactions (GhostInteraction and PacmanInteraction) implement IInteractStrategy interface. All Pacman-ghost interactions are handled by GhostInteraction. PacmanInteraction only handles interactions between the Pacman and the food or the exit and wall. Because we only need one strategy for Pacman-ghost interaction. The hierarchy of this package is shown in figure \ref{figstrategy}.
 
 \begin{figure}[htbp] 
   \centering
@@ -156,18 +162,19 @@ The strategy package has two interfaces - IUpdateStrategy and IInteractStrategy.
   \label{figstrategy} 
 \end{figure}
 
-
 \begin{itemize}
-  \item IUpdateStrategy - interface for strategies that update individual game objects. Pacman will have a single update strategy that lets it move based on the user-specified direction. Ghosts will each have an update strategy for attacking and all use the same strategy when fleeing. No other game object has an update strategy, besides a null strategy.
+  \item IUpdateStrategy - interface for strategies that update individual game objects. Pacman will have a single update strategy that lets it move based on the user-specified direction. Ghosts will each have an update strategy for attacking and all use the same strategy when fleeing. There are six concrete update strategies: GhostAfraidStrategy, GhostChaseStrategy, GhostRandomStrategy, GhostTrailStrategy, GhostTrapStrategy and PacmanUpdateStrategy. No other game object has an update strategy, besides a null strategy.
   \begin{itemize}
     \item getName() - return update strategy name
     \item update(AGameObject context) - updates the state of the context object
   \end{itemize}  
-  \item IInteractStrategy - interface for strategies that handle interaction between objects. All interactions in the game occur between two objects of different types. All interactions between two objects will be handled by one object. For instance, everything that occurs between Pacman and ghosts is handled by ghosts, and Pacman does not handle that interaction at all. This simplifies the number of cases to track and reduces the need for switching interaction strategies.
+  \item IInteractStrategy - interface for strategies that handle interaction between objects. There are two concrete interaction strategies: GhostInteraction and PacmanInteraction. All interactions in the game occur between two objects of different types. All interactions between two objects will be handled by one object. For instance, everything that occurs between Pacman and ghosts is handled by ghosts, and Pacman does not handle that interaction at all. This simplifies the number of cases to track and reduces the need for switching interaction strategies.
   \begin{itemize}
     \item getName() - return interact strategy name
     \item interact(AGameObject src, AGameObject dest) - handles interaction between src and dest objects
   \end{itemize}
+  %%%% concrete class are not required %%%%%
+  \iffalse
   \item GhostAfraidStrategy - a concrete strategy to turn ghosts into the afraid state, during which the ghost can be eaten by the Pacman and the ghost will escape away from the Pacman.
   \begin{itemize}
   \item GhostAfraidStrategy() - constructor
@@ -224,10 +231,12 @@ The strategy package has two interfaces - IUpdateStrategy and IInteractStrategy.
   \item getName() - return the strategy name
   \item interact(AGameObject src, AGameObject dest) - handle the interaction when two objects meet. The src object will impose the interaction strategy on the dest object and the dest object behavior will be affected by the src object interaction strategy
   \end{itemize}
+  \fi
+  %%%%% concrete classes are not required %%%%%%
 \end{itemize}
 
 \subsection{Game Objects}
-The gameobject package has an abstract class AGameObject. Two abstract classes, ACharater and AFood, extend AGameObject. The abstract classes and the concrete classes are shown in figure \ref{fig1}. 
+The gameobject package has an abstract class AGameObject. Two abstract classes, ACharater and AFood, extend AGameObject. ACharacter has two concrete classes: Pacman and Ghost. AFood has three concrete classes: BigDot, SmallDot, and Fruit. AGameObject has two concrete classes: Exit and Wall. The abstract classes and the concrete classes are shown in figure \ref{fig1}. 
 
 \begin{figure}[htbp] 
   \centering
@@ -239,7 +248,7 @@ The gameobject package has an abstract class AGameObject. Two abstract classes, 
 Several of the abstract and concrete classes do not have additional fields or methods from their parent class, but having the added class hierarchy simplifies object creation, and allows for extensible behavior. Each concrete class constructor sets the object size based on the DispatchAdapter gridSize. This allows for easy scalability with just one variable change. 
 
 \begin{itemize}
-  \item AGameObject - all game objects have a location, type, and size
+  \item AGameObject - all game objects have a location, type, and size. Therefore, these fields are put here. All Game objects share the method below:
   \begin{itemize}
     \item AGameObject(Point location, String type, int size) - constructor
     \item getType() - return the type of the object
@@ -248,7 +257,7 @@ Several of the abstract and concrete classes do not have additional fields or me
     \item getSize() - return the size of the object
     \item update(Observable obs, Object o) - update game object by executing o as a command
   \end{itemize}
-  \item ACharacter - all characters extend AGameObject and have a velocity, updateStrategy, and interactStrategy
+  \item ACharacter - all characters extend AGameObject and have a velocity, updateStrategy, and interactStrategy. They all share these additional methods handling strategies, locations, velocities, collisions etc. below:
   \begin{itemize}
     \item ACharacter(Point loc, String type, Point vel, IUpdateStrategy updateStrategy, IInteractStrategy interactStrategy, int size) - constructor
     \item getInteractStrategy() - return the interaction strategy of the object
@@ -258,13 +267,16 @@ Several of the abstract and concrete classes do not have additional fields or me
     \item getInitialLoc() - return the initial position of the object
     \item getVel() - return the velocity of the object
     \item setVel(Point vel) - set the velocity of the object
-    \item collision(AGameObject gameObject) - handle collision against gameObject
+    \item collision(AGameObject gameObject) - handle collision against gameObject. We only need to handle collisions in this classes since all collisions are happened with an ACharacter.
   \end{itemize}
-  \item AFood - all food extends AGameObject. This abstraction layer is used for easier collision checking and possible extensibility, if new behaviors are added for food objects.
+  \item AFood - all food extends AGameObject. This abstraction layer is used for easier collision checking and possible extensibility, if new behaviors are added for food objects. It has an additional method getPoints() to record scores.
   \begin{itemize}
   \item AFood(Point loc, String type, int size, int points) - constructor
   \item getPoints() - return the points
   \end{itemize}
+  
+    %%%%% concrete classes are not required %%%%%%
+ \iffalse
   \item Pacman - a concrete class extends ACharacter for the Pacman. 
   \begin{itemize}
   \item Pacman(Point loc, DispatchAdapter dis) - constructor
@@ -306,6 +318,9 @@ Several of the abstract and concrete classes do not have additional fields or me
   \item setExitTo(Point exitTo) - set the next location of the exit
   \end{itemize}
   \item Wall - a concrete class extends AGameObject.
+  \fi
+    %%%%% concrete classes are not required %%%%%%
+    
 \end{itemize}
 
 \end{document}

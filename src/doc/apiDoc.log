@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  3 NOV 2018 20:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  4 NOV 2018 00:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -380,41 +380,34 @@ Package pdftex.def Info: cmd.png used on input line 122.
 <strategy.png, id=24, 2413.015pt x 624.3325pt>
 File: strategy.png Graphic file (type png)
  <use strategy.png>
-Package pdftex.def Info: strategy.png used on input line 154.
+Package pdftex.def Info: strategy.png used on input line 160.
 (pdftex.def)             Requested size: 403.69933pt x 104.44891pt.
- [5 <./strategy.png (PNG copy)>] [6] <objects.png, id=31, 636.3775pt x 226.8475
-pt>
+ [5 <./strategy.png (PNG copy)>] <objects.png, id=28, 636.3775pt x 226.8475pt>
 File: objects.png Graphic file (type png)
 
 <use objects.png>
-Package pdftex.def Info: objects.png used on input line 234.
+Package pdftex.def Info: objects.png used on input line 243.
 (pdftex.def)             Requested size: 350.15141pt x 124.81496pt.
- [7] [8 <./objects.png>]
-Overfull \hbox (22.63884pt too wide) in paragraph at lines 281--282
-[]\OT1/cmr/m/n/10.95 Ghost(Point loc, IUp-dat-eS-trat-egy up-dat-eS-trat-egy, S
-tring color, Dis-patchAdapter
- []
-
-[9] [10] (./apiDoc.aux) ) 
+ [6 <./objects.png>] [7] (./apiDoc.aux) ) 
 Here is how much of TeX's memory you used:
  5391 strings out of 493089
  79503 string characters out of 6134842
- 153497 words of memory out of 5000000
+ 152497 words of memory out of 5000000
  8797 multiletter control sequences out of 15000+600000
  10361 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,6n,38p,514b,266s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb>
-Output written on apiDoc.pdf (10 pages, 169274 bytes).
+ 38i,6n,38p,739b,266s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmsy10.pfb>
+Output written on apiDoc.pdf (7 pages, 166806 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
- 43 compressed objects within 1 object stream
+ 58 PDF objects out of 1000 (max. 8388607)
+ 37 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
