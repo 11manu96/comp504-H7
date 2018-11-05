@@ -125,7 +125,7 @@ The cmd package has an interface IGameObjectCmd. Three concrete commands Collisi
 \end{figure}
 
 \begin{itemize}
-  \item IGameObjectCmd - interface for all commands to allow game objects to act on game. The concrete commands will be UpdateCmd (object update), CollisionCmd (object collision), and SwitchCmd (Pacman direction). These three tasks can be performed with just the execute() method defined in the interface. These three commands are enough for our task. 
+  \item IGameObjectCmd - interface for all commands to allow game objects to act on game. The concrete commands will be UpdateCmd (object update), CollisionCmd (object collision), and SwitchCmd (ACharacter direction). These three tasks can be performed with just the execute() method defined in the interface. These three commands are enough for our task. For example, Pacman and Ghost share the same SwitchCmd based on the information string.
   \begin{itemize}
     \item execute(AGameObject context) - allows context to act on the game state. The context object is the receiver that executes the command.
   \end{itemize}
@@ -322,5 +322,22 @@ Several of the abstract and concrete classes do not have additional fields or me
     %%%%% concrete classes are not required %%%%%%
     
 \end{itemize}
+
+\section{Other design decisions}
+Besides those design decisions mentioned above, there are a few more design decisions that are associated multiple packages or for a concrete class. 
+\begin{itemize}
+\item Pacman - when switching direction, need to check collision, if it will face a wall, the switch will be denied, and it records the initial location.
+\item Ghost - track open spaces around it, making it easier to check collisions etc. in the observe-observable framework, and it knows the initial location.
+\item Switch queue - move up non-collision switches making the game easier to control.
+\item Fruit - track open spaces around it, and has a fruitTimer for cool time.
+\item Exit - know the next location through itself.
+\end{itemize}
+% pacman: switch direction collision, know initial location
+% ghost: track open spaces around it, know initial location
+% fruit: track open spaces and fruit 
+% exit: exit to
+% switchcmd:
+% change direction need to check collisions, if wall, go back to its old direction
+% switch queue, if possible to turn, do it first
 
 \end{document}
