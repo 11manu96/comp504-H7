@@ -77,14 +77,15 @@ function createApp(canvas) {
     };
 
     // draw Pacman
-    var drawPacMan = function(x, y, size) {
+    var drawPacMan = function(x, y, size, velX, velY) {
         c.fillStyle = "yellow";
-        var mouth = Math.abs(frameCount % 90 - 45);
+        var mouth = (Math.abs(frameCount % 90 - 45) / 180);
+        var rotate = Math.atan2(velY / 20, velX / 20) / Math.PI;
         c.beginPath();
-        c.arc(x, y, size/2, mouth/180 * Math.PI, (mouth/180+1)* Math.PI, false);
+        c.arc(x, y, size / 2, (rotate + mouth) * Math.PI, (rotate + mouth + 1) * Math.PI, false);
         c.fill();
         c.beginPath();
-        c.arc(x, y, size/2, -(mouth/180+1) * Math.PI, -(mouth/180) * Math.PI, false);
+        c.arc(x, y, size / 2, (rotate - (mouth + 1)) * Math.PI, (rotate - mouth) * Math.PI, false);
         c.fill();
     };
 
@@ -153,7 +154,7 @@ function updateGameWorld() {
                 app.drawExit(element.location.x, element.location.y, element.size);
             }
             else if (element.type === "pacman") {
-                app.drawPacMan(element.location.x, element.location.y, element.size);
+                app.drawPacMan(element.location.x, element.location.y, element.size, element.vel.x, element.vel.y);
             }
             else if(element.type === "ghost") {
                 if (element.updateStrategy.name !== "ghost_afraid") {
